@@ -1,0 +1,15 @@
+html {
+
+    background: #fff;
+}
+
+body {
+
+    color: #545454;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 0.5;
+    margin: 0 auto;
+    max-width: 1800px;
+    padding: 2em 3em 3em;
+}
