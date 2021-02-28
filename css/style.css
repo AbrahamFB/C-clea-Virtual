@@ -1,0 +1,25 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+    box-sizing: border-box;
+    font-size : 62.5%;
+    /** 1rem = 10xp **/
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size  : 1.6rem;
+    line-height: 2;
+}
+
+.banner-index {
+    background-color: aqua;
+}
+p{
+    color: aquamarine;
+}

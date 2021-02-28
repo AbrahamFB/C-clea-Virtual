@@ -1,12 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cóclea Virtual</title>
-</head>
-<body>
-    <p>Hola Mundo</p>
-</body>
-</html>
+<?php
+$anadirURL = "";
+$nombrePagina = "Cóclea Virtual";
+$headerPagina = '<h1>Soy <span class="typed"></span></h1>
+            <p>
+                Estudiante, Desarrollador, Técnico en redes-CISCO, Freelancer,
+                Fotógrafo
+            </p>';
+$css_extra = "";
+
+include("html.php");
+
+echo '<body ondragstart="return false">';
+
+include("nav-bar_index.php");
+
+include("header_index.php");
+
+include("banner.php");
+
+
+include("footer.php");
+
+include("scripts.php");
+
+echo '  </body>
+</html>';
