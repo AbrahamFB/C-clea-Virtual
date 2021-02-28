@@ -17,9 +17,20 @@ body {
     line-height: 2;
 }
 
-.banner-index {
-    background-color: aqua;
+.webp .banner-index {
+    background-image   : url(../img/GALA.webp);
+    height             : 100vh;
+    background-size    : cover;
+    background-repeat  : no-repeat;
+    background-position: center center;
+    width              : 100%;
 }
-p{
-    color: aquamarine;
+
+.no-webp .banner-index {
+    background-image   : url(../img/GALA.png);
+    height             : 100vh;
+    background-size    : cover;
+    background-repeat  : no-repeat;
+    background-position: center center;
+    width              : 100%;
 }
