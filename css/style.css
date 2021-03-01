@@ -1,8 +1,7 @@
-/* apply a natural box layout model to all elements, but allowing components to change */
 html {
-    box-sizing: border-box;
     font-size : 62.5%;
-    /** 1rem = 10xp **/
+    /* Reset para REMS - 62.5% = 10px de 16px*/
+    box-sizing: border-box;
 }
 
 *,
@@ -12,7 +11,7 @@ html {
 }
 
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Lato", sans-serif;
     font-size  : 1.6rem;
     line-height: 2;
 }
@@ -33,4 +32,61 @@ body {
     background-repeat  : no-repeat;
     background-position: center center;
     width              : 100%;
+}
+
+/**  GLOBALES   **/
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 3.4rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2.6rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+li, ul{
+    list-style: none;
+}
+
+/* Utilidades */
+
+.mayusculas {
+    text-transform: uppercase;
+}
+
+.ss {
+}
+
+.contenido-centrado {
+    max-width: 80rem;
+}
+
+
+/* PARTICULARES */
+h1.tituloPagina {
+    margin: 1rem 1rem;
+
+}
+
+.img-audio, .img-video {
+    max-width : 80%;
+    padding: 3rem;
+
+}
+
+.inComentario{
+    width: 80%;
+    height: 50%;
 }
