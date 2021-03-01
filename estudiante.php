@@ -34,27 +34,33 @@ include("header_index.php");
         <h3 class="text-center">Valoraciones</h3>
         <div class="row row-cols-2">
             <div class="col">
+
+
+
                 <h5>Comentarios</h5>
                 <ul>
-                    <li>Lorem ipsum dolor, sit amdiet voluptates?<< /li>
-                    <li>Lorem ipsum dolor, sit amdiet voluptates?<< /li>
-                    <li>Lorem ipsum dolor, sit amdiet voluptates?<< /li>
-                    <li>Lorem ipsum dolor, sit amdiet voluptates?<< /li>
+                    <li>Lorem ipsum dolor, sit amdiet voluptates?</li>
+                    <li>Lorem ipsum dolor, sit amdiet voluptates?</li>
+                    <li>Lorem ipsum dolor, sit amdiet voluptates?</li>
+                    <li>Lorem ipsum dolor, sit amdiet voluptates?</li>
                 </ul>
             </div>
 
             <div class="col">
-                <h5>Tú puntuación</h5>
-                <a href="" class="ion-star"></a>
-                <a href="" class="ion-star"></a>
-                <a href="" class="ion-star"></a>
-                <a href="" class="ion-star"></a>
-                <a href="" class="ion-star"></a>
+                <form action="">
 
-                <h5>Tú valoración</h5>
-                <textarea name="" id="" cols="30" rows="10" class="inComentario"></textarea>
-                <br>
-                <input type="button" value="Enviar">
+                    <h5>Tú puntuación</h5>
+                    <a href="" class="ion-android-star"></a>
+                    <a href="" class="ion-android-star-outline"></a>
+                    <a href="" class="ion-android-star-outline"></a>
+                    <a href="" class="ion-android-star-outline"></a>
+                    <a href="" class="ion-android-star-outline"></a>
+
+                    <h5>Tú valoración</h5>
+                    <textarea name="" id="" cols="30" rows="10" class="inComentario"></textarea>
+                    <br>
+                    <input type="button" value="Enviar">
+                </form>
             </div>
 
 
