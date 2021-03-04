@@ -663,6 +663,7 @@ include("header_index.php");
                             <div id="file_drop_target">
                                 Arrastre los archivos aquí para cargar
                                 <b>o</b>
+                                <br>
                                 <input type="file" multiple />
                             </div>
                         <?php endif; ?>
