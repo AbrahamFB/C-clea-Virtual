@@ -667,6 +667,7 @@ include("header_index.php");
                                         <label for=dirname>Crear Nueva Carpeta</label><input id=dirname type=text name=name value="" />
                                         <input type="submit" value="crear" />
                                         </form>
+                                        s
                                     <?php endif; ?>
                                 </div>
                             </div>
