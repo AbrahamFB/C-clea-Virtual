@@ -662,7 +662,7 @@ include("header_index.php");
 
                             <div id="file_drop_target">
                                 Arrastre los archivos aquí para cargar
-                                <b>or</b>
+                                <b>o</b>
                                 <input type="file" multiple />
                             </div>
                         <?php endif; ?>
