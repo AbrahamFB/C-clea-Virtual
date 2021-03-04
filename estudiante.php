@@ -655,17 +655,16 @@ include("header_index.php");
                         <?php if ($allow_upload) : ?>
                             <div class="row row-cols-2">
                                 <div class="col">
-                                        Arrastre los archivos aquí para cargar
-                                        <b>o</b>
-                                        <br>
-                                        <input type="file" multiple />
+                                    Arrastre los archivos aquí para cargar
+                                    <b>o</b>
+                                    <br>
+                                    <input type="file" multiple />
                                 </div>
                                 <div class="col"> <?php if ($allow_create_folder) : ?>
                                         <form action="?" method="post" id="mkdir" />
                                         <label for=dirname>Crear Nueva Carpeta</label><input id=dirname type=text name=name value="" />
                                         <input type="submit" value="crear" />
                                         </form>
-                                        s
                                     <?php endif; ?>
                                 </div>
                             </div>
