@@ -261,7 +261,6 @@ include("header_index.php");
 
                         #mkdir {
                             display: inline-block;
-                            float: right;
                             padding-top: 16px;
                         }
 
@@ -652,13 +651,6 @@ include("header_index.php");
 
                 <body>
                     <div id="top">
-                        <?php if ($allow_create_folder) : ?>
-                            <form action="?" method="post" id="mkdir" />
-                            <label for=dirname>Crear Nueva Carpeta</label><input id=dirname type=text name=name value="" />
-                            <input type="submit" value="crear" />
-                            </form>
-
-                        <?php endif; ?>
 
                         <?php if ($allow_upload) : ?>
 
@@ -678,7 +670,6 @@ include("header_index.php");
                                 <th>Nombre</th>
                                 <th>Peso</th>
                                 <th>Modificado</th>
-                                <th>Permisos</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -686,8 +677,17 @@ include("header_index.php");
 
                         </tbody>
                     </table>
+                    <?php if ($allow_create_folder) : ?>
+                        <div class="">
+                            <form action="?" method="post" id="mkdir" />
+                            <label for=dirname>Crear Nueva Carpeta</label><input id=dirname type=text name=name value="" />
+                            <input type="submit" value="crear" />
+                            </form>
+                        </div>
+                    <?php endif; ?>
 
                     </br></br>
+
 
                 </body>
 
