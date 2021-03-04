@@ -64,8 +64,8 @@ include("header_index.php");
                 setlocale(LC_ALL, 'en_US.UTF-8');
 
                 $tmp_dir = dirname($_SERVER['SCRIPT_FILENAME']);
-                if (DIRECTORY_SEPARATOR === '\\') $tmp_dir = str_replace('/lib/', DIRECTORY_SEPARATOR, $tmp_dir);
-                $tmp = get_absolute_path($tmp_dir . '/lib/' . $_REQUEST['file']);
+                if (DIRECTORY_SEPARATOR === '\\') $tmp_dir = str_replace('/', DIRECTORY_SEPARATOR, $tmp_dir);
+                $tmp = get_absolute_path($tmp_dir . '/' . $_REQUEST['file']);
 
                 if ($tmp === false)
                     err(404, 'Archivo o Carpeta no Encontrada');
@@ -89,7 +89,7 @@ include("header_index.php");
                         $result = [];
                         $files = array_diff(scandir($directory), ['.', '..']);
                         foreach ($files as $entry) if (!is_entry_ignored($entry, $allow_show_folders, $hidden_extensions)) {
-                            $i = $directory . '/lib/' . $entry;
+                            $i = $directory . '/' . $entry;
                             $stat = stat($i);
                             $result[] = [
                                 'mtime' => $stat['mtime'],
@@ -109,7 +109,7 @@ include("header_index.php");
                     }
                     echo json_encode(['success' => true, 'is_writable' => is_writable($file), 'results' => $result]);
                     exit;
-                } elseif ($_POST['do'] == 'delete') {
+                } elseif ($_POST['do'] == 'eliminar') {
                     if ($allow_delete) {
                         rmrf($file);
                     }
@@ -117,7 +117,7 @@ include("header_index.php");
                 } elseif ($_POST['do'] == 'mkdir' && $allow_create_folder) {
                     // no permita acciones fuera de la raíz. también filtramos barras para atrapar argumentos como './../outside'
                     $dir = $_POST['name'];
-                    $dir = str_replace('/lib/', '', $dir);
+                    $dir = str_replace('/', '', $dir);
                     if (substr($dir, 0, 2) === '..')
                         exit;
                     chdir($file);
@@ -128,9 +128,9 @@ include("header_index.php");
                         if (preg_match(sprintf('/\.%s$/', preg_quote($ext)), $_FILES['file_data']['name']))
                             err(403, "No se permiten archivos de este tipo.");
 
-                    $res = move_uploaded_file($_FILES['file_data']['tmp_name'], $file . '/lib/' . $_FILES['file_data']['name']);
+                    $res = move_uploaded_file($_FILES['file_data']['tmp_name'], $file . '/' . $_FILES['file_data']['name']);
                     exit;
-                } elseif ($_GET['do'] == 'download') {
+                } elseif ($_GET['do'] == 'descargar') {
                     $filename = basename($file);
                     $finfo = finfo_open(FILEINFO_MIME_TYPE);
                     header('Content-Type: ' . finfo_file($finfo, $file));
@@ -190,7 +190,7 @@ include("header_index.php");
                 // from: http://php.net/manual/en/function.realpath.php#84012
                 function get_absolute_path($path)
                 {
-                    $path = str_replace(['/lib/', '\\'], DIRECTORY_SEPARATOR, $path);
+                    $path = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $path);
                     $parts = explode(DIRECTORY_SEPARATOR, $path);
                     $absolutes = [];
                     foreach ($parts as $part) {
@@ -272,7 +272,6 @@ include("header_index.php");
                         }
 
                         #file_drop_target {
-                            width: 500px;
                             padding: 12px 0;
                             border: 4px dashed #ccc;
                             font-size: 12px;
@@ -562,14 +561,14 @@ include("header_index.php");
 
                                 function renderFileUploadRow(file, folder) {
                                     return $row = $('<div/>')
-                                        .append($('<span class="fileuploadname" />').text((folder ? folder + '/lib/' : '') + file.name))
+                                        .append($('<span class="fileuploadname" />').text((folder ? folder + '/' : '') + file.name))
                                         .append($('<div class="progress_track"><div class="progress"></div></div>'))
                                         .append($('<span class="size" />').text(formatFileSize(file.size)))
                                 };
 
                                 function renderFileSizeErrorRow(file, folder) {
                                     return $row = $('<div class="error" />')
-                                        .append($('<span class="fileuploadname" />').text('Error: ' + (folder ? folder + '/lib/' : '') + file.name))
+                                        .append($('<span class="fileuploadname" />').text('Error: ' + (folder ? folder + '/' : '') + file.name))
                                         .append($('<span/>').html(' tamaño del archivo - <b>' + formatFileSize(file.size) + '</b>' +
                                             ' excede el tamaño máximo de carga de <b>' + formatFileSize(MAX_UPLOAD_SIZE) + '</b>'));
                                 }
@@ -600,12 +599,12 @@ include("header_index.php");
                                 var allow_direct_link = <?php echo $allow_direct_link ? 'true' : 'false'; ?>;
                                 if (!data.is_dir && !allow_direct_link) $link.css('pointer-events', 'none');
                                 var $dl_link = $('<a/>').attr('href', '?do=download&file=' + encodeURIComponent(data.path))
-                                    .addClass('download').text('download');
+                                    .addClass('download').text('descargar');
                                 var $delete_link = $('<a href="#" />').attr('data-file', data.path).addClass('delete').text('delete');
                                 var perms = [];
-                                if (data.is_readable) perms.push('read');
-                                if (data.is_writable) perms.push('write');
-                                if (data.is_executable) perms.push('exec');
+                                if (data.is_readable) perms.push('leer');
+                                if (data.is_writable) perms.push('escribir');
+                                if (data.is_executable) perms.push('ejecutar');
                                 var $html = $('<tr />')
                                     .addClass(data.is_dir ? 'is_dir' : '')
                                     .append($('<td class="first" />').append($link))
@@ -652,21 +651,25 @@ include("header_index.php");
 
                 <body>
                     <div id="top">
-                        <?php if ($allow_create_folder) : ?>
-                            <form action="?" method="post" id="mkdir" />
-                            <label for=dirname>Crear Nueva Carpeta</label><input id=dirname type=text name=name value="" />
-                            <input type="submit" value="crear" />
-                            </form>
-
-                        <?php endif; ?>
 
                         <?php if ($allow_upload) : ?>
+                            <div class="row row-cols-2">
+                                <div class="col">
+                                        Arrastre los archivos aquí para cargar
+                                        <b>o</b>
+                                        <br>
+                                        <input type="file" multiple />
+                                </div>
+                                <div class="col"> <?php if ($allow_create_folder) : ?>
+                                        <form action="?" method="post" id="mkdir" />
+                                        <label for=dirname>Crear Nueva Carpeta</label><input id=dirname type=text name=name value="" />
+                                        <input type="submit" value="crear" />
+                                        </form>
 
-                            <div id="file_drop_target">
-                                Arrastre los archivos aquí para cargar
-                                <b>or</b>
-                                <input type="file" multiple />
+                                    <?php endif; ?>
+                                </div>
                             </div>
+
                         <?php endif; ?>
                         <div id="breadcrumb">&nbsp;</div>
                     </div>
@@ -687,8 +690,10 @@ include("header_index.php");
                         </tbody>
                     </table>
 
+
                     </br></br>
-                    <a href="logout.php" class="btn btn-danger pull-right">Cierra la sesión</a>
+
+
                 </body>
 
                 </html>
