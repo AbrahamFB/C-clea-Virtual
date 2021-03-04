@@ -261,6 +261,7 @@ include("header_index.php");
 
                         #mkdir {
                             display: inline-block;
+                            float: right;
                             padding-top: 16px;
                         }
 
@@ -271,7 +272,6 @@ include("header_index.php");
                         }
 
                         #file_drop_target {
-                            width: 500px;
                             padding: 12px 0;
                             border: 4px dashed #ccc;
                             font-size: 12px;
@@ -653,12 +653,24 @@ include("header_index.php");
                     <div id="top">
 
                         <?php if ($allow_upload) : ?>
-
-                            <div id="file_drop_target">
-                                Arrastre los archivos aquí para cargar
-                                <b>o</b>
-                                <input type="file" multiple />
+                            <div class="row row-cols-2 ss">
+                                <div class="col">
+                                    <div id="file_drop_target">
+                                        Arrastre los archivos aquí para cargar
+                                        <b>o</b>
+                                        <br>
+                                        <input type="file" multiple />
+                                    </div>
+                                </div>
+                                <div class="col"> <?php if ($allow_create_folder) : ?>
+                                        <form action="?" method="post" id="mkdir" />
+                                        <label for=dirname>Crear Nueva Carpeta</label><input id=dirname type=text name=name value="" />
+                                        <input type="submit" value="crear" />
+                                        </form>
+                                    <?php endif; ?>
+                                </div>
                             </div>
+
                         <?php endif; ?>
                         <div id="breadcrumb">&nbsp;</div>
                     </div>
@@ -670,6 +682,7 @@ include("header_index.php");
                                 <th>Nombre</th>
                                 <th>Peso</th>
                                 <th>Modificado</th>
+                                <th>Permisos</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -677,14 +690,7 @@ include("header_index.php");
 
                         </tbody>
                     </table>
-                    <?php if ($allow_create_folder) : ?>
-                        <div class="">
-                            <form action="?" method="post" id="mkdir" />
-                            <label for=dirname>Crear Nueva Carpeta</label><input id=dirname type=text name=name value="" />
-                            <input type="submit" value="crear" />
-                            </form>
-                        </div>
-                    <?php endif; ?>
+
 
                     </br></br>
 
