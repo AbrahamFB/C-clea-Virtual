@@ -653,14 +653,12 @@ include("header_index.php");
                     <div id="top">
 
                         <?php if ($allow_upload) : ?>
-                            <div class="row row-cols-2 ss">
+                            <div class="row row-cols-2">
                                 <div class="col">
-                                    <div id="file_drop_target">
                                         Arrastre los archivos aquí para cargar
                                         <b>o</b>
                                         <br>
                                         <input type="file" multiple />
-                                    </div>
                                 </div>
                                 <div class="col"> <?php if ($allow_create_folder) : ?>
                                         <form action="?" method="post" id="mkdir" />
