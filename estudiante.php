@@ -15,6 +15,8 @@ include("header_index.php");
 
 ?>
 <div class="container">
+    <div class=""> <a href="logout.php" class="btn btn-danger float-right">Cierra la sesión</a>
+    </div>
     <div class="banner-estudiante">
         <h1 class="text-center tituloPagina mayusculas">Bienvenido <?php echo $user ?> a Cóclea Virtual</h1>
 
@@ -663,7 +665,6 @@ include("header_index.php");
                             <div id="file_drop_target">
                                 Arrastre los archivos aquí para cargar
                                 <b>o</b>
-                                <br>
                                 <input type="file" multiple />
                             </div>
                         <?php endif; ?>
@@ -687,7 +688,7 @@ include("header_index.php");
                     </table>
 
                     </br></br>
-                    <a href="logout.php" class="btn btn-danger pull-right">Cierra la sesión</a>
+
                 </body>
 
                 </html>
