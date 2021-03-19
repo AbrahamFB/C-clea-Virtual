@@ -1,7 +1,12 @@
 <!-- Inicio sección header -->
 <header class="site-header">
+
+
     <div class="hero">
+        <div class="efectito" style="background: #0069ff; background: linear-gradient(45deg,#0069ff 0%,#ff3a6f 100%);  opacity: 0.5; "></div>
+
         <div class="container">
+
             <div class="row">
                 <div class="col-md-6 contenido-header">
                     <h2 class="presentacion">Te transcribimos cualquier audio o vídeo</h2>
