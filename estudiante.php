@@ -2,7 +2,7 @@
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Estudiante";
 $css_extra = "";
-$user = "juan";
+$user = "Abraham";
 $descripcion = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, deserunt placeat! Vel iure dolor culpa, cumque omnis quasi repellendus ab cupiditate dignissimos, autem dicta magnam maxime minima excepturi, possimus consectetur!";
 
 include("html.php");
