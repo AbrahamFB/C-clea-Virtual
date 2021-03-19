@@ -30,7 +30,7 @@ include("header_index.php");
                 <?php
 
 
-                //Deshabilitar informe de error para superglobales indefinidos
+                //Deshabilitar informe de error para superglobales indefinidos...
                 error_reporting(error_reporting() & ~E_NOTICE);
 
                 //Opciones de Seguridad
