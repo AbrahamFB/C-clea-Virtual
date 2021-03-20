@@ -106,6 +106,13 @@ p.descripcion-header {
 
 /* NAV-PRINCIPAL*/
 
+.logo-menu{
+    padding: 1rem 0;
+    height: 50%;
+}
+.navegacion-principal{
+    height: 10rem;
+}
 
 
 /** ENCABEZADO **/
