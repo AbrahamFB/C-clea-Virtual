@@ -8,6 +8,7 @@ echo '<script src="' . $anadirURL . 'lib/typed/typed.js"></script>';
 echo '<script src="' . $anadirURL . 'lib/owlcarousel/owl.carousel.min.js"></script>';
 echo '<script src="' . $anadirURL . 'lib/magnific-popup/magnific-popup.min.js"></script>';
 echo '<script src="' . $anadirURL . 'lib/isotope/isotope.pkgd.min.js"></script>';
+echo '<script src="' . $anadirURL . 'js/validacion-registro.js"></script>';
 
 echo '<!-- Template Main Javascript Archivo -->';
 echo '<script src="' . $anadirURL . 'js/main.js"></script>';
@@ -18,3 +19,4 @@ echo '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bo
 
 echo '<!-- Iconos -->';
 echo '<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>';
+

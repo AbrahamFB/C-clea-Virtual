@@ -1,11 +1,11 @@
  <!-- Inicio sección navbar -->
  <header>
-     <div class="container">
-         <div class="row navegacion-principal">
-             <div class="col col-3"><a href="">
+     <div class="contenedor-menu">
+         <div class="row row-cols-2 navegacion-principal">
+             <div class="col-2"><a href="">
                      <img src="img\logo\logo.jpg" alt="" class="logo-menu">
                  </a></div>
-             <div class="col col-9 " style="text-align: right;">
+             <div class="col-6 contenedor-nav" style="text-align: right;">
                  <nav id="main-nav" class="">
                      <ul class="nav nav-pills">
                          <li class="nav-item">
@@ -18,10 +18,22 @@
                          <li class="nav-item">
                              <a class="nav-link" href="/sobre-nosotros.php">Sobre Nosotros</a>
                          </li>
-
-
                      </ul>
                  </nav>
+             </div>
+             <div class=" col-4 contenedor-nav">
+                 <ul class="redes-busqueda-tienda">
+                     <li><a href="" target="_blanck"> <span class="iconify" data-icon="ion:logo-facebook" data-inline="false"></span>
+                         </a>
+                         <a href="" target="_blanck"><span class="iconify" data-icon="logos:telegram" data-inline="false"></span></a>
+                         <a href="" target="_blanck"><span class="iconify" data-icon="el:phone-alt" data-inline="false"></span></a>
+                         <a href="" target="_blanck"><span class="iconify" data-icon="icomoon-free:mail4" data-inline="false"></span></a>
+                         <a href="" target="_blanck"><span class="iconify" data-icon="flat-color-icons:search" data-inline="false"></span></a>
+                         <a href="" target="_blanck"><span class="iconify" data-icon="bx:bxs-user-circle" data-inline="false"></span></a>
+                         <a href="" target="_blanck"><span class="iconify" data-icon="majesticons:shopping-bag-line" data-inline="false"></span></a>
+                     </li>
+                 </ul>
+
              </div>
          </div>
 
