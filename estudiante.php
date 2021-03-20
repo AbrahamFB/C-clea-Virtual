@@ -11,8 +11,6 @@ echo '<body ondragstart="return false">';
 
 include("nav-bar_index.php");
 
-include("header_index.php");
-
 ?>
 <div class="container">
     <div class=""> <a href="logout.php" class="btn btn-danger float-right">Cierra la sesión</a>

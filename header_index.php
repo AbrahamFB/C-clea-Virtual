@@ -1,5 +1,5 @@
 <!-- Inicio sección header -->
-<header class="site-header">
+<section class="site-header">
 
 
     <div class="hero">
@@ -11,12 +11,13 @@
                 <div class="col-md-6 contenido-header">
                     <h2 class="presentacion">Te transcribimos cualquier audio o vídeo</h2>
                     <div class="w-100 d-none d-md-block"></div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button type="button" class="btn btn-info mayusculas">Alumno</button>
+                    <div class="row row-cols-2">
+                        <div class="col centrar-texto">
+                            <button type="button" class="btn btn-info mayusculas btn-alumno">Alumno</button>
                         </div>
-                        <div class="col-md-6">
-                            <button type="button" class="btn btn-info mayusculas transcriptor">Transcriptor</button>
+                        <br>
+                        <div class="col centrar-texto">
+                            <button type="button" class="btn btn-info mayusculas btn-transcriptor">Transcriptor</button>
                         </div>
                     </div>
                 </div>
@@ -48,5 +49,5 @@
         </div>
     </div>
 
-</header>
+</section>
 <!-- Fin sección header -->
