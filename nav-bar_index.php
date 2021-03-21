@@ -29,7 +29,7 @@
                          <a href="" target="_blanck"><span class="iconify" data-icon="el:phone-alt" data-inline="false"></span></a>
                          <a href="" target="_blanck"><span class="iconify" data-icon="icomoon-free:mail4" data-inline="false"></span></a>
                          <a href="" target="_blanck"><span class="iconify" data-icon="flat-color-icons:search" data-inline="false"></span></a>
-                         <a href="login_index.php" ><span class="iconify" data-icon="bx:bxs-user-circle" data-inline="false"></span></a>
+                         <a href="/login_index.php"><span class="iconify" data-icon="bx:bxs-user-circle" data-inline="false"></span></a>
                          <a href="" target="_blanck"><span class="iconify" data-icon="majesticons:shopping-bag-line" data-inline="false"></span></a>
                      </li>
                  </ul>
