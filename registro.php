@@ -45,7 +45,7 @@ include("nav-bar_index.php");
 <script type="text/javascript">
     let form = new Validation("register-form");
     // Validation Functions
-    form.requireText("name", 5, 20, [" "], []);
-    form.requireEmail("email", 4, 30, [" "], []);
+    form.requireText("nombre", 5, 20, [" "], []);
+    form.requireEmail("correo", 4, 30, [" "], []);
     form.registerPassword("password", 6, 20, [" "], [], "confirm");
 </script>

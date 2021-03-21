@@ -3,12 +3,14 @@
 
 <head>
     <!-- meta -->
+    
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <?php
+
     echo '<title>' . $nombrePagina . '</title>';
     ?>
-    <meta content="" name="Cóclea Virtual LSM BUAP" />
+    <meta content="Cóclea Virtual LSM BUAP" name="description" />
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet" />

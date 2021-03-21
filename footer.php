@@ -9,7 +9,7 @@
         </div>
         <p></p>
         <div class="socials-media text-center">
-            <ul class="list-unstyled">
+            <ul class="list-unstyled flex">
                 <li>
                     <a href="https://bit.ly/3e4XIcS"><i class="ion-social-facebook"></i></a>
                 </li>
