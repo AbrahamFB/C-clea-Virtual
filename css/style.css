@@ -1,7 +1,7 @@
 :root {
     --rosita       : #ef96f7;
     --anchoPantalla: 120rem;
-    --gris: #757575;
+    --gris         : #757575;
 }
 
 
@@ -78,11 +78,15 @@ ul {
 
 .contenido-centrado {
     max-width: 40rem;
-    margin: auto auto;
+    margin   : auto auto;
 }
 
 .centrar-texto {
     text-align: center;
+}
+
+.margin-tb {
+    margin: 7rem auto;
 }
 
 /* PARTICULARES */
@@ -109,7 +113,7 @@ p.descripcion-header {
 /* NAV-PRINCIPAL*/
 
 .logo-menu {
-    margin: 1rem 0;
+    margin    : 1rem 0;
     min-height: auto;
 }
 
@@ -125,7 +129,8 @@ p.descripcion-header {
 .redes-busqueda-tienda a {
     font-size: 2.3rem;
 }
-.nav-link{
+
+.nav-link {
     color: var(--gris);
 }
 
@@ -213,19 +218,18 @@ div.hero {
 }
 
 /* Login */
-.flex{
-    display: flex;
+.flex {
+    display        : flex;
     justify-content: center;
-    gap: .5rem;
+    gap            : .5rem;
 }
-.margin-top{
-    margin: 10rem auto;
-}
-.font-2rem{
+
+.font-2rem {
     font-size: 1.7rem;
 }
-.btn-modificado{
+
+.btn-modificado {
     border-radius: .5rem;
-    padding: 1rem 2rem;
-    width: 100%;
+    padding      : 1rem 2rem;
+    width        : 100%;
 }

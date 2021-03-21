@@ -12,31 +12,34 @@ include("nav-bar_index.php");
 
 ?>
 <!-- FORM -->
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6 p-5 bg-white shadow-lg rounded">
 
-            <form id="register-form" method="post">
-                <h2>Registro</h2>
-                <hr>
-                <div class="form-group">
-                    <label for="nombre">Usuario</label>
-                    <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Ingresa tu usuario">
-                </div>
-                <div class="form-group">
-                    <label for="correo">Correo electrónico</label>
-                    <input name="correo" id="correo" type="email" class="form-control" placeholder="example@gala.com">
-                    <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más</small>
-                </div>
-                <div class="form-group">
-                    <label for="contrasena">Contraseña</label>
-                    <input name="contrasena" id="contrasena" type="password" class="form-control" placeholder="Ingresa una contraseña">
-                    <label for="passwordConfirm">Confirmar contraseña</label>
-                    <input name="confirm" id="confirm" type="password" class="form-control" placeholder="Confirma tu contraseña">
-                </div>
-                <input type="submit" class="btn btn-primary btn-block mt-5" value="Registrarme">
-            </form>
+            <div class="margin-tb contenido-centrado">
+                <form id="register-form" method="post">
+                    <h2 class="centrar-texto">Registro</h2>
+                    <hr>
+                    <div class="form-group">
+                        <label for="nombre">Usuario</label>
+                        <input name="nombre" id="nombre" type="text" class="form-control font-2rem" placeholder="Ingresa tu usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico</label>
+                        <input name="correo" id="correo" type="email" class="form-control font-2rem" placeholder="example@gala.com">
+                        <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña</label>
+                        <input name="contrasena" id="contrasena" type="password" class="form-control font-2rem" placeholder="Ingresa una contraseña">
+                        <label for="passwordConfirm">Confirmar contraseña</label>
+                        <input name="confirm" id="confirm" type="password" class="form-control font-2rem" placeholder="Confirma tu contraseña">
+                    </div>
+                    <input type="submit" class="btn btn-primary  font-2rem btn-block btn-modificado mt-5" value="Registrarme">
+                </form>
 
+            </div>
         </div>
     </div>
 </div>
@@ -47,5 +50,5 @@ include("nav-bar_index.php");
     // Validation Functions
     form.requireText("nombre", 5, 20, [" "], []);
     form.requireEmail("correo", 4, 30, [" "], []);
-    form.registerPassword("password", 6, 20, [" "], [], "confirm");
+    form.registerPassword("contrasena", 6, 20, [" "], [], "confirm");
 </script>
