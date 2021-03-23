@@ -6,14 +6,14 @@
                 <h2 class="centrar-texto">Iniciar sesión</h2>
                 <hr>
                 <p>Por favor, complete sus credenciales para iniciar sesión.</p>
-                <form action="#">
+                <form action="valida.php" method="post">
                     <div class="form-group">
                         <label>Nombre de Usuario</label>
-                        <input type="text" name="username" class="form-control font-2rem" placeholder="Usuario">
+                        <input type="text" name="usuario" class="form-control font-2rem" placeholder="Usuario">
                     </div>
                     <div class="form-group">
                         <label>Contraseña</label>
-                        <input type="password" name="password" class="form-control font-2rem" placeholder="Contraseña">
+                        <input type="password" name="contrasena" class="form-control font-2rem" placeholder="Contraseña">
 
                     </div>
                     <div class="form-group flex">
