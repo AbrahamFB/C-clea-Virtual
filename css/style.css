@@ -74,8 +74,6 @@ ul {
     text-transform: uppercase;
 }
 
-.ss {}
-
 .contenido-centrado {
     max-width: 40rem;
     margin   : auto auto;
@@ -86,7 +84,7 @@ ul {
 }
 
 .margin-tb {
-    margin: 7rem auto;
+    margin: 5rem auto;
 }
 
 /* PARTICULARES */
@@ -109,6 +107,21 @@ p.descripcion-header {
     width : 80%;
     height: 50%;
 }
+
+/* A L E R T A S */
+
+p.error-credenciales {
+    color           : white;
+    position        : absolute;
+    font-size       : 3rem;
+    margin          : 0 auto;
+    text-align      : center;
+    background-color: red;
+    width           : 100%;
+    margin-top      : 12rem;
+    z-index         : 1000000000000;
+}
+
 
 /* NAV-PRINCIPAL*/
 
@@ -232,4 +245,10 @@ div.hero {
     border-radius: .5rem;
     padding      : 1rem 2rem;
     width        : 100%;
+}
+
+/* LOGIN AND REGISTRO */
+.IMGlogReg {
+    margin: 0 auto;
+    width : 50%;
 }

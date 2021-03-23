@@ -3,6 +3,14 @@
     <div class="row justify-content-center">
         <div class="col-6 p-5 bg-white shadow-lg rounded">
             <div class="margin-tb contenido-centrado">
+                <div class="IMGlogReg">
+                    <picture>
+                        <source srcset="img/extras/login.webp" type="image/webp">
+                        <source srcset="img/extras/login.jpg" type="image/jpeg">
+                        <img src="img/extras/login.jpg" alt="Alt Text!">
+                    </picture>
+                </div>
+
                 <h2 class="centrar-texto">Iniciar sesión</h2>
                 <hr>
                 <p>Por favor, complete sus credenciales para iniciar sesión.</p>

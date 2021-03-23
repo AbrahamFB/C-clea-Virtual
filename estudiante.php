@@ -1,8 +1,18 @@
 <?php
+
+//Seguridad de sesiones 
+session_start(); //Iniciar sesión
+error_reporting(0);
+$varSesion = $_SESSION['usuario'];
+if ($varSesion == null || $varSesion = '') {
+    header("location:login_index.php");
+    die();
+}
+
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Estudiante";
 $css_extra = "";
-$user = "Abraham";
+$user = $_SESSION['usuario'];
 $descripcion = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, deserunt placeat! Vel iure dolor culpa, cumque omnis quasi repellendus ab cupiditate dignissimos, autem dicta magnam maxime minima excepturi, possimus consectetur!";
 
 include("html.php");
@@ -653,10 +663,10 @@ include("nav-bar_index.php");
                         <?php if ($allow_upload) : ?>
                             <div class="row row-cols-2">
                                 <div class="col">
-                                        Arrastre los archivos aquí para cargar
-                                        <b>o</b>
-                                        <br>
-                                        <input type="file" multiple />
+                                    Arrastre los archivos aquí para cargar
+                                    <b>o</b>
+                                    <br>
+                                    <input type="file" multiple />
                                 </div>
                                 <div class="col"> <?php if ($allow_create_folder) : ?>
                                         <form action="?" method="post" id="mkdir" />
@@ -754,3 +764,4 @@ include("scripts.php");
 
 echo '  </body>
 </html>';
+?>
