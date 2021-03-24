@@ -11,6 +11,43 @@ echo '<body ondragstart="return false">';
 include("nav-bar_index.php");
 
 ?>
+
+<script>
+    $(function() {
+        $('#enviar').on('click', function(e) {
+            e.preventDefault();
+
+            var nombre = $('#nombre').val();
+            var correo = $('#correo').val();
+            var contrasena = $('#contrasena').val();
+
+            $.ajax({
+                type: "POST",
+                url: "insert.php",
+                data: ('nombre=' + nombre + '&correo=' + correo + '&contrasena=' + contrasena),
+                beforeSend: function() {
+                    $('.loading').show();
+                    $('.mensajes').html('Procesando datos...');
+                },
+                success: function(respuesta) {
+                    // alert(respuesta);
+                    $('.loading').hide();
+                    if (respuesta == 1) {
+                        $('.mensajes').html('Te has registrado correctamente');
+                        $('#nombre').val() == '';
+                        $('#correo').val() == '';
+                        $('#contrasena').val() == '';
+                        $('#confirm').val() == '';
+                    } else {
+                        $('.mensajes').html('No te has podido registrar correctamente');
+
+                    }
+                }
+            });
+        })
+    })
+</script>
+
 <!-- FORM -->
 <br>
 <div class="container">
@@ -18,12 +55,12 @@ include("nav-bar_index.php");
         <div class="col-6 p-5 bg-white shadow-lg rounded">
 
             <div class="margin-tb contenido-centrado">
-                <form id="register-form" method="post">
+                <form id="register-form" method="post" action="insert.php">
                     <h2 class="centrar-texto">Registro</h2>
                     <hr>
                     <div class="form-group">
-                        <label for="nombre">Usuario</label>
-                        <input name="nombre" id="nombre" type="text" class="form-control font-2rem" placeholder="Ingresa tu usuario">
+                        <label for="nombre">Nombre</label>
+                        <input name="nombre" id="nombre" type="text" class="form-control font-2rem" placeholder="Ingresa tu nombre">
                     </div>
                     <div class="form-group">
                         <label for="correo">Correo electrónico</label>
@@ -36,7 +73,8 @@ include("nav-bar_index.php");
                         <label for="passwordConfirm">Confirmar contraseña</label>
                         <input name="confirm" id="confirm" type="password" class="form-control font-2rem" placeholder="Confirma tu contraseña">
                     </div>
-                    <input type="submit" class="btn btn-primary  font-2rem btn-block btn-modificado mt-5" value="Registrarme">
+                    <input type="submit" class="btn btn-primary  font-2rem btn-block btn-modificado mt-5" value="Registrarme" id="enviar">
+                    <div class="alert"><img src="https://cdn.dribbble.com/users/2014028/screenshots/4455123/opentime_from_png_20fps.gif" alt="" class="loading"><span class="mensajes"></span></div>
                 </form>
 
             </div>
@@ -52,3 +90,12 @@ include("nav-bar_index.php");
     form.requireEmail("correo", 4, 30, [" "], []);
     form.registerPassword("contrasena", 6, 20, [" "], [], "confirm");
 </script>
+<br>
+
+<?php
+include("footer.php");
+
+include("scripts.php");
+
+echo '  </body>
+</html>';

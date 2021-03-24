@@ -3,7 +3,7 @@
 //Seguridad de sesiones 
 session_start(); //Iniciar sesión
 error_reporting(0);
-$varSesion = $_SESSION['usuario'];
+$varSesion = $_SESSION['correo'];
 if ($varSesion == null || $varSesion = '') {
     header("location:login_index.php");
     die();
@@ -12,7 +12,7 @@ if ($varSesion == null || $varSesion = '') {
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Estudiante";
 $css_extra = "";
-$user = $_SESSION['usuario'];
+$user = $_SESSION['correo'];
 $descripcion = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, deserunt placeat! Vel iure dolor culpa, cumque omnis quasi repellendus ab cupiditate dignissimos, autem dicta magnam maxime minima excepturi, possimus consectetur!";
 
 include("html.php");

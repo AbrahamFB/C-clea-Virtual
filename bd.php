@@ -1,0 +1,49 @@
+<?php
+
+class ConexionBD
+{
+    public $conexion;
+
+
+    function __construct()
+    {
+        $this->conexion = mysqli_connect("162.241.62.191", "tecnoso5_master", "nKwuIMe#Nj*8", "tecnoso5_cocleavirtual");
+        $this->resultado = "";
+    }
+
+    function Insert($tabla, $propiedades, $datos, $mensajeDIV)
+    {
+        $datos2 = implode(',', $datos);
+        echo $datos;
+        if ($tabla == 'Cuenta') {
+            $correo = $_POST['correo'];
+            $sql = "SELECT * FROM Cuenta where correo = '$correo'";
+            $res = mysqli_query($this->conexion, $sql);
+            $filas = mysqli_num_rows($res); //
+
+            if ($filas == 0) {
+                $insert = "INSERT INTO $tabla ($propiedades) VALUES ($datos2)";
+                $resultado = mysqli_query($this->conexion, $insert);
+                echo 1;
+            }
+
+            sleep(2);
+        } else {
+            sleep(0);
+            $insert = "INSERT INTO $tabla ($propiedades) VALUES ($datos2)";
+            $resultado = mysqli_query($this->conexion, $insert);
+
+            if ($resultado != 1) {
+?> <p class="error-credenciales">No se insertó</p>
+
+                <?php
+                echo 0;
+                include("insert.php");
+                ?>
+<?php
+            }
+
+            mysqli_close($this->conexion);
+        }
+    }
+}
