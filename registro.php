@@ -14,7 +14,9 @@ include("nav-bar_index.php");
 include("scripts.php");
 ?>
 
-<script> $('#enviar').on('click', function(e) {
+<script>
+    $(function() {
+        $('#enviar').on('click', function(e) {
             e.preventDefault();
 
             var nombre = $('#nombre').val();
@@ -31,9 +33,9 @@ include("scripts.php");
                     //alert(contrasena);
                 },
                 success: function(respuesta) {
-                    // alert(respuesta);
+                    //alert(respuesta);
                     $('.loading').hide();
-                    if (respuesta == 1) {
+                    if (respuesta != 1) {
                         $('.mensajes').html('Te has registrado correctamente');
                         $('#nombre').val() == '';
                         $('#correo').val() == '';
@@ -41,12 +43,12 @@ include("scripts.php");
                         $('#confirm').val() == '';
                     } else {
                         $('.mensajes').html('No te has podido registrar correctamente');
-
                     }
                 }
             });
         })
-    })</script>
+    })
+</script>
 
 <!-- FORM -->
 <br>
@@ -56,7 +58,7 @@ include("scripts.php");
         <div class="col-6 p-5 bg-white shadow-lg rounded">
 
             <div class="margin-tb contenido-centrado">
-                <form id="formulario-registro" method="post" action="insert.php">
+                <form id="formulario-registro" method="post" action="">
                     <h2 class="centrar-texto">Registro</h2>
                     <hr>
                     <div class="form-group">

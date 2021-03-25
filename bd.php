@@ -19,11 +19,11 @@ class ConexionBD
             $sql = "SELECT * FROM Cuenta where correo = '$correo'";
             $res = mysqli_query($this->conexion, $sql);
             $filas = mysqli_num_rows($res); //
-
-            if ($filas == 0) {
+            echo $filas;
+            if ($filas == 0) { // 0 es igual a que no esta en la base de datos
                 $insert = "INSERT INTO $tabla ($propiedades) VALUES ($datos2)";
                 $resultado = mysqli_query($this->conexion, $insert);
-                echo 1;
+                echo "No esta en la base";
             }
 
             sleep(2);
