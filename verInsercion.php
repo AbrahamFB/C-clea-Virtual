@@ -16,7 +16,6 @@
 
 <body>
     <?php
-    // Te recomiendo utilizar esta conección, la que utilizas ya no es la recomendada. 
     $link = new PDO('mysql:host=162.241.62.191;dbname=tecnoso5_cocleavirtual', 'tecnoso5_master', 'nKwuIMe#Nj*8'); // el campo vaciío es para la password. 
 
     ?>
