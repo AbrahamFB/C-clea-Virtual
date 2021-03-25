@@ -14,7 +14,6 @@ class ConexionBD
     function Insert($tabla, $propiedades, $datos, $mensajeDIV)
     {
         $datos2 = implode(',', $datos);
-        echo $datos;
         if ($tabla == 'Cuenta') {
             $correo = $_POST['correo'];
             $sql = "SELECT * FROM Cuenta where correo = '$correo'";

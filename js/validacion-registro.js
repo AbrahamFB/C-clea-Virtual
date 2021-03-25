@@ -75,7 +75,6 @@ class Validation {
     ]);
 
     $(input).on("input focus", input, () => {
-      // Append any invalid issues to string when editing
       invalidString = "";
       invalidString += this.lengthCheck(input, minLength, maxLength);
       invalidString += this.illegalCharCheck(input, illegalCharArray);
