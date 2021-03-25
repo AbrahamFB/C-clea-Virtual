@@ -1,3 +1,13 @@
+<?php
+
+$anadirURL = "";
+$nombrePagina = "Cóclea Virtual - Inicia Sesión";
+$css_extra = "";
+include('html.php');
+include('nav-bar_index.php');
+echo '<body>';
+
+?>
 <br>
 <div class="container">
     <div class="row justify-content-center">
@@ -37,3 +47,12 @@
     </div>
 </div>
 <br>
+
+<?php
+include("footer.php");
+
+include("scripts.php");
+
+echo '  </body>
+</html>';
+?>

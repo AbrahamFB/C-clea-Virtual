@@ -45,4 +45,8 @@ class ConexionBD
             mysqli_close($this->conexion);
         }
     }
+    function verificacionUsuario()
+    {
+        $sql = "SELECT * FROM Cuenta where correo = '$correo'";
+    }
 }
