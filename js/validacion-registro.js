@@ -42,6 +42,44 @@ class Validation {
 
     $(input).on("input", input, () => {
       this.submitDisabled(false, this.submitButtonText);
+      $(function () {
+        $("#enviar").on("click", function (e) {
+          e.preventDefault();
+
+          var nombre = $("#nombre").val();
+          var correo = $("#correo").val();
+          var contrasena = $("#contrasena").val();
+
+          $.ajax({
+            type: "POST",
+            url: "insert.php",
+            data:
+              "nombre=" +
+              nombre +
+              "&correo=" +
+              correo +
+              "&contrasena=" +
+              contrasena,
+            beforeSend: function () {
+              $(".mensajes").html("Procesando datos...");
+              //alert(contrasena);
+            },
+            success: function (respuesta) {
+              alert(respuesta);
+              $(".loading").hide();
+              if ((respuesta == 0)) {
+                $(".mensajes").html("No te has podido registrar correctamente");
+              } else {
+                $(".mensajes").html("Te has registrado correctamente");
+                $("#nombre").val() == "";
+                $("#correo").val() == "";
+                $("#contrasena").val() == "";
+                $("#confirm").val() == "";
+              }
+            },
+          });
+        });
+      });
     });
 
     $(input).on("focusout", input, () => {

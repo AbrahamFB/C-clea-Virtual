@@ -9,4 +9,3 @@
     $conexion = new ConexionBD();
     $datos = array($nombre, $correo, $contrasena);
     $conexion->insert('Cuenta', 'nombre, correo, contrasena', $datos, $mensaje);
-?>

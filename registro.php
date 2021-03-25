@@ -15,38 +15,7 @@ include("scripts.php");
 ?>
 
 <script>
-    $(function() {
-        $('#enviar').on('click', function(e) {
-            e.preventDefault();
-
-            var nombre = $('#nombre').val();
-            var correo = $('#correo').val();
-            var contrasena = $('#contrasena').val();
-
-            $.ajax({
-                type: "POST",
-                url: "insert.php",
-                data: ('nombre=' + nombre + '&correo=' + correo + '&contrasena=' + contrasena),
-                beforeSend: function() {
-                    $('.mensajes').html('Procesando datos...');
-                    //alert(contrasena);
-                },
-                success: function(respuesta) {
-                    //alert(respuesta);
-                    $('.loading').hide();
-                    if (respuesta != 1) {
-                        $('.mensajes').html('Te has registrado correctamente');
-                        $('#nombre').val() == '';
-                        $('#correo').val() == '';
-                        $('#contrasena').val() == '';
-                        $('#confirm').val() == '';
-                    } else {
-                        $('.mensajes').html('No te has podido registrar correctamente');
-                    }
-                }
-            });
-        })
-    })
+    
 </script>
 
 <!-- FORM -->
@@ -88,9 +57,9 @@ include("scripts.php");
 <script type="text/javascript">
     let form = new Validation("formulario-registro");
     // Funciones de Validación
-    form.requireText("nombre", 5, 20, [" "], []);
-    form.requireEmail("correo", 4, 30, [" "], []);
-    form.registerPassword("contrasena", 6, 20, [" "], [], "confirm");
+    form.requireText("nombre", 5, 50, [" "], []);
+    form.requireEmail("correo", 4, 50, [" "], []);
+    form.registerPassword("contrasena", 6, 50, [" "], [], "confirm");
 </script>
 <br>
 
