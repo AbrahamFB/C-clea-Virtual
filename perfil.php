@@ -24,7 +24,7 @@ echo '  </body>
 
 </html>';
 
-/*
+/* 
 FUNCIÓN PARA IDENTIFICAR ROL DEL USUARIO
 
 public function getRol(){
