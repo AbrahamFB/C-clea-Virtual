@@ -28,7 +28,6 @@ include("scripts.php");
                 url: "insert.php",
                 data: ('nombre=' + nombre + '&correo=' + correo + '&contrasena=' + contrasena),
                 beforeSend: function() {
-                    
                     $('.mensajes').html('Procesando datos...');
                     //alert(contrasena);
                 },
@@ -36,7 +35,6 @@ include("scripts.php");
                     //alert(respuesta);
                     $('.loading').hide();
                     if (respuesta != 1) {
-                        $('.loading').show();
                         $('.mensajes').html('Te has registrado correctamente');
                         $('#nombre').val() == '';
                         $('#correo').val() == '';
