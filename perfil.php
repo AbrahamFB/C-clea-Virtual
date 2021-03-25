@@ -36,5 +36,3 @@ public function getRol(){
 ?>
 <?php
 include("footer.php");
-
-
