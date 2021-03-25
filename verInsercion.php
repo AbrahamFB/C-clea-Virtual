@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>Ver Inserciones</title>
@@ -33,10 +33,10 @@
 
             </tr>
         </thead>
-        <?php foreach ($link->query('SELECT * from Cuenta') as $row) { // aca puedes hacer la consulta e iterarla con each. 
+        <?php foreach ($link->query('SELECT * from Cuenta') as $row) {
         ?>
             <tr>
-                <td><?php echo $row['idCuenta'] // aca te faltaba poner los echo para que se muestre el valor de la variable.  
+                <td><?php echo $row['idCuenta']
                     ?></td>
                 <td><?php echo $row['nombre'] ?></td>
                 <td><?php echo $row['correo'] ?></td>
