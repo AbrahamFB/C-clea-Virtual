@@ -14,7 +14,39 @@ include("nav-bar_index.php");
 include("scripts.php");
 ?>
 
+<script> $('#enviar').on('click', function(e) {
+            e.preventDefault();
 
+            var nombre = $('#nombre').val();
+            var correo = $('#correo').val();
+            var contrasena = $('#contrasena').val();
+
+            $.ajax({
+                type: "POST",
+                url: "insert.php",
+                data: ('nombre=' + nombre + '&correo=' + correo + '&contrasena=' + contrasena),
+                beforeSend: function() {
+                    $('.loading').show();
+                    $('.mensajes').html('Procesando datos...');
+                    //alert(contrasena);
+                },
+                success: function(respuesta) {
+                    // alert(respuesta);
+                    $('.loading').hide();
+                    if (respuesta == 1) {
+                        $('.mensajes').html('Te has registrado correctamente');
+                        $('#nombre').val() == '';
+                        $('#correo').val() == '';
+                        $('#contrasena').val() == '';
+                        $('#confirm').val() == '';
+                    } else {
+                        $('.mensajes').html('No te has podido registrar correctamente');
+
+                    }
+                }
+            });
+        })
+    })</script>
 
 <!-- FORM -->
 <br>
