@@ -24,9 +24,9 @@ class ConexionBD
                 $insert = "INSERT INTO $tabla ($propiedades) VALUES ($datos2)";
                 $resultado = mysqli_query($this->conexion, $insert);
                 //echo "No esta en la base";
-                echo 1;
+                return 1;
             } else {
-                echo "N";
+                return 0;
             }
 
             sleep(2);

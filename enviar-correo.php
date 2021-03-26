@@ -21,13 +21,13 @@ $mail->isSMTP();                                // Set mailer to use SMTP
 $mail->CharSet = 'UTF-8';
 $mail->Host = 'smtp.gmail.com';                // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                         // Enable SMTP authentication
-$mail->Username = 'afb1603@gmail.com';    // SMTP username
-$mail->Password = 'Izucar de Matamoros';              // SMTP password
+$mail->Username = 'miles990606@gmail.com';    // SMTP username
+$mail->Password = '06069929';              // SMTP password
 $mail->SMTPSecure = 'tls';                      // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 587;                              // TCP port to connect to
 
-$mail->From = 'afb1603@gmail.com';
-$mail->FromName = 'Miles Rodriguez';
+$mail->From = 'miles990606@gmail.com';
+$mail->FromName = 'Cóclea Virtual';
 
 
 $mail->isHTML(true);                          // Set email format to HTML

@@ -139,8 +139,13 @@ p.error-credenciales {
     margin-top      : 12rem;
     z-index         : 1000000000000;
 }
+.alert{
+    text-align: center;
+    margin-top: 2rem;
+}
 .mensajes{
     z-index: 1000000000000000000;
+    text-align: center;
 }
 
 

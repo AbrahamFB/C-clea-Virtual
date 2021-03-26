@@ -2,7 +2,7 @@
 
 // build API request
 $APIUrl = 'https://api.email-validator.net/api/verify';
-$Params = array('EmailAddress' => 'contacto@abrahamfb.com', 'APIKey' => 'ev-e96f15275a8f9000e2570b494524c0c6');
+$Params = array('EmailAddress' => $_POST['correo'], 'APIKey' => 'ev-e96f15275a8f9000e2570b494524c0c6');
 $Request = http_build_query($Params, '', '&');
 $ctxData = array(
     'method' => "POST",
@@ -37,23 +37,25 @@ if ($result && $result->{'status'} > 0) {
 
             $conexion = new ConexionBD();
             $datos = array($nombre, $correo, $contrasena);
-            $conexion->insert('Cuenta', 'nombre, correo, contrasena', $datos, $mensaje);
-
-            include("enviar-correo.php");
-
+            $resultado = $conexion->insert('Cuenta', 'nombre, correo, contrasena', $datos, $mensaje);
+            if($resultado){
+                include("enviar-correo.php");
+                echo 1;
+            }
+          
+            else
+                echo 0; 
             break;
-        case 114:
+        case 114: 
             // greylisting, wait 5min and retry
             break;
         case 118:
             // api rate limit, wait 5min and retry
             break;
         default:
-            echo "Address is invalid.";
-            echo $result->{'info'};
-            echo $result->{'details'};
+            echo 2;
             break;
     }
 } else {
-    echo $result->{'info'};
+    echo 2;
 }

@@ -61,6 +61,8 @@ class Validation {
               "&contrasena=" +
               contrasena,
             beforeSend: function () {
+              $(".alert").removeClass('alert-success');
+              $(".alert").removeClass('alert-danger');
               $(".mensajes").html("Procesando datos...");
               //alert(contrasena);
             },
@@ -68,17 +70,23 @@ class Validation {
               //alert(respuesta);
               console.log(typeof respuesta);
               $(".loading").hide();
+              alert(respuesta);
               if (respuesta == 1) {
                 //alert("if");
                 $("#nombre").val() == "";
                 $("#correo").val() == "";
                 $("#contrasena").val() == "";
                 $("#confirm").val() == "";
-
-                $(".mensajes").html("Te has registrado correctamente");
-              } else {
-                $(".mensajes").html("No te has podido registrar correctamente");
-                //alert("Else");
+                $(".alert").removeClass('alert-danger');
+                $(".alert").addClass('alert-success');
+                $(".alert").html("Te has registrado correctamente");
+              } else if(respuesta == 0){
+                $(".mensajes").html("Error, tu correo ya esta registrado");
+                $(".alert").removeClass('alert-succsess');
+                $(".alert").addClass('alert-danger');
+              }
+              else if(respuesta == 2 ){
+                $(".mensajes").html("Error, el correo ingresado no existe");
               }
             },
           });
