@@ -139,6 +139,9 @@ p.error-credenciales {
     margin-top      : 12rem;
     z-index         : 1000000000000;
 }
+.mensajes{
+    z-index: 1000000000000000000;
+}
 
 
 /* NAV-PRINCIPAL*/

@@ -1,5 +1,14 @@
 <?php
 
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'lib/PHP MAIL/Exception.php';
+require 'lib/PHP MAIL/PHPMailer.php';
+require 'lib/PHP MAIL/SMTP.php';
+
+
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Registro";
 $css_extra = "";
@@ -15,7 +24,7 @@ include("scripts.php");
 ?>
 
 <script>
-    
+
 </script>
 
 <!-- FORM -->

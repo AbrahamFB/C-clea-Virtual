@@ -65,16 +65,18 @@ class Validation {
               //alert(contrasena);
             },
             success: function (respuesta) {
-              alert(respuesta);
+              //alert(respuesta);
               $(".loading").hide();
-              if ((respuesta == 0)) {
+              if (respuesta == "") {
+                //alert("if");
                 $(".mensajes").html("No te has podido registrar correctamente");
               } else {
-                $(".mensajes").html("Te has registrado correctamente");
                 $("#nombre").val() == "";
                 $("#correo").val() == "";
                 $("#contrasena").val() == "";
                 $("#confirm").val() == "";
+                //alert("Else");
+                $(".mensajes").html("Te has registrado correctamente");
               }
             },
           });
