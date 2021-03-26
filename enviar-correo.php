@@ -59,7 +59,7 @@ $mail->Body    = '<!DOCTYPE html>
               
                       <p style="text-align: center;">Comienza a disfrutar de los beneficios de Cóclea Virtual</p>
               
-                      <p style="text-align:center;"><a href="http://www.coclea-virtual.tk/login.php" style="text-decoration: none;">Ve nuestra
+                      <p style="text-align:center;"><a href="http://coclea-virtual.tk/perfil.php" style="text-decoration: none;">Ve nuestra
                                       página</a></p>
                       </a>
                       <p class="copyright">
