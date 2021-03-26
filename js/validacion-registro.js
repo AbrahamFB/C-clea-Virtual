@@ -39,66 +39,72 @@ class Validation {
       invalidString += this.illegalCharCheck(input, illegalCharArray);
       this.showWarning(input, inputId, invalidString);
     });
-
-    $(input).on("input", input, () => {
-      this.submitDisabled(false, this.submitButtonText);
-      $(function () {
-        $("#enviar").on("click", function (e) {
-          e.preventDefault();
-
-          var nombre = $("#nombre").val();
-          var correo = $("#correo").val();
-          var contrasena = $("#contrasena").val();
-
-          $.ajax({
-            type: "POST",
-            url: "insert.php",
-            data:
-              "nombre=" +
-              nombre +
-              "&correo=" +
-              correo +
-              "&contrasena=" +
-              contrasena,
-            beforeSend: function () {
-              $(".alert").removeClass('alert-success');
-              $(".alert").removeClass('alert-danger');
-              $(".mensajes").html("Procesando datos...");
-              //alert(contrasena);
-            },
-            success: function (respuesta) {
-              //alert(respuesta);
-              console.log(typeof respuesta);
-              $(".loading").hide();
-              alert(respuesta);
-              if (respuesta == 1) {
-                //alert("if");
-                $("#nombre").val() == "";
-                $("#correo").val() == "";
-                $("#contrasena").val() == "";
-                $("#confirm").val() == "";
-                $(".alert").removeClass('alert-danger');
-                $(".alert").addClass('alert-success');
-                $(".alert").html("Te has registrado correctamente");
-              } else if(respuesta == 0){
-                $(".mensajes").html("Error, tu correo ya esta registrado");
-                $(".alert").removeClass('alert-succsess');
-                $(".alert").addClass('alert-danger');
-              }
-              else if(respuesta == 2 ){
-                $(".mensajes").html("Error, el correo ingresado no existe");
-              }
-            },
-          });
-        });
-      });
-    });
-
     $(input).on("focusout", input, () => {
       invalidString += this.necessaryCharCheck(input, necessaryCharArray);
       this.showWarning(input, inputId, invalidString);
       this.removeValid(input);
     });
+
+        $(input).on("input", input, () => {
+          this.submitDisabled(false, this.submitButtonText);
+          $(function(){
+            $("#enviar").on("click", function (e) {
+              e.preventDefault();
+    
+              let nombre = $("#nombre").val();
+              let correo = $("#correo").val();
+              let contrasena = $("#contrasena").val();
+    
+              $.ajax({
+                type: "POST",
+                url: "insert.php",
+                data:
+                  "nombre=" +
+                  nombre +
+                  "&correo=" +
+                  correo +
+                  "&contrasena=" +
+                  contrasena,
+                beforeSend: function () {
+                  $(".alert").removeClass('alert-success');
+                  $(".alert").removeClass('alert-danger');
+                  $(".mensajes").html("Procesando datos...");
+                  //alert(contrasena);
+                },
+                success: function (respuesta) {
+                  //alert(respuesta);
+                  console.log(typeof respuesta);
+                  $(".loading").hide();
+                    if (respuesta == 1) {
+                    //alert("if");
+                    $("#nombre").val() == "";
+                    $("#correo").val() == "";
+                    $("#contrasena").val() == "";
+                    $("#confirm").val() == "";
+                    $(".alert").removeClass('alert-danger');
+                    $(".alert").addClass('alert-success');
+                    $(".alert").html("Te has registrado correctamente");
+                  } else if(respuesta == 0){
+                    $(".alert").html("Error, el correo ingresado ya existe");
+                    $(".alert").removeClass('alert-succsess');
+                    $(".alert").addClass('alert-danger');
+                  }
+                  else if(respuesta == 2 ){
+                    $(".alert").removeClass('alert-succsess');
+                    $(".alert").addClass('alert-danger');
+                    $(".alert").html("Error, el correo ingresado no existe");
+                  }
+                },
+              });
+            });
+          });
+        });
+       
+        
+
+
+
+    
 
     return invalidString;
   }
