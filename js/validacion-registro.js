@@ -65,10 +65,11 @@ class Validation {
               //alert(contrasena);
             },
             success: function (respuesta) {
-              alert(respuesta);
+              //alert(respuesta);
+              console.log(typeof respuesta);
               $(".loading").hide();
-              if (respuesta === "S") {
-                alert("if");
+              if (respuesta == 1) {
+                //alert("if");
                 $("#nombre").val() == "";
                 $("#correo").val() == "";
                 $("#contrasena").val() == "";
@@ -77,7 +78,7 @@ class Validation {
                 $(".mensajes").html("Te has registrado correctamente");
               } else {
                 $(".mensajes").html("No te has podido registrar correctamente");
-                alert("Else");
+                //alert("Else");
               }
             },
           });
