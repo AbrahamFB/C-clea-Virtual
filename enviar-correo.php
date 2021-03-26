@@ -53,7 +53,7 @@ $mail->Body    = '<!DOCTYPE html>
                                       font-family: Arial, Helvetica, sans-serif;
                               }
                       </style>
-                      <h1 style="text-align: center; text-transform: uppercase; ">Bienvenido' . $nombre . '</h1>
+                      <h1 style="text-align: center; text-transform: uppercase; ">Bienvenido ' . $nombre . '</h1>
                       <br>
               
               
