@@ -26,6 +26,9 @@ if ($result && $result->{'status'} > 0) {
         case 215:
             echo "Address is valid.";
             // 215 - can be retried to update catch-all status
+
+            
+
             break;
         case 114:
             // greylisting, wait 5min and retry
