@@ -19,15 +19,16 @@ $email = 'abrahamfloresbasilio@gmail.com';
 $mail = new PHPMailer(true);
 
 $mail->isSMTP();                                // Set mailer to use SMTP
+//$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
 $mail->CharSet = 'UTF-8';
-$mail->Host = 'smtp.gmail.com';                // Specify main and backup SMTP servers
+$mail->Host = 'mx12.hostgator.mx';                // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                         // Enable SMTP authentication
-$mail->Username = 'afb1603@gmail.com';    // SMTP username
-$mail->Password = 'Izucar de Matamoros';              // SMTP password
-$mail->SMTPSecure = 'tls';                      // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 587;                              // TCP port to connect to
+$mail->Username = 'coclea-virtual@gala-dev.com';    // SMTP username
+$mail->Password = 'L3s&XmEj@yjo';              // SMTP password
+$mail->SMTPSecure = 'ssl';                      // Enable TLS encryption, `ssl` also accepted
+$mail->Port = 465;                              // TCP port to connect to
 
-$mail->From = 'afb1603@gmail.com';
+$mail->From = 'coclea-virtual@gala-dev.com';
 $mail->FromName = 'Cóclea Virtual';
 
 
