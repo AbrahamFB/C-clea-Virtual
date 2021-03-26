@@ -25,7 +25,7 @@ if ($result && $result->{'status'} > 0) {
         case 200:
         case 207:
         case 215:
-            echo "Address is valid.";
+        
             // 215 - can be retried to update catch-all status
 
             $nombre = "'" . $_POST['nombre'] . "'";

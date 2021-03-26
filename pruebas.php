@@ -1,5 +1,4 @@
 <?php
-// build API request
 $APIUrl = 'https://api.email-validator.net/api/verify';
 $Params = array('EmailAddress' => 'contacto@abrahamfb.com', 'APIKey' => 'ev-e96f15275a8f9000e2570b494524c0c6');
 $Request = http_build_query($Params, '', '&');
