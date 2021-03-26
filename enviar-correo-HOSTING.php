@@ -19,15 +19,16 @@ $email = $_POST['correo'];
 $mail = new PHPMailer(true);
 
 $mail->isSMTP();                                // Set mailer to use SMTP
+//$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
 $mail->CharSet = 'UTF-8';
-$mail->Host = 'smtp.gmail.com';                // Specify main and backup SMTP servers
+$mail->Host = 'mx12.hostgator.mx';                // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                         // Enable SMTP authentication
-$mail->Username = 'afb1603@gmail.com';    // SMTP username
-$mail->Password = 'Izucar de Matamoros';              // SMTP password
-$mail->SMTPSecure = 'tls';                      // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 587;                              // TCP port to connect to
+$mail->Username = 'coclea-virtual@gala-dev.com';    // SMTP username
+$mail->Password = 'L3s&XmEj@yjo';              // SMTP password
+$mail->SMTPSecure = 'ssl';                      // Enable TLS encryption, `ssl` also accepted
+$mail->Port = 465;                              // TCP port to connect to
 
-$mail->From = 'afb1603@gmail.com';
+$mail->From = 'coclea-virtual@gala-dev.com';
 $mail->FromName = 'Cóclea Virtual';
 
 
@@ -52,13 +53,13 @@ $mail->Body    = '<!DOCTYPE html>
                                       font-family: Arial, Helvetica, sans-serif;
                               }
                       </style>
-                      <h1 style="text-align: center; text-transform: uppercase; ">Bienvenido ' . $nombre . ' </h1>
+                      <h1 style="text-align: center; text-transform: uppercase; ">Bienvenido' . $nombre . '</h1>
                       <br>
               
               
                       <p style="text-align: center;">Comienza a disfrutar de los beneficios de Cóclea Virtual</p>
               
-                      <p style="text-align:center;"><a href="http://coclea-virtual.tk/perfil.php" style="text-decoration: none;">Ve a nuestra
+                      <p style="text-align:center;"><a href="http://coclea-virtual.tk/perfil.php" style="text-decoration: none;">Ve nuestra
                                       página</a></p>
                       </a>
                       <p class="copyright">
@@ -81,11 +82,12 @@ $mail->addAddress($email);                       // Name is optional
 try {
         @$mail->send();                                        //Sending e-mail
 } catch (Exception $e) {
-        //  error_log($e->getMessage());
+        //error_log($e->getMessage());
         //$notificacion = ' - ' . $e->getMessage();
-        // echo $notificacion;
-        // echo 1;
+        //echo $notificacion;
 }
 
+
+return "";
 ?>
  

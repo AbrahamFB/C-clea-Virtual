@@ -72,7 +72,7 @@ class Validation {
                   //alert(contrasena);
                 },
                 success: function (respuesta) {
-                  //alert(respuesta);
+                  alert(respuesta);
                   console.log(typeof respuesta);
                   $(".loading").hide();
                     if (respuesta == 1) {
