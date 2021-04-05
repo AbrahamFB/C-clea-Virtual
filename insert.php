@@ -53,7 +53,8 @@ if ($result && $result->{'status'} > 0) {
             // api rate limit, wait 5min and retry
             break;
         default:
-            echo 2;
+            //echo 2; CORRECTO PERO CREO QUE YA SE ACABÓ LA PRUEBA
+            echo 0;
             break;
     }
 } else {
