@@ -11,15 +11,7 @@
                 <div class="col-md-6 contenido-header">
                     <h2 class="presentacion">Te transcribimos cualquier audio o vídeo</h2>
                     <div class="w-100 d-none d-md-block"></div>
-                    <div class="row row-cols-2">
-                        <div class="col centrar-texto">
-                            <button type="button" class="btn btn-info mayusculas btn-alumno">Alumno</button>
-                        </div>
-                        <br>
-                        <div class="col centrar-texto">
-                            <button type="button" class="btn btn-info mayusculas btn-transcriptor">Transcriptor</button>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="col-md-6 contenido-header">
                     <div class="row row-cols-4">

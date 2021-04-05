@@ -1,6 +1,6 @@
 <?php
 
-// build API request
+/* build API request
 $APIUrl = 'https://api.email-validator.net/api/verify';
 $Params = array('EmailAddress' => $_POST['correo'], 'APIKey' => 'ev-e96f15275a8f9000e2570b494524c0c6');
 $Request = http_build_query($Params, '', '&');
@@ -26,7 +26,7 @@ if ($result && $result->{'status'} > 0) {
         case 207:
         case 215:
         
-            // 215 - can be retried to update catch-all status
+            // 215 - can be retried to update catch-all status*/
 
             $nombre = "'" . $_POST['nombre'] . "'";
             $correo = "'" . $_POST['correo'] . "'";
@@ -43,8 +43,9 @@ if ($result && $result->{'status'} > 0) {
                 echo 1;
             }
           
-            else
-                echo 0; 
+            else{
+                echo 0; }
+                /*
             break;
         case 114: 
             // greylisting, wait 5min and retry
@@ -54,9 +55,11 @@ if ($result && $result->{'status'} > 0) {
             break;
         default:
             //echo 2; CORRECTO PERO CREO QUE YA SE ACABÓ LA PRUEBA
-            echo 0;
+            echo 1;
             break;
     }
 } else {
     echo 2;
 }
+*/
+?>
