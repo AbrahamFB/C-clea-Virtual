@@ -1,7 +1,12 @@
 <?php
+include("bd.php");
+$conexion = new ConexionBD();
+$resultado = $conexion->i($correo);
+
 session_start();
 $correo = $_POST['correo'];
 $contrasena = $_POST['contrasena'];
+$datosUsuario = $conexion->i($correo);
 
 $_SESSION['correo'] = $correo;
 
@@ -14,8 +19,19 @@ $resultado = mysqli_query($conexion, $consulta);
 $filas = mysqli_num_rows($resultado); //
 
 
+
 if ($filas) {
-    header("location:estudiante.php");
+    if ($datosUsuario[2] == 0) {
+        header("location:estudiante.php");
+    } else {
+        if ($datosUsuario[2] == 1) {
+            header("location:transcriptor.php");
+        } else {
+            if ($datosUsuario[2] == 2) {
+                header("location:verificador.php");
+            }
+        }
+    }
 } else {
 ?> <p class="error-credenciales">Error de credenciales</p>
 

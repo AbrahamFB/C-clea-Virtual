@@ -52,4 +52,19 @@ class ConexionBD
     {
         $sql = "SELECT * FROM Cuenta where correo = '$correo'";
     }
+
+    function altaTranscriptor()
+    {
+    }
+
+    function i($correo)
+    {
+        $sql = "SELECT * FROM `Cuenta` WHERE `correo` LIKE '$correo'";
+        $datos = mysqli_query($this->conexion, $sql);
+        $fila = mysqli_fetch_array($datos);
+        return array($fila["nombre"], $fila["correo"], $fila["tipoUsuario"]);
+    }
 }
+
+
+?>

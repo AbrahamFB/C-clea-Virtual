@@ -1,12 +1,13 @@
 <!--  Sección Alta de Transcriptor -->
 
-<?php
+<?php/*
 $varSesion = $_SESSION['correo'];
+echo $varSesion;
 if ($varSesion == null || $varSesion = '') {
-    header("location:login_index.php");
+   // header("location:login_index.php");
     die();
 }
-session_start();
+session_start();*/ //POR CHECAR
 ?>
 <?php
 

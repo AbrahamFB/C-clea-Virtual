@@ -1,25 +1,3 @@
- <!-- Inicio sección navbar 
- <header>
-     <div class="navbar navbar-inverse">
-         <div class="container-fluid">
-             <div class="navbar-header">
-                 <a href="" class="navbar-brand">Cóclea Virtual</a>
-                 <ul class="nav navbar-nav">
-                     <li>Inicio</li>
-                     <li>Sobre Nosotros</li>
-                     <li>Contácto</li>
-                 </ul>
-                 <ul class="nav navbar navbar-right">
-                     <li><a href=""><span class="iconify" data-icon="simple-line-icons:login" data-inline="false"></span>Iniciar Sesión</a></li>
-                     <li><a href=""><span class="iconify" data-icon="simple-line-icons:logout" data-inline="false"></span>Cerrar Sesión</a></li>
-                     <li></li>
-                 </ul>
-             </div>
-         </div>
-     </div>
-
--->
-
  <div class="contenedor-menu">
      <div class="row navegacion-principal">
          <div class="col-2"><a href="index.php">

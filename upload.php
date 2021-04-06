@@ -13,8 +13,6 @@ if ($varSesion == null || $varSesion = '') {
     die();
 }
 
-
-
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
     if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
         // get details of the uploaded file
