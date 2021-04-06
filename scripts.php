@@ -20,3 +20,4 @@ echo '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bo
 echo '<!-- Iconos -->';
 echo '<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>';
 
+?>

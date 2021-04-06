@@ -4,10 +4,17 @@ $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Inicia Sesión";
 $css_extra = "";
 include('html.php');
+echo '<body ondragstart="return false">';
+
+
 include('nav-bar_index.php');
-echo '<body>';
 
 ?>
+<style>
+    .statusSesionI {
+        visibility: hidden
+    }
+</style>
 <br>
 <div class="container">
     <div class="row justify-content-center">
@@ -41,6 +48,7 @@ echo '<body>';
                         <div>
                             <a href="#" class="flex">¿Has olvidado tu contraseña?</a>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>

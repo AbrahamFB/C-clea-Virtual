@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 $message = '';
 include("bd/bd.php");
@@ -7,12 +7,13 @@ include("bd/bd.php");
 //$tema = $_POST('tem');
 //$nLSM; /// POR CHECAR
 //$anioEXP = $_POST('anioExp');
-$varSesion = $_SESSION['correo'];
-if ($varSesion == null || $varSesion = '') {
+//$varSesion = $_SESSION['correo'];
+session_start();
+$varSesion3 = (string) $_SESSION['varSesion'];
+if ($varSesion3 === null || $varSesion3 === '') {
     header("location:login_index.php");
     die();
 }
-
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
     if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
         // get details of the uploaded file
@@ -24,14 +25,14 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
         $fileExtension = strtolower(end($fileNameCmps));
 
         // sanitize file-name
-        $newFileName = "Certificado" . "_" . $varSesion . '.' . $fileExtension;
+        $newFileName = "Certificado" . "_" . $varSesion3 . '.' . $fileExtension;
 
         // check if file has one of the following extensions
         $allowedfileExtensions = array('pdf');
 
         if (in_array($fileExtension, $allowedfileExtensions)) {
             // directory in which the uploaded file will be moved
-            $uploadFileDir = './certificados/' . $nombreUsuario . '/';
+            $uploadFileDir = './certificados/' . $varSesion3 . '/';
             $dest_path = $uploadFileDir . $newFileName;
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
@@ -51,6 +52,6 @@ $_SESSION['message'] = $message;
 header("Location: index.php");
 
 
-$sql = "INSERT INTO `Transcriptor` (`nivelLSM`,`temas`,`aExp`, `Cuenta_idCuenta`) VALUES ($nLSM, $tema, $anioEXP, $cuenta)";
+//$sql = "INSERT INTO `Transcriptor` (`nivelLSM`,`temas`,`aExp`, `Cuenta_idCuenta`) VALUES ($nLSM, $tema, $anioEXP, $cuenta)";
 
-$res = $mysqli->query($sql);
+//$res = $mysqli->query($sql);

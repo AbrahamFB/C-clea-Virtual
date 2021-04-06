@@ -1,13 +1,13 @@
 <!--  Sección Alta de Transcriptor -->
 
-<?php/*
-$varSesion = $_SESSION['correo'];
-echo $varSesion;
-if ($varSesion == null || $varSesion = '') {
-   // header("location:login_index.php");
+<?php
+session_start();
+$_SESSION['varSesion'] = $_SESSION['correo'];
+$varSesion2 = $_SESSION['varSesion'];
+if ($varSesion2 == null || $varSesion2 = '') {
+    //header("location:login_index.php");
     die();
 }
-session_start();*/ //POR CHECAR
 ?>
 <?php
 
@@ -19,8 +19,7 @@ $descripcion = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspi
 include("html.php");
 
 echo '<body ondragstart="return false">';
-echo '<div class="loading" style="display: none;"><img src="https://cdn.dribbble.com/users/2014028/screenshots/4455123/opentime_from_png_20fps.gif" alt="" class=""></div>
-';
+echo '<div class="loading" style="display: none;"><img src="https://cdn.dribbble.com/users/2014028/screenshots/4455123/opentime_from_png_20fps.gif" alt="" class=""></div>';
 include("nav-bar_index.php");
 //include("scripts.php");
 ?>
@@ -28,7 +27,11 @@ include("nav-bar_index.php");
 <script>
 
 </script>
-
+<style>
+    .statusSesionT {
+        visibility: hidden
+    }
+</style>
 <!-- FORM -->
 <br>
 <?php

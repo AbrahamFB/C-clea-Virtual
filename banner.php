@@ -40,7 +40,7 @@
         </div>
     </section>
 
-    <section class="sobrenostros margin-tb">
+    <section class="sobrenostros margin-tb" id="sn">
         <h3 class="titulos-secciones centrar-texto mayusculas">Sobre Nosotros</h3>
         <p>Nuestro equipo se conforma de personas expertas en el tema de LSM
 
