@@ -42,9 +42,9 @@
          </div>
          <div class="col-4 contenedor-nav align-self-center text-right">
              <ul class="nav navbar navbar-right">
-                 <li><a href="" class="statusSesionC"><span class="iconify" data-icon="simple-line-icons:logout" data-inline="false"></span> Convertirse en Transcriptor</a></li>
+                 <li><a href="altaTranscriptor.php" class="statusSesionC"><span class="iconify" data-icon="simple-line-icons:logout" data-inline="false"></span> Convertirse en Transcriptor</a></li>
                  <li><a href="" style="display: none;" class="statusSesionI"><span class="iconify" data-icon="simple-line-icons:login" data-inline="false"></span> Iniciar Sesión</a></li>
-                 <li><a href="" class="statusSesionC"><span class="iconify" data-icon="simple-line-icons:logout" data-inline="false"></span> Cerrar Sesión</a></li>
+                 <li><a href="logout.php" class="statusSesionC"><span class="iconify" data-icon="simple-line-icons:logout" data-inline="false"></span> Cerrar Sesión</a></li>
              </ul>
 
          </div>

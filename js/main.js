@@ -1,4 +1,4 @@
-$(document).ready(function () {
+/*$(document).ready(function () {
   $("#formTrans").on("submit", function (e) {
     e.preventDefault();
   });
@@ -33,3 +33,4 @@ $("body").on("submit", "#formTrans", function () {
   });
   return false;
 });
+*/
