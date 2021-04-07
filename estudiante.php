@@ -1,9 +1,11 @@
 <?php
-
+include("bd.php");
+$conexion = new ConexionBD();
 //Seguridad de sesiones 
 session_start(); //Iniciar sesión
 error_reporting(0);
 $varSesion = $_SESSION['correo'];
+$datosUsuario = $conexion->i($varSesion);
 if ($varSesion == null || $varSesion = '') {
     header("location:login_index.php");
     die();
@@ -12,7 +14,7 @@ if ($varSesion == null || $varSesion = '') {
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Estudiante";
 $css_extra = "";
-$user = $_SESSION['correo'];
+$_SESSION['user'] = $datosUsuario[0];
 $descripcion = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, deserunt placeat! Vel iure dolor culpa, cumque omnis quasi repellendus ab cupiditate dignissimos, autem dicta magnam maxime minima excepturi, possimus consectetur!";
 
 include("html.php");
@@ -23,11 +25,9 @@ include("nav-bar_index.php");
 
 ?>
 <div class="container">
-    <div class=""> <a href="logout.php" class="btn btn-danger float-right">Cierra la sesión</a>
-    </div>
-    <div class="banner-estudiante">
-        <h1 class="text-center tituloPagina mayusculas">Bienvenido <?php echo $user ?> a Cóclea Virtual</h1>
 
+    <div class="banner-estudiante">
+        <h1 class="text-center tituloPagina mayusculas">Bienvenido <?php echo $_SESSION['user'] ?></h1>
         <div class="row row-cols-2 ss">
             <div class="col">
                 <img src="img/estudiante/audio.svg" alt="" class="img-audio">

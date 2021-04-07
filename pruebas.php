@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include("bd.php");
 $conexion = new ConexionBD();
 $correo = "afb16031999@gmail.com";
@@ -29,7 +29,7 @@ $directorio="certificados/$usuario";
 if (!file_exists($directorio)) {
     mkdir($directorio, 0777, true);
 }*/
-session_start();
+
 echo $_SESSION['correo'];
 echo $_SESSION['user'];
 echo $_SESSION['tipoUsuario'];
