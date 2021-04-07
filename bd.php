@@ -21,6 +21,15 @@ class ConexionBD
             $filas = mysqli_num_rows($res); //
             //echo $filas;
             if ($filas == 0) { // $filas es igual a que no esta en la base de datos
+                /////////////////////////////////////////////////////////////////////////////////////
+                $usuario = $correo;
+                $directorio = "usuarios/$usuario";
+                if (!file_exists($directorio)) {
+                    mkdir($directorio, 0777, true);
+                }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                 $insert = "INSERT INTO $tabla ($propiedades) VALUES ($datos2)";
                 $resultado = mysqli_query($this->conexion, $insert);
                 //echo "No esta en la base";
@@ -36,7 +45,7 @@ class ConexionBD
             $resultado = mysqli_query($this->conexion, $insert);
 
             if ($resultado != 1) {
-?> <p class="error-credenciales">No se insertó</p>
+            ?> <p class="error-credenciales">No se insertó</p>
 
                 <?php
                 echo 0;

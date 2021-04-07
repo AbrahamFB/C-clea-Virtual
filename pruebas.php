@@ -9,4 +9,16 @@ echo $resultado[0];
 echo $resultado[1];
 echo $resultado[2];
 
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+$usuario = "prueba";
+$directorio="certificados/$usuario";
+if (!file_exists($directorio)) {
+    mkdir($directorio, 0777, true);
+}
 ?>
