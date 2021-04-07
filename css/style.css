@@ -478,6 +478,21 @@ input[type="file"]:hover {
 
 /*********Sobre Nosotros End************/
 
+/**********info contacto****************/
+.info-contacto {
+    padding   : 30px 30px 30px 30px;
+    float     : left;
+    width     : 100%;
+    position  : relative;
+    margin-top   : 6.5em;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+/*********info contacto End************/
+
+
+
+
 /*  F O O T  E R */
 .new_footer_area {
     background: #fbfbfd;
