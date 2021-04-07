@@ -1,7 +1,6 @@
 <?php
 include("bd.php");
 $conexion = new ConexionBD();
-$resultado = $conexion->i($correo);
 
 session_start();
 $correo = $_POST['correo'];
@@ -21,13 +20,14 @@ $filas = mysqli_num_rows($resultado); //
 
 
 if ($filas) {
-    if ($datosUsuario[2] == 0) {
+    $_SESSION['tipoUsuario'] = $datosUsuario[2];
+    if ($_SESSION['tipoUsuario'] == 0) {
         header("location:estudiante.php");
     } else {
-        if ($datosUsuario[2] == 1) {
+        if ($_SESSION['tipoUsuario'] == 1) {
             header("location:transcriptor.php");
         } else {
-            if ($datosUsuario[2] == 2) {
+            if ($_SESSION['tipoUsuario'] == 2) {
                 header("location:verificador.php");
             }
         }

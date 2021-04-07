@@ -1,6 +1,4 @@
 <?php
-
-
 $message = '';
 include("bd/bd.php");
 //$cuenta; // ID DEL TRANSCRIPTOR
@@ -11,12 +9,12 @@ include("bd/bd.php");
 session_start();
 $varSesion3 = (string) $_SESSION['varSesion'];
 if ($varSesion3 === null || $varSesion3 === '') {
-    header("location:login_index.php");
+    header("location:login.php");
     die();
 }
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
     if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
-        // get details of the uploaded file
+
         $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
         $fileName = $_FILES['uploadedFile']['name'];
         $fileSize = $_FILES['uploadedFile']['size'];
@@ -24,14 +22,11 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
         $fileNameCmps = explode(".", $fileName);
         $fileExtension = strtolower(end($fileNameCmps));
 
-        // sanitize file-name
         $newFileName = "Certificado" . "_" . $varSesion3 . '.' . $fileExtension;
 
-        // check if file has one of the following extensions
         $allowedfileExtensions = array('pdf');
 
         if (in_array($fileExtension, $allowedfileExtensions)) {
-            // directory in which the uploaded file will be moved
             $uploadFileDir = './certificados/' . $varSesion3 . '/';
             $dest_path = $uploadFileDir . $newFileName;
 
@@ -49,9 +44,10 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
     }
 }
 $_SESSION['message'] = $message;
-header("Location: index.php");
+header("Location: estudiante.php");
 
 
 //$sql = "INSERT INTO `Transcriptor` (`nivelLSM`,`temas`,`aExp`, `Cuenta_idCuenta`) VALUES ($nLSM, $tema, $anioEXP, $cuenta)";
 
 //$res = $mysqli->query($sql);
+?>

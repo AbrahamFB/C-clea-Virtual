@@ -20,7 +20,11 @@ include("scripts.php");
 
 <!-- FORM -->
 <br>
-
+<style>
+    .statusSesionI {
+        visibility: hidden
+    }
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6 p-5 bg-white shadow-lg rounded">

@@ -26,16 +26,15 @@
                         require_once("bd.php");
                         error_reporting(0);
                         $conexion = new ConexionBD();
-                        $correo = $_SESSION['correo'];
-                        $datosUsuario = $conexion->i($correo);
-
-                        if ($datosUsuario[2] === "0") {
-                            echo '<li><a href="altaTranscriptor.php" class="statusSesionT"><span class="iconify" data-icon="simple-line-icons:logout" data-inline="false"></span> Convertirse en Transcriptor</a></li>';
-                        } else {
-                            if ($datosUsuario[2] === "0" || $datosUsuario[2] === "1" || $datosUsuario[2] === "2") {
-                                echo '<li><a href="logout.php" class="statusSesionC"><span class="iconify" data-icon="simple-line-icons:logout" data-inline="false"></span> Cerrar Sesión</a></li>';
+                        $datosUsuario = $conexion->i($_SESSION['correo']);
+                        if ($_SESSION['tipoUsuario'] === "0" || $_SESSION['tipoUsuario'] === "1" || $_SESSION['tipoUsuario'] === "2") {
+                            echo '<li><a href="logout.php" class="statusSesionC"><span class="iconify" data-icon="simple-line-icons:logout" data-inline="false"></span> Cerrar Sesión</a></li>';
+                            if ($_SESSION['tipoUsuario'] === "0") {
+                                echo '<li><a href="altaTranscriptor.php" class="statusSesionT"><span class="iconify" data-icon="simple-line-icons:logout" data-inline="false"></span> Convertirse en Transcriptor</a></li>';
                             }
-                            if ($datosUsuario[2] == "" || $datosUsuario[2] == NULL) {
+                        } else {
+
+                            if ($_SESSION['tipoUsuario'] == "" || $_SESSION['tipoUsuario'] == NULL) {
                                 echo '<li><a href="login.php" class="statusSesionI"><span class="iconify" data-icon="simple-line-icons:login" data-inline="false"></span> Iniciar Sesión</a></li>';
                             }
                         }

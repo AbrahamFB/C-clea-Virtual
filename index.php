@@ -8,6 +8,8 @@ $headerPagina = '<h1>Soy <span class="typed"></span></h1>
             </p>';
 $css_extra = "";
 
+session_start(); //Iniciar sesión
+
 include("html.php");
 
 echo '<body ondragstart="return false">';

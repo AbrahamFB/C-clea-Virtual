@@ -17,7 +17,7 @@ if ($varSesion == null || $varSesion = '') {
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Transcriptor";
 $css_extra = "";
-$user = $datosUsuario[0];
+$_SESSION['user'] = $datosUsuario[0];
 $descripcion = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, deserunt placeat! Vel iure dolor culpa, cumque omnis quasi repellendus ab cupiditate dignissimos, autem dicta magnam maxime minima excepturi, possimus consectetur!";
 
 include("html.php");
@@ -28,7 +28,7 @@ include("nav-bar_index.php");
 
 ?>
 <div class="container">
-    <h1 class="text-center tituloPagina mayusculas">Bienvenido <?php echo $user ?></h1>
+    <h1 class="text-center tituloPagina mayusculas">Bienvenido <?php echo $_SESSION['user'] ?></h1>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 
