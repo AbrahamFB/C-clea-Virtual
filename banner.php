@@ -41,7 +41,7 @@
     </section>
 
     <section class="sobrenostros margin-tb" id="sn">
-        <h3 class="titulos-secciones centrar-texto mayusculas">Sobre Nosotros</h3>
+        <h3 class="titulos-secciones centrar-texto mayusculas">Sobre GALA: </h3>
         <p>Nuestro equipo se conforma de personas con diferentes hebilidades que contribuyen a mejorar el 
         desarrollo y funcionamiento de la plataforma.
 
