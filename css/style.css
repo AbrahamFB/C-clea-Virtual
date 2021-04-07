@@ -660,3 +660,64 @@ button:focus {
 }
 
 /*************footer End*****************/
+
+
+/**********Personal****************/
+.personal{
+    border: 2px solid #f2f2f2;
+    padding: 30px 30px 30px 30px;
+    float: left;
+    width: 100%;
+    position: relative;
+    text-align: center;
+  }
+  @media screen and (max-width: 1992px) {
+    .personal {
+    margin-top: 6.5em;
+    margin-bottom: 0.5em;
+    }
+  }
+  
+  .personal figure {
+    position: absolute;
+    margin-top: -90px;
+    top: 0;
+    left: 50%;
+    margin-left: -60px;
+    display: block;
+    margin-bottom: 50px;
+  }
+  .personal figure img {
+    width: 120px;
+    border: 2px solid #f2f2f2;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+  }
+  .personal h3 {
+    margin-bottom: 0px;
+  }
+  .personal .fh5co-position {
+    color: #b3b3b3;
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+/*********Personal End************/
+
+
+/**********Contacto****************/
+.info-contacto{
+    float: left;
+    width: 100%;
+    margin-top: 6.5em;
+    margin-bottom: 0.5em;
+    position: relative;
+    text-align: center;
+    font-size: 70%; 
+    
+  }
+  
+ 
+/*********Contacto End************/
