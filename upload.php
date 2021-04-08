@@ -12,9 +12,15 @@ if ($varSesion3 === null || $varSesion3 === '') {
     header("location:login.php");
     die();
 }
+
+$temas = $_POST['tem'];
+$nLSM = $_POST['nLSM'];
+$anioEx = $_POST['anioExp']; 
+
+
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
     if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
-
+        // get details of the uploaded file
         $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
         $fileName = $_FILES['uploadedFile']['name'];
         $fileSize = $_FILES['uploadedFile']['size'];
@@ -22,15 +28,22 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
         $fileNameCmps = explode(".", $fileName);
         $fileExtension = strtolower(end($fileNameCmps));
 
-        $newFileName = "Certificado" . "_" . $varSesion3 . '.' . $fileExtension;
+        // sanitize file-name
+        $newFileName = "Certificado" . "_" . $_SESSION['correo'] . '.' . $fileExtension;
 
+        // check if file has one of the following extensions
         $allowedfileExtensions = array('pdf');
 
         if (in_array($fileExtension, $allowedfileExtensions)) {
-            $uploadFileDir = './certificados/' . $varSesion3 . '/';
+            // directory in which the uploaded file will be moved
+            $uploadFileDir = './certificados/' . $_SESSION['correo'] . '/';
             $dest_path = $uploadFileDir . $newFileName;
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                $sql = "INSERT INTO Transcriptor (nivelLSM,temas,aExp,Cuenta_idCuenta) VALUES ($nLSM, $temas', $anioEx, '1')";
+                $conexion->query($sql);
+                echo $sql;
+
                 $message = 'Tu Certificado se subió satisfactoriamente.';
             } else {
                 $message = 'Hubo un problema al subir tu archivo a nuestra plataforma';
@@ -43,11 +56,6 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
         $message .= 'Error:' . $_FILES['uploadedFile']['error'];
     }
 }
-$_SESSION['message'] = $message;
-header("Location: estudiante.php");
-
-
-//$sql = "INSERT INTO `Transcriptor` (`nivelLSM`,`temas`,`aExp`, `Cuenta_idCuenta`) VALUES ($nLSM, $tema, $anioEXP, $cuenta)";
-
-//$res = $mysqli->query($sql);
-?>
+//$_SESSION['message'] = $message;
+//header("Location: index.php");
+echo $_SESSION['correo'];
