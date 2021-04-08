@@ -57,7 +57,7 @@
                 <figure><img src="img/developers/GMH.jpg" alt="Image"></figure>
                 <h3>Gerardo Martínez</h3>
                 <span class="fh5co-position">Lorem</span>
-                <p>Lorem</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
 
             </div>
         </div>
@@ -67,8 +67,9 @@
             <div class="personal">
                 <figure><img src="img/developers/AFB.jpg" alt="Image"></figure>
                 <h3>Abraham Flores</h3>
-                <span class="fh5co-position">Lorem</span>
-                <p>Lorem</p>
+                <span class="fh5co-position">Estudiante, Desarrollador, Técnico en redes-CISCO, Freelancer,
+                Fotógrafo</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
 
             </div>
         </div>
@@ -79,7 +80,7 @@
                 <figure><img src="img/developers/LOM.jpg" alt="Image"></figure>
                 <h3>Lizbeth Ortega</h3>
                 <span class="fh5co-position">Lorem</span>
-                <p>Lorem</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
 
             </div>
         </div>
