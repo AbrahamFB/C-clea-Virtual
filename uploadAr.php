@@ -37,7 +37,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
             $dest_path = $uploadFileDir . $newFileName;
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                $message = 'Tu archivo se subió correctamente.';
+                $message = 'Tu archivo se subi&oacute; correctamente.';
             } else {
                 $message = 'Hubo un problema al subir tu archivo a nuestra plataforma';
             }
@@ -53,10 +53,10 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
     
 $query = "INSERT INTO ArchivoMultimedia (ruta,formato,tamanio) VALUES ('$fileName','$fileType','$fileSize')"; 
     $conexion->query($query);
-    echo $query; 
+    //echo $query; 
+    $_SESSION['message'] = $message;
+    header("Location: estudiante.php"); 
 
 }
-$_SESSION['message'] = $message;
-header("Location: estudiante.php"); 
 
 ?>
