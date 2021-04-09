@@ -72,7 +72,7 @@ class Validation {
                   //alert(contrasena);
                 },
                 success: function (respuesta) {
-                  alert(respuesta);
+                  //alert(respuesta);
                   console.log(typeof respuesta);
                   $(".loading").hide();
                     if (respuesta == 1) {
@@ -83,6 +83,8 @@ class Validation {
                     $("#confirm").val() == "";
                     $(".alert").removeClass('alert-danger');
                     $(".alert").addClass('alert-success');
+                    $("#ocultarInicio").show("slow");   
+                    $("#enviar").hide(1500);   
                     $(".alert").html("Te has registrado correctamente");
                   } else if(respuesta == 0){
                     $(".alert").html("Error, el correo ingresado ya existe");
@@ -99,12 +101,6 @@ class Validation {
             });
           });
         });
-       
-        
-
-
-
-    
 
     return invalidString;
   }
