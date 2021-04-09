@@ -47,7 +47,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
                 $sql = "INSERT INTO Transcriptor (nivelLSM,temas,aExp,Cuenta_idCuenta) VALUES ($nLSM, $temas', $anioEx, '1')";
                 $conexion->query($sql);
-                echo $sql;
+                //echo $sql;
 
                 $message = 'Tu Certificado se subió satisfactoriamente. Espera a ser revisado por nuestro personal y ser aceptado. Gracias.';
             } else {
@@ -60,8 +60,9 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
         $message = 'Nuestro error es al subir tu certificado a nuestra plataforma. Mandanos éste error.<br>';
         $message .= 'Error:' . $_FILES['uploadedFile']['error'];
     }
+    $_SESSION['message'] = $message;
+    header("Location: estudiante.php");
 }
-$_SESSION['message'] = $message;
-header("Location: estudiante.php");
+
 //echo $_SESSION['correo'];
 ?>
