@@ -25,14 +25,15 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
         $fileExtension = strtolower(end($fileNameCmps));
 
         // sanitize file-name
-        $newFileName = "Multimedia" . "_" . $fileName . '.' . $fileExtension;
+        $newFileName = "Multimedia" . "_" . $fileName;// . '.' . $fileExtension;
 
         // check if file has one of the following extensions
         $allowedfileExtensions = array('mp4');
 
         if (in_array($fileExtension, $allowedfileExtensions)) {
             // directory in which the uploaded file will be moved
-            $uploadFileDir = './archivosmultimedia/';
+            $uploadFileDir = "usuarios/" . $_SESSION['correo'] . "/ArchivoMultimedia"."/";
+
             $dest_path = $uploadFileDir . $newFileName;
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
@@ -55,7 +56,7 @@ $query = "INSERT INTO ArchivoMultimedia (ruta,formato,tamanio) VALUES ('$fileNam
     echo $query; 
 
 }
-//$_SESSION['message'] = $message;
-//header("Location: index.php"); 
+$_SESSION['message'] = $message;
+header("Location: estudiante.php"); 
 
 ?>

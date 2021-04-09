@@ -15,7 +15,7 @@ if ($varSesion3 === null || $varSesion3 === '') {
 
 $temas = $_POST['tem'];
 $nLSM = $_POST['nLSM'];
-$anioEx = $_POST['anioExp']; 
+$anioEx = $_POST['anioExp'];
 
 
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
@@ -34,6 +34,11 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
         // check if file has one of the following extensions
         $allowedfileExtensions = array('pdf');
 
+
+        $directori = "certificados/".$_SESSION['correo'];
+        if (!file_exists($directori)) {
+            mkdir($directori, 0777, true);
+        }
         if (in_array($fileExtension, $allowedfileExtensions)) {
             // directory in which the uploaded file will be moved
             $uploadFileDir = './certificados/' . $_SESSION['correo'] . '/';
@@ -44,7 +49,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
                 $conexion->query($sql);
                 echo $sql;
 
-                $message = 'Tu Certificado se subió satisfactoriamente.';
+                $message = 'Tu Certificado se subió satisfactoriamente. Espera a ser revisado por nuestro personal y ser aceptado. Gracias.';
             } else {
                 $message = 'Hubo un problema al subir tu archivo a nuestra plataforma';
             }
@@ -56,6 +61,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
         $message .= 'Error:' . $_FILES['uploadedFile']['error'];
     }
 }
-//$_SESSION['message'] = $message;
-//header("Location: index.php");
-echo $_SESSION['correo'];
+$_SESSION['message'] = $message;
+header("Location: estudiante.php");
+//echo $_SESSION['correo'];
+?>
