@@ -109,6 +109,10 @@ ul {
     /* CHECAR*/
 }
 
+.videoTabla {
+    max-width: 30%;
+}
+
 /* PARTICULARES */
 
 .descripcion-header,
@@ -429,6 +433,76 @@ input[type="file"]:hover {
     }
 }
 
+/***** subir archivo estudiante******/
+.margin-tbe {
+    margin: 2rem auto;
+
+}
+
+.contenido-centradoe {
+    max-width  : 30rem;
+    /*margin   : auto auto;*/
+
+}
+
+.btn-sample {
+    color           : #ffffff;
+    background-color: rgb(175, 27, 189);
+    border-color    : rgb(84, 2, 105);
+}
+
+
+/* Estilo del área del input[file] */
+.drag-drope {
+    height          : 8em;
+    width           : 8em;
+    background-color: #ccc;
+    border-radius   : 4em;
+    text-align      : center;
+    color           : white;
+    position        : relative;
+    margin          : 0 auto 1em;
+}
+
+.drag-drope span.desc {
+    display  : block;
+    font-size: .7em;
+    padding  : 0 .5em;
+    color    : rgb(0, 0, 0);
+}
+
+input[type="file"] {
+    height  : 10em;
+    opacity : 0;
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    width   : 100%;
+    z-index : 3;
+}
+
+/* Estilo del área del input[file] con :hover */
+
+.drag-drope:hover,
+input[type="file"]:hover {
+    background-color: #6932b1;
+    cursor          : pointer;
+}
+
+.drag-drope:hover span.desc {
+    color: #fff;
+}
+
+.drag-drope:hover .pulsating {
+    animation                  : pulse1 1s linear infinite;
+    animation-direction        : alternate;
+    -webkit-animation          : pulse1 1s linear infinite;
+    -webkit-animation-direction: alternate;
+}
+
+
+/**** fin subir archivo estudiante****/
+
 
 /**********Sobre Nosotros****************/
 .personal {
@@ -480,14 +554,15 @@ input[type="file"]:hover {
 
 /**********info contacto****************/
 .info-contacto {
-    padding   : 30px 30px 30px 30px;
-    float     : left;
-    width     : 100%;
-    position  : relative;
+    padding      : 30px 30px 30px 30px;
+    float        : left;
+    width        : 100%;
+    position     : relative;
     margin-top   : 6.5em;
     margin-bottom: 0.5em;
-    text-align: center;
+    text-align   : center;
 }
+
 /*********info contacto End************/
 
 

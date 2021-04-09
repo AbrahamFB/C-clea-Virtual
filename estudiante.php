@@ -48,15 +48,26 @@ include("nav-bar_index.php");
                     <div class="row justify-content-center">
                         <div class="col-12 p-5 bg-white shadow-lg rounded">
 
-                            <div class="margin-tb contenido-centrado">
+                            <!--boton para ocultar y mostrar contenido-->
+                            <button class="btn-sample" id="obj1" style="display:inline" type="button" onclick="ocultar(),mostrar()">Solicitar transcripción</button>
+                            <div width="70px" class="margin-tbe contenido-centradoe" id="obj2" style="display:none">
                                 <form action="uploadAr.php" method="post" enctype="multipart/form-data" id="formTrans">
                                     <h2 class="centrar-texto ">Sube tu archivo</h2>
                                     <br>
 
+                                    <script>
+                                        function ocultar() {
 
+                                            document.getElementById('obj1').style.display = 'none';
+                                        }
 
-                                    <div class="drag-drop">
-                                        <input type="file" name="uploadedFile" multiple="multiple" id="photo" />
+                                        function mostrar() {
+                                            document.getElementById('obj2').style.display = 'block';
+                                        }
+                                    </script>
+
+                                    <div class="drag-drope">
+                                        <input type="file" name="uploadedFile" id="photo" />
                                         <!--input type="file" name="uploadedFile" multiple="multiple" id="photo" accept="application/pdf" /-->
                                         <span class="fa-stack fa-2x">
                                             <i class="fa fa-cloud fa-stack-2x bottom pulsating"></i>
@@ -66,7 +77,7 @@ include("nav-bar_index.php");
                                         <span class="desc">Pulse aquí para añadir archivos</span>
                                     </div>
 
-                                    <input type="submit" form="formTrans" id="smtArchi" name="uploadBtn" value="Enviar" class="font-2rem btn btn btn-success btn">
+                                    <input type="submit" form="formTrans" id="smtArchi" name="uploadBtn" value="Enviar" class="font-2rem btn btn btn-sample btn">
                                 </form>
 
                             </div>
@@ -76,6 +87,59 @@ include("nav-bar_index.php");
 
                 <br>
             </div>
+        </div>
+
+        <div class="tablaEstudianteArchivos">
+            <div class="col-md-12">
+
+                <table id="tabla" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <!--<th scope="col">Nombre del Archivo</th-->
+                            <th scope="col">Tú Archivo</th>
+                            <th scope="col">Archivo Transcrito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+                        $dir = "usuarios/" . $_SESSION['correo'] . "/ArchivoMultimedia";
+                        $dir2 = "usuarios/" . $_SESSION['correo'] . "/ArchivoTranscrito";
+
+                        $imgs = dir($dir);
+                        $imgs2 = dir($dir2);
+                        while (($img = $imgs->read()) !== false || ($img = $imgs->read()) !== false) {
+                            if (mb_eregi('mp4', $img)) {
+                                echo "<tr>";
+                                echo "<td>";
+                                $d = $dir . $img;
+                                $d2 = $dir2 . $img2;
+                                echo "<video class='videoTabla' src='$d' controls></video>";
+                                echo "</td>";
+                                echo "<td>";
+                                echo "<video class='videoTabla' src='$d2' controls></video>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+
+                            if (mb_eregi('mp3', $img)) {
+                                echo "<tr>";
+                                echo "<td>";
+                                $d3 = $dir . $img;
+                                $d2 = $dir2 . $img2;
+                                echo "<audio class='videoTabla' src='$d3' controls></audio>";
+                                echo "<td>";
+                                echo "<video class='videoTabla' src='$d2' controls></video>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                        }
+
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
         <!--PARTE DE SUBIR ARCHIVO-->
         <h3 class="text-center">Descripción</h3>

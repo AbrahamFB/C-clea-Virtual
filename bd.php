@@ -24,11 +24,15 @@ class ConexionBD
                 /////////////////////////////////////////////////////////////////////////////////////
                 $usuario = $correo;
                 $directorio = "usuarios/$usuario";
-                if (!file_exists($directorio)) {
+                $directorio2 = "usuarios/$usuario/ArchivoTranscrito";
+                $directorio3 = "usuarios/$usuario/ArchivoMultimedia";
+                if (!file_exists($directorio) || !file_exists($directorio2) || !file_exists($directorio3)) {
                     mkdir($directorio, 0777, true);
+                    mkdir($directorio2, 0777, true);
+                    mkdir($directorio3, 0777, true);
                 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 $insert = "INSERT INTO $tabla ($propiedades) VALUES ($datos2)";
                 $resultado = mysqli_query($this->conexion, $insert);
@@ -45,7 +49,7 @@ class ConexionBD
             $resultado = mysqli_query($this->conexion, $insert);
 
             if ($resultado != 1) {
-            ?> <p class="error-credenciales">No se insertó</p>
+?> <p class="error-credenciales">No se insertó</p>
 
                 <?php
                 echo 0;
@@ -68,6 +72,7 @@ class ConexionBD
 
     function i($correo)
     {
+        error_reporting(0);
         $sql = "SELECT * FROM `Cuenta` WHERE `correo` LIKE '$correo'";
         $datos = mysqli_query($this->conexion, $sql);
         $fila = mysqli_fetch_array($datos);
