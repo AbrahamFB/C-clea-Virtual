@@ -51,10 +51,10 @@ if (isset($_SESSION['message']) && $_SESSION['message']) {
                     <div class="form-group">
                         <label for="temas" class="font-2rem">Temas familiarizados</label>
                         <p><input type=radio value="mat" name="tem" id=""> Matemáticas</p>
-                        <p><input type="radio" value="es"  id=""> Español</p>
-                        <p><input type="radio" value="bio"  id=""> Biología</p>
-                        <p><input type="radio" value="his"  id=""> Historia</p>
-                        <p><input type="radio" value="fis"  id=""> Física</p>
+                        <p><input type="radio" value="es" id=""> Español</p>
+                        <p><input type="radio" value="bio" id=""> Biología</p>
+                        <p><input type="radio" value="his" id=""> Historia</p>
+                        <p><input type="radio" value="fis" id=""> Física</p>
                         <p>Otro <input type="text" name="otro" class="form-control font-2rem"></p>
                     </div>
                     <br>

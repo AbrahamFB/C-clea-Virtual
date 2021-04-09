@@ -103,8 +103,8 @@ include("nav-bar_index.php");
                     <tbody>
 
                         <?php
-                        $dir = "usuarios/" . $_SESSION['correo'] . "/ArchivoMultimedia";
-                        $dir2 = "usuarios/" . $_SESSION['correo'] . "/ArchivoTranscrito";
+                        $dir = "usuarios/" . $_SESSION['correo'] . "/ArchivoMultimedia"."/";
+                        $dir2 = "usuarios/" . $_SESSION['correo'] . "/ArchivoTranscrito"."/";
 
                         $imgs = dir($dir);
                         $imgs2 = dir($dir2);
@@ -113,7 +113,6 @@ include("nav-bar_index.php");
                                 echo "<tr>";
                                 echo "<td>";
                                 $d = $dir . $img;
-                                $d2 = $dir2 . $img2;
                                 echo "<video class='videoTabla' src='$d' controls></video>";
                                 echo "</td>";
                                 echo "<td>";

@@ -743,8 +743,8 @@ button:focus {
 }
 
 .new_footer_top .footer_bg .footer_bg_one {
-    background       : url("https://1.bp.blogspot.com/-mvKUJFGEc-k/XclCOUSvCnI/AAAAAAAAUAE/jnBSf6Fe5_8tjjlKrunLBXwceSNvPcp3wCLcBGAsYHQ/s1600/volks.gif") no-repeat center center;
-    width            : 330px;
+    /*background       : url("https://1.bp.blogspot.com/-mvKUJFGEc-k/XclCOUSvCnI/AAAAAAAAUAE/jnBSf6Fe5_8tjjlKrunLBXwceSNvPcp3wCLcBGAsYHQ/s1600/volks.gif") no-repeat center center;
+    */width            : 330px;
     height           : 105px;
     background-size  : 100%;
     position         : absolute;
@@ -754,9 +754,9 @@ button:focus {
     animation        : myfirst 22s linear infinite;
 }
 
-.new_footer_top .footer_bg .footer_bg_two {
+.new_footer_top .footer_bg .footer_bg_two {/*
     background       : url("https://1.bp.blogspot.com/-hjgfxUW1o1g/Xck--XOdlxI/AAAAAAAAT_4/JWYFJl83usgRFMvRfoKkSDGd--_Sv04UQCLcBGAsYHQ/s1600/cyclist.gif") no-repeat center center;
-    width            : 88px;
+   */ width            : 88px;
     height           : 100px;
     background-size  : 100%;
     bottom           : 0;
