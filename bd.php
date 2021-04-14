@@ -78,7 +78,31 @@ class ConexionBD
         $fila = mysqli_fetch_array($datos);
         return array($fila["nombre"], $fila["correo"], $fila["tipoUsuario"]);
     }
+    //funcion prueba
+    function mirar(){
+        
+    }
+    //funcion prueba
 }
 
 
 ?>
+
+
+<?php
+    if(isset($_GET['action'])){
+
+    switch($_GET['action']){
+        case "aceptar":
+            // hacer cualquier cosa
+        break;
+        case "rechazar":
+            // hacer cualquier cosa
+        break;
+        default:
+            die('Algo salió mal');
+        break;
+
+    }
+
+}

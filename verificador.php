@@ -10,19 +10,11 @@ echo '<body ondragstart="return false">';
 
 include("nav-bar_index.php");
 
-include("header_index.php");
 
 ?>
-<div class="container">
-    <div class="banner-estudiante">
-        <h1 class="text-center mayusculas">Bienvenido <?php echo $user ?> a Cóclea Virtual</h1>
-        <div class="row row-cols-2">
-            <div class="col">CELDA 1</div>
 
+            <iframe width="100%" height="1000000000000000000" src="../startbootstrap-sb-admin-2-gh-pages/index.html"></iframe>
 
-        </div>
-    </div>
-</div>
 
 <?php
 

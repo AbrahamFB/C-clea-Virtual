@@ -52,6 +52,19 @@ include("nav-bar_index.php");
                             <button class="btn-sample" id="obj1" style="display:inline" type="button" onclick="ocultar(),mostrar()">Solicitar transcripción</button>
                             <div width="70px" class="margin-tbe contenido-centradoe" id="obj2" style="display:none">
                                 <form action="uploadAr.php" method="post" enctype="multipart/form-data" id="formTrans">
+                                    
+                                    <!--modificacion-->
+                                    <div class="form-group">
+                                    <label for="temas" class="font-2rem">Tema del archivo</label>
+                                    <p><input type=radio value="mat" name="tem" id=""> Matemáticas 
+                                    <input type="radio" value="es" id=""> Español
+                                    <input type="radio" value="bio" id=""> Biología </p>
+                                    <p><input type="radio" value="his" id=""> Historia
+                                    <input type="radio" value="fis" id=""> Física</p>
+                                    <p>Otro <input type="text" name="otro" class="form-control font-2rem"></p>
+                                    </div>
+                                    <!--/modificacion-->
+                                    
                                     <h2 class="centrar-texto ">Sube tu archivo</h2>
                                     <br>
 
