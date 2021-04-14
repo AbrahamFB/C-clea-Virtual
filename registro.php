@@ -70,6 +70,14 @@ include("scripts.php");
     form.requireText("nombre", 5, 50, [" "], []);
     form.requireEmail("correo", 4, 50, [" "], []);
     form.registerPassword("contrasena", 6, 50, [" "], [], "confirm");
+    
+    function sendToPerfil(){
+        console.log('gola')
+        setTimeout(() => {
+            window.location.href = "perfil.php";
+        }, 2000);
+        
+    }
 </script>
 <br>
 
@@ -80,3 +88,5 @@ include("footer.php");
 
 echo '  </body>
 </html>';
+?>
+
