@@ -32,8 +32,8 @@ include("nav-bar_index.php");
             <div class="col">
                 <img src="img/estudiante/audio.svg" alt="" class="img-audio">
             </div>
-            <div class="col">
-                <h2>Transcripción de Audio</h2>
+            <div class="col-8">
+                <h2 class="centrar-texto">Transcripción de Audio</h2>
 
                 <!--PARTE DE SUBIR ARCHIVO-->
                 <!-- FORM -->
@@ -52,19 +52,6 @@ include("nav-bar_index.php");
                             <button class="btn-sample" id="obj1" style="display:inline" type="button" onclick="ocultar(),mostrar()">Solicitar transcripción</button>
                             <div width="70px" class="margin-tbe contenido-centradoe" id="obj2" style="display:none">
                                 <form action="uploadAr.php" method="post" enctype="multipart/form-data" id="formTrans">
-                                    
-                                    <!--modificacion-->
-                                    <div class="form-group">
-                                    <label for="temas" class="font-2rem">Tema del archivo</label>
-                                    <p><input type=radio value="mat" name="tem" id=""> Matemáticas 
-                                    <input type="radio" value="es" id=""> Español
-                                    <input type="radio" value="bio" id=""> Biología </p>
-                                    <p><input type="radio" value="his" id=""> Historia
-                                    <input type="radio" value="fis" id=""> Física</p>
-                                    <p>Otro <input type="text" name="otro" class="form-control font-2rem"></p>
-                                    </div>
-                                    <!--/modificacion-->
-                                    
                                     <h2 class="centrar-texto ">Sube tu archivo</h2>
                                     <br>
 
@@ -77,6 +64,46 @@ include("nav-bar_index.php");
                                         function mostrar() {
                                             document.getElementById('obj2').style.display = 'block';
                                         }
+
+                                        //funcion progresbar
+                                        function _(el) {
+                                            return document.getElementById(el);
+                                        }
+
+                                        function uploadFile() {
+                                            var file = _("photo").files[0];
+                                            //alert(file.name+" | "+file.size+" | "+file.type);
+                                            var formdata = new FormData();
+                                            formdata.append("photo", file);
+                                            var ajax = new XMLHttpRequest();
+                                            ajax.upload.addEventListener("progress", progressHandler, false);
+                                            ajax.addEventListener("load", completeHandler, false);
+                                            ajax.addEventListener("error", errorHandler, false);
+                                            ajax.addEventListener("abort", abortHandler, false);
+                                            ajax.open("POST", "uploadAr.php");
+                                            ajax.send(formdata);
+                                        }
+
+                                        function progressHandler(event) {
+                                            _("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
+                                            var percent = (event.loaded / event.total) * 100;
+                                            _("progressBar").value = Math.round(percent);
+                                            _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
+                                        }
+
+                                        function completeHandler(event) {
+                                            _("status").innerHTML = event.target.responseText;
+                                            _("progressBar").value = 0;
+                                        }
+
+                                        function errorHandler(event) {
+                                            _("status").innerHTML = "Upload Failed";
+                                        }
+
+                                        function abortHandler(event) {
+                                            _("status").innerHTML = "Upload Aborted";
+                                        }
+                                        ///funcion porgresbarfin
                                     </script>
 
                                     <div class="drag-drope">
@@ -89,8 +116,15 @@ include("nav-bar_index.php");
                                         </span>
                                         <span class="desc">Pulse aquí para añadir archivos</span>
                                     </div>
+                                    <br>
+                                    <!--progres bar-->
+                                    <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+                                    <h6 id="status"></h6>
+                                    <h6 id="loaded_n_total"></h6>
+                                    <!--/progres bar-->
+                                    <br>
 
-                                    <input type="submit" form="formTrans" id="smtArchi" name="uploadBtn" value="Enviar" class="font-2rem btn btn btn-sample btn">
+                                    <input type="submit" form="formTrans" id="smtArchi" name="uploadBtn" value="Enviar" class="font-2rem btn btn btn-sample btn" onclick="uploadFile()">
                                 </form>
 
                             </div>
@@ -116,8 +150,8 @@ include("nav-bar_index.php");
                     <tbody>
 
                         <?php
-                        $dir = "usuarios/" . $_SESSION['correo'] . "/ArchivoMultimedia"."/";
-                        $dir2 = "usuarios/" . $_SESSION['correo'] . "/ArchivoTranscrito"."/";
+                        $dir = "usuarios/" . $_SESSION['correo'] . "/ArchivoMultimedia" . "/";
+                        $dir2 = "usuarios/" . $_SESSION['correo'] . "/ArchivoTranscrito" . "/";
 
                         $imgs = dir($dir);
                         $imgs2 = dir($dir2);
