@@ -41,7 +41,7 @@ include("nav-bar_index.php");
         <div class="col-12 p-5 bg-white shadow-lg rounded">
 
             <!--boton para ocultar y mostrar contenido-->
-            <button class="btn-sample" id="obj1" style="display:inline" type="button" onclick="ocultar(),mostrar()">Solicitar transcripción</button>
+            <button class="btn-sample" id="obj1" style="display:inline" type="button" onclick="ocultar(),mostrar()">Subir transcripción</button>
             <div width="70px" class="margin-tbe contenido-centradoe" id="obj2" style="display:none">
                 <form action="uploadAr.php" method="post" enctype="multipart/form-data" id="formTrans">
                     <h2 class="centrar-texto ">Sube tu archivo</h2>
@@ -82,7 +82,7 @@ include("nav-bar_index.php");
 
 
 <?php
-$temas = "física";
+$temas = "Física";
 $conexion = new ConexionBD();
 $resultado = $conexion->getArchivos($temas);
 

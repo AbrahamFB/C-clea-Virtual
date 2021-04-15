@@ -12,7 +12,6 @@ include("bd/bd.php");
 //    header("location:login_index.php");
 //    die();
 //}
-$temas = $_POST['tema'];
 
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
     if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
@@ -25,14 +24,14 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
         $fileExtension = strtolower(end($fileNameCmps));
 
         // sanitize file-name
-        $newFileName = "Multimedia" . "_" . $fileName;// . '.' . $fileExtension;
+        $newFileName = "Multimedia" . "_" . $fileName; // . '.' . $fileExtension;
 
         // check if file has one of the following extensions
         $allowedfileExtensions = array('mp4');
 
         if (in_array($fileExtension, $allowedfileExtensions)) {
             // directory in which the uploaded file will be moved
-            $uploadFileDir = "usuarios/" . $_SESSION['correo'] . "/ArchivoMultimedia"."/";
+            $uploadFileDir = "usuarios/" . $_SESSION['correo'] . "/ArchivoMultimedia" . "/";
 
             $dest_path = $uploadFileDir . $newFileName;
 
@@ -49,14 +48,12 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
         $message .= 'Error:' . $_FILES['uploadedFile']['error'];
     }
 
-      
-    
-$query = "INSERT INTO ArchivoMultimedia (ruta,formato,tamanio,temas) VALUES ('$fileName','$fileType','$fileSize','$temas')"; 
+
+    $temas = $_POST['tema'];
+    $idEs = $_SESSION['idCuenta'];
+    $query = "INSERT INTO ArchivoMultimedia (ruta,formato,tamanio,temas, idEst) VALUES ('$fileName','$fileType','$fileSize','$temas', '$idEs')";
     $conexion->query($query);
     //echo $query; 
     $_SESSION['message'] = $message;
-    header("Location: estudiante.php"); 
-
+    header("Location: estudiante.php");
 }
-
-?>

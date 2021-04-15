@@ -9,6 +9,8 @@ $datosUsuario = $conexion->i($correo);
 
 $_SESSION['correo'] = $correo;
 
+$_SESSION['idCuenta'] = $datosUsuario[3];
+
 include('bd/bd.php');
 
 $consulta = "SELECT * FROM Cuenta where correo = '$correo' and contrasena = '$contrasena'";
