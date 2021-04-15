@@ -55,6 +55,7 @@ include("nav-bar_index.php");
                                     <h2 class="centrar-texto ">Sube tu archivo</h2>
                                     <br>
 
+
                                     <script>
                                         function ocultar() {
 
@@ -88,7 +89,7 @@ include("nav-bar_index.php");
                                             _("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
                                             var percent = (event.loaded / event.total) * 100;
                                             _("progressBar").value = Math.round(percent);
-                                            _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
+                                            _("status").innerHTML = Math.round(percent) + "% subiendo... espere por favor";
                                         }
 
                                         function completeHandler(event) {
@@ -97,15 +98,33 @@ include("nav-bar_index.php");
                                         }
 
                                         function errorHandler(event) {
-                                            _("status").innerHTML = "Upload Failed";
+                                            _("status").innerHTML = "Error en la subida";
                                         }
 
                                         function abortHandler(event) {
-                                            _("status").innerHTML = "Upload Aborted";
+                                            _("status").innerHTML = "Su";
                                         }
                                         ///funcion porgresbarfin
                                     </script>
 
+                                    <fieldset>
+                                        <legend>Elige el tema de tu archivo</legend>
+                                        <label>
+                                            <input type="radio" name="tema" value="Matemáticas"> Matemáticas
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="tema" value="Biología"> Biologia
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="tema" value="Historia"> Historia
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="tema" value="Español"> Español
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="tema" value="Física"> Física
+                                        </label>
+                                    </fieldset>
                                     <div class="drag-drope">
                                         <input type="file" name="uploadedFile" id="photo" />
                                         <!--input type="file" name="uploadedFile" multiple="multiple" id="photo" accept="application/pdf" /-->

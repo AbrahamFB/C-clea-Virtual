@@ -36,7 +36,6 @@ include("nav-bar_index.php");
 
 
 
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 p-5 bg-white shadow-lg rounded">
@@ -80,8 +79,17 @@ include("nav-bar_index.php");
 
 
 <br><br><br>
+
+
+<?php
+$temas = "física";
+$conexion = new ConexionBD();
+$resultado = $conexion->getArchivos($temas);
+
+?>
 <div class="container">
     <div class="tablaEstudianteArchivos">
+
         <h3 class="titulo centrar-texto mayusculas">Solicitudes</h3>
         <div class="col-md-12">
 
@@ -89,52 +97,43 @@ include("nav-bar_index.php");
                 <thead>
                     <tr>
                         <!--<th scope="col">Nombre del Archivo</th-->
+                        <th scope="col">Correo</th>
                         <th scope="col">Archivo del Estudiante</th>
-                        <th scope="col">Archivo Transcrito</th>
+                        <th scope="col">Tema</th>
+                        <th scope="col">Formato</th>
                         <th scope="col">Estado</th>
-
-                        <!--Botones aceptar / rechazar-->
-                     <th> 
-                     <input type="submit" name="aceptar" value="Aceptar" >
-                       <input type="submit" name="rechazar" value="Rechazar" >
-                       </th>
-                        <!--FIN Botones aceptar / rechazar-->
 
                     </tr>
                 </thead>
                 <tbody>
 
                     <?php
-                    $dir = "usuarios/" . $_SESSION['correo'] . "/ArchivoTranscrito" . "/";
-                    $dir2 = "usuarios/" . $_SESSION['correo'] . "/ArchivoMultimedia" . "/";
 
-                    $imgs = dir($dir);
-                    $imgs2 = dir($dir2);
-                    while (($img = $imgs->read()) !== false || ($img = $imgs->read()) !== false) {
-                        if (mb_eregi('mp4', $img)) {
-                            echo "<tr>";
-                            echo "<td>";
-                            $d = $dir . $img;
-                            echo "<video class='videoTabla' src='$d' controls></video>";
-                            echo "</td>";
-                            echo "<td>";
-                            echo "<video class='videoTabla' src='$d2' controls></video>";
-                            echo "</td>";
-                            echo "</tr>";
-                        }
+                    while ($fila = mysqli_fetch_array($resultado)) {
+                        $dir = "usuarios/" . $fila["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila["ruta"];
 
-                        if (mb_eregi('mp3', $img)) {
-                            echo "<tr>";
-                            echo "<td>";
-                            $d3 = $dir . $img;
-                            $d2 = $dir2 . $img2;
-                            echo "<audio class='videoTabla' src='$d3' controls></audio>";
-                            echo "<td>";
-                            echo "<video class='videoTabla' src='$d2' controls></video>";
-                            echo "</td>";
-                            echo "</tr>";
-                        }
+                        echo "<tr>";
+                        echo "<td>";
+                        echo $fila["correo"];
+                        echo "</td>";
+                        echo "<td>";
+                        echo "<video class='videoTabla' src='$dir' controls></video>";
+                        echo "</td>";
+                        echo "<td>";
+                        echo $fila["temas"];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $fila["formato"];
+                        echo "</td>";
+
+                        echo "<td>";
+                        echo '<input type="submit" name="aceptar" value="Aceptar">';
+                        echo '<input type="submit" name="rechazar" value="Rechazar">';
+                        echo "</td>";
+                        echo "</tr>";
                     }
+
+
 
                     ?>
                 </tbody>

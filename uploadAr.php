@@ -12,7 +12,7 @@ include("bd/bd.php");
 //    header("location:login_index.php");
 //    die();
 //}
-
+$temas = $_POST['tema'];
 
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
     if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
@@ -51,7 +51,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
 
       
     
-$query = "INSERT INTO ArchivoMultimedia (ruta,formato,tamanio) VALUES ('$fileName','$fileType','$fileSize')"; 
+$query = "INSERT INTO ArchivoMultimedia (ruta,formato,tamanio,temas) VALUES ('$fileName','$fileType','$fileSize','$temas')"; 
     $conexion->query($query);
     //echo $query; 
     $_SESSION['message'] = $message;
