@@ -86,6 +86,13 @@ class ConexionBD
         return $res;
         
     }
+    function upArchivo($idu){
+        $archivos =  "UPDATE ArchivoMultimedia SET estado = '1'";
+        $archivos .= "WHERE idArchivoMultimedia = '$idu'";
+        $res = mysqli_query($this->conexion, $archivos);    
+        return $res;
+
+    }
     //funcion prueba
 
     function getArchivos($temas){

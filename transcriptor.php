@@ -2,8 +2,6 @@
 include("bd.php");
 $conexion = new ConexionBD();
 
-
-
 //Seguridad de sesiones 
 session_start(); //Iniciar sesión
 error_reporting(0);
@@ -47,10 +45,12 @@ include("nav-bar_index.php");
                     <br>
 
                     <script>
+                        
 
                         function rechazar(r) {
                             var i = r.parentNode.parentNode.rowIndex;
                             document.getElementById("tabla1").deleteRow(i);
+                            alert(i);
                             
                         
                         }
@@ -68,13 +68,24 @@ include("nav-bar_index.php");
                         
                         }
 
-                        function aceptar(){
+                        function aceptar(r){
+                            var i = (r.parentNode.parentNode.rowIndex) -1 ;
+                            
+                            <?php
+                            //falta pasar la variable 
+                            $idu = $ide;
+                            $conexion = new ConexionBD();
+                            $resultado = $conexion->upArchivo($idu);
+                            
+                                ?>
+
+                                
                            
                         }
                     </script>
 
 <?php
-                            $IDE = 29;
+                            $IDE = $ide;
                             $conexion = new ConexionBD();
                             $resultado2 = $conexion->mirar($IDE);
                             ?>
@@ -163,6 +174,7 @@ $resultado = $conexion->getArchivos($temas);
                 <tbody>
 
                     <?php
+                    $i=0;
                     
                     while ($fila = mysqli_fetch_array($resultado)) {
                         
@@ -170,7 +182,7 @@ $resultado = $conexion->getArchivos($temas);
 
                         echo "<tr>";
                         echo "<td>";
-                        echo $ide = $fila[0];
+                        echo $ide[$i] = $fila[0];
                         echo "</td>";
                         echo "<td>";
                         echo $fila["correo"];
@@ -186,12 +198,12 @@ $resultado = $conexion->getArchivos($temas);
                         echo "</td>";
 
                         echo "<td>";
-                        echo '<input type="submit" name="aceptar" value="Aceptar" onclick="aceptar(),eliminar(this)">';
+                        echo '<input type="submit" name="aceptar" value="Aceptar" onclick="aceptar(this),eliminar(this)">';
                         echo '<input type="submit" name="rechazar" value="Rechazar" onclick="rechazar(this)">';
                         echo "</td>";
                         echo "</tr>";
 
-                    
+                        $i++;
 
                         
                     }
@@ -199,7 +211,9 @@ $resultado = $conexion->getArchivos($temas);
 
 
 
+
                     ?>
+                    
                 </tbody>
             </table>
         </div>
@@ -210,6 +224,7 @@ $resultado = $conexion->getArchivos($temas);
 </div>
 
 <?php
+
 
 include("footer.php");
 
