@@ -1,6 +1,6 @@
 <?php 
     include('bd.php');
-    $sql = "SELECT nombre, nivelLSM, temas, aExp from Cuenta as c inner join Transcriptor as t ";
+    $sql = "SELECT idTranscriptor, nombre,correo, nivelLSM, temas, aExp from Cuenta as c inner join Transcriptor as t ";
     $sql .= "on c.idCuenta=t.Cuenta_idCuenta where validado=0";
     $respuesta = mysqli_query($conexion, $sql);
     $rows = mysqli_num_rows($respuesta);
@@ -12,8 +12,10 @@
         $rowData[] = $row["nivelLSM"];
         $rowData[] = $row["temas"];
         $rowData[] = $row["aExp"];
-        $rowData[] = '<td><button class="btn btn-warning"><a style="color:white" target="_blank" href="05-SOA_punto_de_vista.pdf">Certificado</button></td>';
-        $rowData[] = '<td><button>Aceptar</button></td>';
+        $correo = $row["correo"];
+        $id = $row["idTranscriptor"];
+        $rowData[] = '<td><a class="btn btn-warning" target="_blank" href="../certificados/'. $correo.'/Certificado_'.$correo.'.pdf">Certificado</a></td>';
+        $rowData[] = '<td><button onclick="initCheck(event)" class="btn btn-success" data-tipo="check" data-id="'.$id.'"><i class="fas fa-check"></i></button> <button data-tipo="cross" data-id="'.$id.'" onclick="initCross(event)" class="btn btn-danger"><i class="fas fa-times"></i></button></td>';
         
         $data[] = $rowData;
     }

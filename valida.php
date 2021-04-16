@@ -30,7 +30,7 @@ if ($filas) {
             header("location:transcriptor.php");
         } else {
             if ($_SESSION['tipoUsuario'] == 2) {
-                header("location:verificador.php");
+                header("location:dashboard/index.php");
             }
         }
     }

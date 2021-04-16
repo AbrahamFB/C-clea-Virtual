@@ -2,7 +2,18 @@
 <html lang="en">
 
 <head>
+    <?php 
+    session_start();
+    $anadirURL = "";
+    $nombrePagina = "Cóclea Virtual - Verificador";
+    $css_extra = "";
+    $user = "Alfredo";
+    include("../html.php");
 
+    //echo '<body ondragstart="return false">';
+
+    
+    ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,6 +23,15 @@
     <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <style>
+        html {
+            font-size: 100%!important;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -23,7 +43,9 @@
 </head>
 
 <body id="page-top">
-
+    <?php 
+        include("../nav-bar_index.php");
+    ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -210,6 +232,15 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+    <?php 
+        include("footer.php");
+    ?>
 </body>
+<?php 
+    
 
+    include("scripts.php");
+    
+    echo '  </body>';
+?>
 </html>

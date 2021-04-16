@@ -45,7 +45,8 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
             $dest_path = $uploadFileDir . $newFileName;
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                $sql = "INSERT INTO Transcriptor (nivelLSM,temas,aExp,Cuenta_idCuenta) VALUES ($nLSM, $temas', $anioEx, '1')";
+                $id = $_SESSION["idCuenta"];
+                $sql = "INSERT INTO Transcriptor (nivelLSM,temas,aExp,Cuenta_idCuenta,validado) VALUES ('$nLSM', '$temas', '$anioEx', '$id','0')";
                 $conexion->query($sql);
                 //echo $sql;
 

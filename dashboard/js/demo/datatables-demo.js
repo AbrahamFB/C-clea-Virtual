@@ -26,6 +26,7 @@ const obj = {
   "nombre6":"$3,120"
 };
 $(document).ready(function() {
+  
   $('#dataTable').DataTable({
     "language":	{
       "sProcessing":     "Procesando...",
@@ -56,4 +57,55 @@ $(document).ready(function() {
     "ajax":"js/demo/transcriptores.php"
     
   });
+ 
+  
 });
+
+// document.addEventListener('Load', () => {
+//   iniciarBotones();
+// });
+function iniciarBotones(){
+    initCheck();
+    initCross();
+  
+}
+
+function initCheck(e){
+  const elemento = returnBotton(e.target.tagName, e);
+  let datos = 'id='+ elemento.dataset.id + '&validado=1';
+  $.ajax({
+    url: "js/demo/updateTrans.php",
+    type: "post",
+    data: datos,
+    success: function(resp) {
+      console.log(resp);
+      location.reload();
+    }
+  });
+  console.log('check', elemento);
+}
+
+function initCross(e) {
+  const elemento = returnBotton(e.target.tagName, e);
+  let datos = 'id='+ elemento.dataset.id + '&validado=2';
+  $.ajax({
+    url: "js/demo/updateTrans.php",
+    type: "post",
+    data: datos,
+    success: function(resp) {
+      console.log(resp);
+      location.reload();
+    }
+  });
+  consol
+  console.log('cross',elemento);
+}
+
+function returnBotton(element, e) {
+  let elemento;
+    if( element === 'I')
+      elemento = e.target.parentElement;
+    else
+      elemento = e.target;
+    return elemento;
+}
