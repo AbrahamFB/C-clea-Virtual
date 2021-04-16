@@ -79,15 +79,14 @@ class ConexionBD
         return array($fila["nombre"], $fila["correo"], $fila["tipoUsuario"], $fila["idCuenta"]);
     }
     //funcion prueba
-    function mirar($IDE){
-        $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 1 AND idArchivoMultimedia = '$IDE'";
+    function mirar($estado){
+        $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 1 AND idArchivoMultimedia = '$estado'";
         $res = mysqli_query($this->conexion, $archivos);    
         return $res;
         
     }
     function upArchivo($idu){
-        $archivos =  "UPDATE ArchivoMultimedia SET estado = '1'";
-        $archivos .= "WHERE idArchivoMultimedia = '$idu'";
+        $archivos =  "UPDATE ArchivoMultimedia SET estado = '1'WHERE idArchivoMultimedia = '$idu'";
         $res = mysqli_query($this->conexion, $archivos);    
         return $res;
 

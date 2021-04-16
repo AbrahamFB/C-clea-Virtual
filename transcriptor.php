@@ -68,21 +68,26 @@ include("nav-bar_index.php");
                     }
 
                     function aceptar(r) {
-                        
-                        //alert(i);
-                        var Var_JavaScript = 5; // declaración de la variable 
-                        var name = '<?php echo'+ (r.parentNode.parentNode.rowIndex) - 1 + '; ?>';
-                        document.body.innerHTML = name; // fíjese que el texto es molesto y no es realmente lo que se esperaba.
+                        var i = (r.parentNode.parentNode.rowIndex) - 1;
+                        console.log(r.id);
 
+                        $.ajax({
+                            url: 'p.php',
+                            data: 'id=' + r.id,
+                            type: 'POST',
+                            success: function(res) {
+                                console.log(res);
+                            }
+                        })
                     }
                 </script>
 
                 <?php
 
 
-                $IDE = $ide;
+                $estado = 1;
                 $conexion = new ConexionBD();
-                $resultado2 = $conexion->mirar($IDE);
+                $resultado2 = $conexion->mirar($estado);
                 ?>
 
                 <table id='tabla2' class='table table-striped table-bordered dt-responsive nowrap' cellspacing='0' width='70%'>
@@ -103,7 +108,7 @@ include("nav-bar_index.php");
                         <?php
                         while ($fila2 = mysqli_fetch_array($resultado2)) {
                             $dir2 = "usuarios/" . $fila2["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila2["ruta"];
-
+                            echo $dir2;
                             echo "<tr>";
                             echo "<td>";
                             echo $id = $fila2[0];;
@@ -171,7 +176,7 @@ $resultado = $conexion->getArchivos($temas);
                     $i = 0;
 
                     while ($fila = mysqli_fetch_array($resultado)) {
-
+                        $id = $fila["idArchivoMultimedia"];
                         $dir = "usuarios/" . $fila["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila["ruta"];
 
                         echo "<tr>";
@@ -192,7 +197,7 @@ $resultado = $conexion->getArchivos($temas);
                         echo "</td>";
 
                         echo "<td>";
-                        echo '<input type="submit" name="aceptar" value="Aceptar" onclick="aceptar(this),eliminar(this)">';
+                        echo '<input type="submit" id=' . $id . ' name="aceptar" value="Aceptar" onclick="aceptar(this),eliminar(this)">';
                         echo '<input type="submit" name="rechazar" value="Rechazar" onclick="rechazar(this)">';
                         echo "</td>";
                         echo "</tr>";
