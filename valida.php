@@ -20,7 +20,7 @@ $resultado = mysqli_query($conexion, $consulta);
 $filas = mysqli_num_rows($resultado); //
 
 
-
+//echo $_SESSION['tipoUsuario'];
 if ($filas) {
     $_SESSION['tipoUsuario'] = $datosUsuario[2];
     if ($_SESSION['tipoUsuario'] == 0) {

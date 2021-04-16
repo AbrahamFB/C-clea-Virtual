@@ -80,8 +80,7 @@ class ConexionBD
     }
     //funcion prueba
     function mirar($IDE){
-        $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst ";
-        $archivos .= "WHERE estado = 0 AND idArchivoMultimedia = '$IDE'";
+        $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 1 AND idArchivoMultimedia = '$IDE'";
         $res = mysqli_query($this->conexion, $archivos);    
         return $res;
         
@@ -96,8 +95,7 @@ class ConexionBD
     //funcion prueba
 
     function getArchivos($temas){
-        $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst ";
-        $archivos .= "WHERE estado = 0 AND temas = '$temas'";
+        $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 0 AND temas = '$temas'";
         $res = mysqli_query($this->conexion, $archivos);    
         return $res;
     }

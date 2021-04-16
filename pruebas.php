@@ -33,4 +33,12 @@ if (!file_exists($directorio)) {
 echo $_SESSION['correo'];
 echo $_SESSION['user'];
 echo $_SESSION['tipoUsuario'];
+
+
+echo "<br>fffffffffffffffffffffffffff<br>";
+$w=2;
+$fail = $conexion->mirar($w);
+echo $fail;
+
+
 ?>

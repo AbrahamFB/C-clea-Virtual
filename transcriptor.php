@@ -38,109 +38,103 @@ include("nav-bar_index.php");
     <div class="row justify-content-center">
         <div class="col-12  bg-white shadow-lg rounded">
 
-           
+
             <div width="100%" class="margin-tbe" id="ob2" style="display:block">
-            
-                    <h4 class="centrar-texto ">Archivo seleccionado </h4>
-                    <br>
 
-                    <script>
+                <h4 class="centrar-texto ">Archivo seleccionado </h4>
+                <br>
+
+                <script>
+                    function rechazar(r) {
+                        var i = r.parentNode.parentNode.rowIndex;
+                        document.getElementById("tabla1").deleteRow(i);
+                        alert(i);
+
+
+                    }
+
+
+                    function eliminar(r) {
+                        var i = r.parentNode.parentNode.rowIndex;
+                        document.getElementById("tabla1").deleteRow(i);
+
+
+                    }
+
+                    function eliminar2(r) {
+                        var i = r.parentNode.parentNode.rowIndex;
+                        document.getElementById("tabla2").deleteRow(i);
+
+                    }
+
+                    function aceptar(r) {
                         
+                        //alert(i);
+                        var Var_JavaScript = 5; // declaración de la variable 
+                        var name = '<?php echo'+ (r.parentNode.parentNode.rowIndex) - 1 + '; ?>';
+                        document.body.innerHTML = name; // fíjese que el texto es molesto y no es realmente lo que se esperaba.
 
-                        function rechazar(r) {
-                            var i = r.parentNode.parentNode.rowIndex;
-                            document.getElementById("tabla1").deleteRow(i);
-                            alert(i);
-                            
-                        
+                    }
+                </script>
+
+                <?php
+
+
+                $IDE = $ide;
+                $conexion = new ConexionBD();
+                $resultado2 = $conexion->mirar($IDE);
+                ?>
+
+                <table id='tabla2' class='table table-striped table-bordered dt-responsive nowrap' cellspacing='0' width='70%'>
+                    <thead>
+                        <tr>
+                            <!--<th scope='col'>Nombre del Archivo</th-->
+                            <th scope='col'>ID</th>
+                            <th scope='col'>Correo</th>
+                            <th scope='col'>Archivo del Estudiante</th>
+                            <th scope='col'>Tema</th>
+                            <th scope='col'>Formato</th>
+                            <th scope='col'>Estado</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+                        while ($fila2 = mysqli_fetch_array($resultado2)) {
+                            $dir2 = "usuarios/" . $fila2["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila2["ruta"];
+
+                            echo "<tr>";
+                            echo "<td>";
+                            echo $id = $fila2[0];;
+                            echo "</td>";
+                            echo "<td>";
+                            echo $fila2["correo"];
+                            echo "</td>";
+                            echo "<td>";
+                            echo "<video class='videoTabla' src='$dir2' controls></video>";
+                            echo "</td>";
+                            echo "<td>";
+                            echo $fila2["temas"];
+                            echo "</td>";
+                            echo "<td>";
+                            echo $fila2["formato"];
+                            echo "</td>";
+                            echo "<td>";
+                            echo '<input type="submit" name="finalizar" value="Finalizar" onclick="eliminar2(this)">';
+                            echo "</td";
+                            echo "</tr>";
                         }
-                       
 
-                        function eliminar(r) {
-                            var i = r.parentNode.parentNode.rowIndex;
-                            document.getElementById("tabla1").deleteRow(i);
-                        
-
-                        }
-                        function eliminar2(r) {
-                            var i = r.parentNode.parentNode.rowIndex;
-                            document.getElementById("tabla2").deleteRow(i);
-                        
-                        }
-
-                        function aceptar(r){
-                            var i = (r.parentNode.parentNode.rowIndex) -1 ;
-                            
-                            <?php
-                            //falta pasar la variable 
-                            $idu = $ide;
-                            $conexion = new ConexionBD();
-                            $resultado = $conexion->upArchivo($idu);
-                            
-                                ?>
-
-                                
-                           
-                        }
-                    </script>
-
-<?php
-                            $IDE = $ide;
-                            $conexion = new ConexionBD();
-                            $resultado2 = $conexion->mirar($IDE);
-                            ?>
-                            
-                            <table id='tabla2' class='table table-striped table-bordered dt-responsive nowrap' cellspacing='0' width='70%'>
-                            <thead>
-                                <tr>
-                                    <!--<th scope='col'>Nombre del Archivo</th-->
-                                    <th scope='col'>ID</th>
-                                    <th scope='col'>Correo</th>
-                                    <th scope='col'>Archivo del Estudiante</th>
-                                    <th scope='col'>Tema</th>
-                                    <th scope='col'>Formato</th>
-                                    <th scope='col'>Estado</th>
-            
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            <?php
-                            while ($fila2 = mysqli_fetch_array($resultado2)){
-                                $dir2 = "usuarios/" . $fila2["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila2["ruta"];
-
-                                echo "<tr>";
-                                echo "<td>";
-                                echo $id=$fila2[0];;
-                                echo "</td>";
-                                echo "<td>";
-                                echo $fila2["correo"];
-                                echo "</td>";
-                                echo "<td>";
-                                echo "<video class='videoTabla' src='$dir2' controls></video>";
-                                echo "</td>";
-                                echo "<td>";
-                                echo $fila2["temas"];
-                                echo "</td>";
-                                echo "<td>";
-                                echo $fila2["formato"];
-                                echo "</td>";
-                                echo "<td>";
-                                echo '<input type="submit" name="finalizar" value="Finalizar" onclick="eliminar2(this)">';
-                                echo "</td";
-                                echo "</tr>";
-                                
-                            
-                            }
-                            
-                            ?>
-                            </tbody>
-                            </table>
+                        ?>
+                    </tbody>
+                </table>
 
             </div>
         </div>
     </div>
-</div> <!--no quitar-->
+</div>
+<!--no quitar-->
 
 
 <br><br><br>
@@ -174,10 +168,10 @@ $resultado = $conexion->getArchivos($temas);
                 <tbody>
 
                     <?php
-                    $i=0;
-                    
+                    $i = 0;
+
                     while ($fila = mysqli_fetch_array($resultado)) {
-                        
+
                         $dir = "usuarios/" . $fila["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila["ruta"];
 
                         echo "<tr>";
@@ -204,8 +198,6 @@ $resultado = $conexion->getArchivos($temas);
                         echo "</tr>";
 
                         $i++;
-
-                        
                     }
 
 
@@ -213,7 +205,7 @@ $resultado = $conexion->getArchivos($temas);
 
 
                     ?>
-                    
+
                 </tbody>
             </table>
         </div>

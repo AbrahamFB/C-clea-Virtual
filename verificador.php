@@ -13,7 +13,7 @@ include("nav-bar_index.php");
 
 ?>
 
-            <iframe width="100%" height="1000000000000000000" src="../startbootstrap-sb-admin-2-gh-pages/index.html"></iframe>
+            <iframe width="100%" height="1000000000000000000" src="dashboard/index.html"></iframe>
 
 
 <?php
