@@ -40,37 +40,72 @@ include("nav-bar_index.php");
     <div class="row justify-content-center">
         <div class="col-12 p-5 bg-white shadow-lg rounded">
 
-            <!--boton para ocultar y mostrar contenido-->
-            <button class="btn-sample" id="obj1" style="display:inline" type="button" onclick="ocultar(),mostrar()">Subir transcripción</button>
-            <div width="70px" class="margin-tbe contenido-centradoe" id="obj2" style="display:none">
-                <form action="uploadAr.php" method="post" enctype="multipart/form-data" id="formTrans">
-                    <h2 class="centrar-texto ">Sube tu archivo</h2>
+           
+            <div width="70px" class="margin-tbe contenido-centradoe" id="ob2" style="display:none">
+            
+                    <h4 class="centrar-texto ">Archivo seleccionado </h4>
                     <br>
 
                     <script>
-                        function ocultar() {
 
-                            document.getElementById('obj1').style.display = 'none';
+                        function rechazar(r) {
+                            var i = r.parentNode.parentNode.rowIndex;
+                            document.getElementById("tabla").deleteRow(i);
+                            
+                        
                         }
-
-                        function mostrar() {
-                            document.getElementById('obj2').style.display = 'block';
+                        function aceptar(r) {
+                            //PENDIENTE
+                        document.getElementById('ob2').style.display = 'block';
+                        
+                        }
+                        function eliminar(r) {
+                            var i = r.parentNode.parentNode.rowIndex;
+                            document.getElementById("tabla").deleteRow(i);
+                        
                         }
                     </script>
 
-                    <div class="drag-drope">
-                        <input type="file" name="uploadedFile" id="photo" />
-                        <!--input type="file" name="uploadedFile" multiple="multiple" id="photo" accept="application/pdf" /-->
-                        <span class="fa-stack fa-2x">
-                            <i class="fa fa-cloud fa-stack-2x bottom pulsating"></i>
-                            <i class="fa fa-circle fa-stack-1x top medium"></i>
-                            <i class="fa fa-arrow-circle-up fa-stack-1x top"></i>
-                        </span>
-                        <span class="desc">Pulse aquí para añadir archivos</span>
-                    </div>
+                <table id="tabla2" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <!--<th scope="col">Nombre del Archivo</th-->
+                        <th scope="col">Correo</th>
+                        <th scope="col">Archivo del Estudiante</th>
+                        <th scope="col">Tema</th>
+                        <th scope="col">Formato</th>
+                        
 
-                    <input type="submit" form="formTrans" id="smtArchi" name="uploadBtn" value="Enviar" class="font-2rem btn btn btn-sample btn">
-                </form>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php
+
+                    while ($fila = mysqli_fetch_array($resultado)) {
+                        $dir = "usuarios/" . $fila["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila["ruta"];
+
+                        echo "<tr>";
+                        echo "<td>";
+                        echo $fila["correo"];
+                        echo "</td>";
+                        echo "<td>";
+                        echo "<video class='videoTabla' src='$dir' controls></video>";
+                        echo "</td>";
+                        echo "<td>";
+                        echo $fila["temas"];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $fila["formato"];
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+
+
+
+                    ?>
+                    </tbody>
+                </table>
 
             </div>
         </div>
@@ -110,6 +145,7 @@ $resultado = $conexion->getArchivos($temas);
                     <?php
 
                     while ($fila = mysqli_fetch_array($resultado)) {
+                        
                         $dir = "usuarios/" . $fila["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila["ruta"];
 
                         echo "<tr>";
@@ -127,8 +163,8 @@ $resultado = $conexion->getArchivos($temas);
                         echo "</td>";
 
                         echo "<td>";
-                        echo '<input type="submit" name="aceptar" value="Aceptar">';
-                        echo '<input type="submit" name="rechazar" value="Rechazar">';
+                        echo '<input type="submit" name="aceptar" value="Aceptar" onclick="aceptar(this),eliminar(this)">';
+                        echo '<input type="submit" name="rechazar" value="Rechazar" onclick="rechazar(this)">';
                         echo "</td>";
                         echo "</tr>";
                     }
