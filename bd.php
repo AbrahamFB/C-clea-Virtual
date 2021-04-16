@@ -79,7 +79,11 @@ class ConexionBD
         return array($fila["nombre"], $fila["correo"], $fila["tipoUsuario"], $fila["idCuenta"]);
     }
     //funcion prueba
-    function mirar(){
+    function mirar($IDE){
+        $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst ";
+        $archivos .= "WHERE estado = 0 AND idArchivoMultimedia = '$IDE'";
+        $res = mysqli_query($this->conexion, $archivos);    
+        return $res;
         
     }
     //funcion prueba

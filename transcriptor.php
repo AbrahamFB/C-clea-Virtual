@@ -38,10 +38,10 @@ include("nav-bar_index.php");
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12 p-5 bg-white shadow-lg rounded">
+        <div class="col-12  bg-white shadow-lg rounded">
 
            
-            <div width="70px" class="margin-tbe contenido-centradoe" id="ob2" style="display:none">
+            <div width="100%" class="margin-tbe" id="ob2" style="display:block">
             
                     <h4 class="centrar-texto ">Archivo seleccionado </h4>
                     <br>
@@ -50,67 +50,86 @@ include("nav-bar_index.php");
 
                         function rechazar(r) {
                             var i = r.parentNode.parentNode.rowIndex;
-                            document.getElementById("tabla").deleteRow(i);
+                            document.getElementById("tabla1").deleteRow(i);
                             
                         
                         }
-                        function aceptar(r) {
-                            //PENDIENTE
-                        document.getElementById('ob2').style.display = 'block';
-                        
-                        }
+                       
+
                         function eliminar(r) {
                             var i = r.parentNode.parentNode.rowIndex;
-                            document.getElementById("tabla").deleteRow(i);
+                            document.getElementById("tabla1").deleteRow(i);
                         
+
+                        }
+                        function eliminar2(r) {
+                            var i = r.parentNode.parentNode.rowIndex;
+                            document.getElementById("tabla2").deleteRow(i);
+                        
+                        }
+
+                        function aceptar(){
+                           
                         }
                     </script>
 
-                <table id="tabla2" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <!--<th scope="col">Nombre del Archivo</th-->
-                        <th scope="col">Correo</th>
-                        <th scope="col">Archivo del Estudiante</th>
-                        <th scope="col">Tema</th>
-                        <th scope="col">Formato</th>
-                        
+<?php
+                            $IDE = 29;
+                            $conexion = new ConexionBD();
+                            $resultado2 = $conexion->mirar($IDE);
+                            ?>
+                            
+                            <table id='tabla2' class='table table-striped table-bordered dt-responsive nowrap' cellspacing='0' width='70%'>
+                            <thead>
+                                <tr>
+                                    <!--<th scope='col'>Nombre del Archivo</th-->
+                                    <th scope='col'>ID</th>
+                                    <th scope='col'>Correo</th>
+                                    <th scope='col'>Archivo del Estudiante</th>
+                                    <th scope='col'>Tema</th>
+                                    <th scope='col'>Formato</th>
+                                    <th scope='col'>Estado</th>
+            
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                    </tr>
-                </thead>
-                <tbody>
+                            <?php
+                            while ($fila2 = mysqli_fetch_array($resultado2)){
+                                $dir2 = "usuarios/" . $fila2["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila2["ruta"];
 
-                    <?php
-
-                    while ($fila = mysqli_fetch_array($resultado)) {
-                        $dir = "usuarios/" . $fila["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila["ruta"];
-
-                        echo "<tr>";
-                        echo "<td>";
-                        echo $fila["correo"];
-                        echo "</td>";
-                        echo "<td>";
-                        echo "<video class='videoTabla' src='$dir' controls></video>";
-                        echo "</td>";
-                        echo "<td>";
-                        echo $fila["temas"];
-                        echo "</td>";
-                        echo "<td>";
-                        echo $fila["formato"];
-                        echo "</td>";
-                        echo "</tr>";
-                    }
-
-
-
-                    ?>
-                    </tbody>
-                </table>
+                                echo "<tr>";
+                                echo "<td>";
+                                echo $id=$fila2[0];;
+                                echo "</td>";
+                                echo "<td>";
+                                echo $fila2["correo"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo "<video class='videoTabla' src='$dir2' controls></video>";
+                                echo "</td>";
+                                echo "<td>";
+                                echo $fila2["temas"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo $fila2["formato"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo '<input type="submit" name="finalizar" value="Finalizar" onclick="eliminar2(this)">';
+                                echo "</td";
+                                echo "</tr>";
+                                
+                            
+                            }
+                            
+                            ?>
+                            </tbody>
+                            </table>
 
             </div>
         </div>
     </div>
-</div>
+</div> <!--no quitar-->
 
 
 <br><br><br>
@@ -128,10 +147,11 @@ $resultado = $conexion->getArchivos($temas);
         <h3 class="titulo centrar-texto mayusculas">Solicitudes</h3>
         <div class="col-md-12">
 
-            <table id="tabla" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+            <table id="tabla1" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <!--<th scope="col">Nombre del Archivo</th-->
+                        <th scope="col">ID</th>
                         <th scope="col">Correo</th>
                         <th scope="col">Archivo del Estudiante</th>
                         <th scope="col">Tema</th>
@@ -143,12 +163,15 @@ $resultado = $conexion->getArchivos($temas);
                 <tbody>
 
                     <?php
-
+                    
                     while ($fila = mysqli_fetch_array($resultado)) {
                         
                         $dir = "usuarios/" . $fila["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila["ruta"];
 
                         echo "<tr>";
+                        echo "<td>";
+                        echo $ide = $fila[0];
+                        echo "</td>";
                         echo "<td>";
                         echo $fila["correo"];
                         echo "</td>";
@@ -163,11 +186,16 @@ $resultado = $conexion->getArchivos($temas);
                         echo "</td>";
 
                         echo "<td>";
-                        echo '<input type="submit" name="aceptar" value="Aceptar" onclick="aceptar(this),eliminar(this)">';
+                        echo '<input type="submit" name="aceptar" value="Aceptar" onclick="aceptar(),eliminar(this)">';
                         echo '<input type="submit" name="rechazar" value="Rechazar" onclick="rechazar(this)">';
                         echo "</td>";
                         echo "</tr>";
+
+                    
+
+                        
                     }
+
 
 
 
