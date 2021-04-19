@@ -6,6 +6,9 @@ include("bd/bd.php");
 //$nLSM; /// POR CHECAR
 //$anioEXP = $_POST('anioExp');
 //$varSesion = $_SESSION['correo'];
+$id = $_SESSION['idCuenta'];
+$sql = "UPDATE Cuenta SET tipoUsuario = 1 WHERE idCuenta = $id";
+$conexion->query($sql);
 session_start();
 $varSesion3 = (string) $_SESSION['varSesion'];
 if ($varSesion3 === null || $varSesion3 === '') {
@@ -62,7 +65,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
         $message .= 'Error:' . $_FILES['uploadedFile']['error'];
     }
     $_SESSION['message'] = $message;
-    header("Location: estudiante.php");
+    header("Location: transcriptor.php");
 }
 
 //echo $_SESSION['correo'];

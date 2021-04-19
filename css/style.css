@@ -807,3 +807,12 @@ button:focus {
 }
 
 /*************footer End*****************/
+
+
+/* Alerta de información */
+.alert-info {
+    min-height: 20rem!important;
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+}

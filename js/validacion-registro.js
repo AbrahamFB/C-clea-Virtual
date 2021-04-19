@@ -86,6 +86,9 @@ class Validation {
                     $("#ocultarInicio").show("slow");   
                     $("#enviar").hide(1500);   
                     $(".alert").html("Te has registrado correctamente");
+                    setTimeout(() => {
+                      window.location.href = "perfil.php";
+                    }, 3000);
                   } else if(respuesta == 0){
                     $(".alert").html("Error, el correo ingresado ya existe");
                     $(".alert").removeClass('alert-succsess');

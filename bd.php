@@ -98,6 +98,19 @@ class ConexionBD
         $res = mysqli_query($this->conexion, $archivos);    
         return $res;
     }
+    function last_insert_id() {
+        $sql = 'SELECT LAST_INSERT_ID() AS id';
+        $res = mysqli_query( $this->conexion, $sql);
+        $respuesta = mysqli_fetch_array($res);
+        return $respuesta['id'];
+    }
+    function getTranscriptor($id) {
+        $sql = "SELECT idTranscriptor, validado FROM Cuenta as c INNER JOIN Transcriptor AS t on";
+        $sql .= " t.Cuenta_idCuenta = c.idCuenta WHERE idCuenta = '$id'";
+        $res = mysqli_query($this->conexion, $sql);
+        $respuesta = mysqli_fetch_array($res);
+        return $respuesta;
+    }
 
 }
 

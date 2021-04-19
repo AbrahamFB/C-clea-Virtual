@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /* build API request
 $APIUrl = 'https://api.email-validator.net/api/verify';
 $Params = array('EmailAddress' => $_POST['correo'], 'APIKey' => 'ev-e96f15275a8f9000e2570b494524c0c6');
@@ -41,6 +41,9 @@ if ($result && $result->{'status'} > 0) {
             if($resultado){
                 include("enviar-correo.php");
                 echo 1;
+                $_SESSION['correo'] = $_POST['correo'];
+                $_SESSION['idCuenta'] = $conexion->last_insert_id();
+                $_SESSION['tipoUsuario'] = '0';
             }
           
             else{

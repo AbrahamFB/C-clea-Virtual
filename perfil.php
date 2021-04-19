@@ -14,11 +14,11 @@ echo '  </body>
 
 <div class="row row-cols-2">
                         <div class="col centrar-texto">
-                            <button type="button" class="btn btn-info mayusculas btn-alumno">Alumno</button>
+                            <a href="estudiante.php"><button type="button" class="btn btn-info mayusculas btn-alumno">Alumno</button></a>
                         </div>
                         <br>
                         <div class="col centrar-texto">
-                            <button type="button" class="btn btn-info mayusculas btn-transcriptor">Transcriptor</button>
+                            <a href="altaTranscriptor.php"><button type="button" class="btn btn-info mayusculas btn-transcriptor">Transcriptor</button></a>
                         </div>
                     </div>
 

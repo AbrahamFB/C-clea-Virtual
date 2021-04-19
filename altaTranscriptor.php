@@ -8,6 +8,11 @@ if ($varSesion2 == null || $varSesion2 = '') {
     //header("location:login_index.php");
     die();
 }
+include("bd/bd.php");
+$id = $_SESSION['idCuenta'];
+echo $_SESSION['correo'];
+$sql = "UPDATE Cuenta SET tipoUsuario = 1 WHERE idCuenta = $id";
+$conexion->query($sql);
 ?>
 <?php
 
@@ -49,7 +54,7 @@ if (isset($_SESSION['message']) && $_SESSION['message']) {
                     <h2 class="centrar-texto mayusculas">Verifiquemos tu perfil</h2>
                     <br>
                     <div class="form-group">
-                        <label for="temas" class="font-2rem">Temas familiarizados</label>
+                        <label for="temas" class="font-2rem">Temas familiarizados <?php echo $id;?></label>
                         <p><input type=radio value="Matemáticas" name="tem" id=""> Matemáticas</p>
                         <p><input type="radio" name="tem" value="Español" id=""> Español</p>
                         <p><input type="radio" name="tem" value="Biología" id=""> Biología</p>

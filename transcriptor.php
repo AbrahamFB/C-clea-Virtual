@@ -11,6 +11,9 @@ if ($varSesion == null || $varSesion = '') {
     header("location:login_index.php");
     die();
 }
+//Consultamos el transcriptor para verificar que este validado su perfil
+$id = $_SESSION['idCuenta'];
+$res = $conexion->getTranscriptor($id);
 
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Transcriptor";
@@ -33,12 +36,15 @@ include("nav-bar_index.php");
 </div>
 
 
-
 <div class="container">
+
+    <?php 
+          if( $res['validado'] != 0 ) {
+    ?>
     <div class="row justify-content-center">
         <div class="col-12  bg-white shadow-lg rounded">
 
-
+          
             <div width="100%" class="margin-tbe" id="ob2" style="display:block">
 
                 <h4 class="centrar-texto ">Archivo seleccionado </h4>
@@ -152,6 +158,11 @@ $resultado = $conexion->getArchivos($temas);
 
 ?>
 <div class="container">
+<?php 
+    
+  
+        
+?>
     <div class="tablaEstudianteArchivos">
 
         <h3 class="titulo centrar-texto mayusculas">Solicitudes</h3>
@@ -214,7 +225,13 @@ $resultado = $conexion->getArchivos($temas);
                 </tbody>
             </table>
         </div>
-
+        <?php 
+        }
+        else {
+            echo '<div class="alert alert-info"><h4>Información!</h4>Tu perfil está siendo validado, vuelva más tarde.</div>';
+        }
+        ?>
+        
     </div>
 
 
