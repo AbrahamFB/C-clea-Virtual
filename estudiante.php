@@ -174,14 +174,18 @@ include("nav-bar_index.php");
 
                         $imgs = dir($dir);
                         $imgs2 = dir($dir2);
-                        while (($img = $imgs->read()) !== false || ($img = $imgs->read()) !== false) {
+                        while (($img = $imgs->read()) !== false || ($imgs = $imgs2->read()) !== false) {
                             if (mb_eregi('mp4', $img)) {
                                 echo "<tr>";
                                 echo "<td>";
                                 $d = $dir . $img;
+                                $d2 = $dir2 . $img;
                                 echo "<video class='videoTabla' src='$d' controls></video>";
+                                echo $d;
                                 echo "</td>";
                                 echo "<td>";
+                                //ARCHIVO TRANSCRITO
+                                echo $d2;
                                 echo "<video class='videoTabla' src='$d2' controls></video>";
                                 echo "</td>";
                                 echo "</tr>";

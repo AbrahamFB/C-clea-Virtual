@@ -63,7 +63,7 @@ class ConexionBD
     }
     function verificacionUsuario()
     {
-        $sql = "SELECT * FROM Cuenta where correo = '$correo'";
+        $sql = "SELECT * FROM Cuenta where correo = ''";
     }
 
     function altaTranscriptor()
@@ -79,32 +79,45 @@ class ConexionBD
         return array($fila["nombre"], $fila["correo"], $fila["tipoUsuario"], $fila["idCuenta"]);
     }
     //funcion prueba
-    function mirar($estado){
-        $archivos =  "SELECT idArchivoMultimedia, correo, ruta, temas, formato FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = $estado";
-        $res = mysqli_query($this->conexion, $archivos);    
+    function mirar($estado, $idTra)
+    {
+        $archivos =  "SELECT idArchivoMultimedia, idEst, correo, ruta, temas, formato FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = $estado AND idTrans = $idTra";
+        $res = mysqli_query($this->conexion, $archivos);
         return $res;
-        
     }
-    function upArchivo($idu){
-        $archivos =  "UPDATE ArchivoMultimedia SET estado = '1'WHERE idArchivoMultimedia = '$idu'";
-        $res = mysqli_query($this->conexion, $archivos);    
-        return $res;
 
+    //función ver archivos multimedia
+    function mirar2($estado)
+    {
+        $archivos =  "SELECT idArchivoTranscrito, duracion, formato, tamanio FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = $estado";
+        $res = mysqli_query($this->conexion, $archivos);
+        return $res;
+    }
+
+
+    function upArchivo($idu)
+    {
+        $archivos =  "UPDATE ArchivoMultimedia SET estado = '1'WHERE idArchivoMultimedia = '$idu'";
+        $res = mysqli_query($this->conexion, $archivos);
+        return $res;
     }
     //funcion prueba
 
-    function getArchivos($temas){
+    function getArchivos($temas)
+    {
         $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 0 AND temas = '$temas'";
-        $res = mysqli_query($this->conexion, $archivos);    
+        $res = mysqli_query($this->conexion, $archivos);
         return $res;
     }
-    function last_insert_id() {
+    function last_insert_id()
+    {
         $sql = 'SELECT LAST_INSERT_ID() AS id';
-        $res = mysqli_query( $this->conexion, $sql);
+        $res = mysqli_query($this->conexion, $sql);
         $respuesta = mysqli_fetch_array($res);
         return $respuesta['id'];
     }
-    function getTranscriptor($id) {
+    function getTranscriptor($id)
+    {
         $sql = "SELECT idTranscriptor, validado FROM Cuenta as c INNER JOIN Transcriptor AS t on";
         $sql .= " t.Cuenta_idCuenta = c.idCuenta WHERE idCuenta = '$id'";
         $res = mysqli_query($this->conexion, $sql);
@@ -112,13 +125,12 @@ class ConexionBD
         return $respuesta;
     }
     //pendiente
-    function finArchivo($fin){
+    function finArchivo($fin)
+    {
         $archivos =  "UPDATE ArchivoMultimedia SET estado = '1' WHERE idArchivoMultimedia = '$fin'";
-        $res = mysqli_query($this->conexion, $archivos);    
+        $res = mysqli_query($this->conexion, $archivos);
         return $res;
-
     }
-
 }
 
 
@@ -126,19 +138,17 @@ class ConexionBD
 
 
 <?php
-    if(isset($_GET['action'])){
+if (isset($_GET['action'])) {
 
-    switch($_GET['action']){
+    switch ($_GET['action']) {
         case "aceptar":
             // hacer cualquier cosa
-        break;
+            break;
         case "rechazar":
             // hacer cualquier cosa
-        break;
+            break;
         default:
             die('Algo salió mal');
-        break;
-
+            break;
     }
-
 }

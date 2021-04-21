@@ -27,6 +27,7 @@
                         error_reporting(0);
                         $conexion = new ConexionBD();
                         $datosUsuario = $conexion->i($_SESSION['correo']);
+                        echo $_SESSION['idCuenta'];
                         if ($_SESSION['tipoUsuario'] === "0" || $_SESSION['tipoUsuario'] === "1" || $_SESSION['tipoUsuario'] === "2") {
                             echo '<li><a href="logout.php" class="statusSesionC"><span class="iconify" data-icon="simple-line-icons:logout" data-inline="false"></span> Cerrar Sesión</a></li>';
                             if ($_SESSION['tipoUsuario'] === "0") {

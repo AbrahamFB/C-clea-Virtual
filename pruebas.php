@@ -36,6 +36,8 @@ echo $_SESSION['tipoUsuario'];
 
 
 echo "<br>fffffffffffffffffffffffffff<br>";
+echo "usuarios/" . $_SESSION['correoVideo'] . "/ArchivoTranscrito" . "/";
+
 $w=2;
 $fail = $conexion->mirar($w);
 echo $fail;
