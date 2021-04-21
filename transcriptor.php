@@ -114,7 +114,7 @@ include("nav-bar_index.php");
                         <?php
                         while ($fila2 = mysqli_fetch_array($resultado2)) {
                             $dir2 = "usuarios/" . $fila2["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila2["ruta"];
-                            echo $dir2;
+                            
                             echo "<tr>";
                             echo "<td>";
                             echo $id = $fila2[0];;

@@ -80,7 +80,7 @@ class ConexionBD
     }
     //funcion prueba
     function mirar($estado){
-        $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 1 AND idArchivoMultimedia = '$estado'";
+        $archivos =  "SELECT idArchivoMultimedia, correo, ruta, temas, formato FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = $estado";
         $res = mysqli_query($this->conexion, $archivos);    
         return $res;
         
