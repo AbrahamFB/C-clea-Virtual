@@ -86,6 +86,62 @@ include("nav-bar_index.php");
                             }
                         })
                     }
+
+                     //funciones para subir archivo
+                    function ocultarT() {
+                    document.getElementById('ob2').style.display = 'none';
+                    }
+                    function mostrarS() {
+                    document.getElementById('botonSubir').style.display = 'block';
+                    }
+                    function ocultar() {
+
+                    document.getElementById('botonSubir').style.display = 'none';
+                    }
+                    function mostrar() {
+                    document.getElementById('obj2').style.display = 'block';
+                    }
+
+                    //funcion progresbar
+                    function _(el) {
+                    return document.getElementById(el);
+                    }
+
+                    function uploadFile() {
+                    var file = _("photo").files[0];
+                    //alert(file.name+" | "+file.size+" | "+file.type);
+                    var formdata = new FormData();
+                    formdata.append("photo", file);
+                    var ajax = new XMLHttpRequest();
+                    ajax.upload.addEventListener("progress", progressHandler, false);
+                    ajax.addEventListener("load", completeHandler, false);
+                    ajax.addEventListener("error", errorHandler, false);
+                    ajax.addEventListener("abort", abortHandler, false);
+                    ajax.open("POST", "uploadAr.php");
+                    ajax.send(formdata);
+                    }
+
+                    function progressHandler(event) {
+                    _("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
+                    var percent = (event.loaded / event.total) * 100;
+                    _("progressBar").value = Math.round(percent);
+                    _("status").innerHTML = Math.round(percent) + "% subiendo... espere por favor";
+                    }
+
+                    function completeHandler(event) {
+                    _("status").innerHTML = event.target.responseText;
+                    _("progressBar").value = 0;
+                    }
+
+                    function errorHandler(event) {
+                    _("status").innerHTML = "Error en la subida";
+                    }
+
+                    function abortHandler(event) {
+                    _("status").innerHTML = "Su";
+                    }
+                    ///funcion porgresbarfin
+                    //terminan funciones para subir archivo
                 </script>
 
                 <?php
@@ -132,7 +188,7 @@ include("nav-bar_index.php");
                             echo $fila2["formato"];
                             echo "</td>";
                             echo "<td>";
-                            echo '<input type="submit" name="finalizar" value="Finalizar" onclick="eliminar2(this)">';
+                            echo '<input type="submit" name="finalizar" value="Finalizar" onclick="ocultarT(),mostrarS()">';
                             echo "</td";
                             echo "</tr>";
                         }
@@ -142,6 +198,43 @@ include("nav-bar_index.php");
                 </table>
 
             </div>
+
+            <!--subir archivo-->
+             <!--boton para ocultar y mostrar contenido-->
+             <br>
+             <button class="btn-sample contenido-centrado" id="botonSubir" style="display:none" type="button" onclick="ocultar(),mostrar()">Subir archivo transcrito</button>
+                            <br>
+                            <div width="70px" class="margin-tbe contenido-centradoe" id="obj2" style="display:none">
+                                <form action="uploadAr.php" method="post" enctype="multipart/form-data" id="formTrans">
+                                    <h2 class="centrar-texto ">Sube tu archivo para mandar a verificación</h2>
+                                    <br>
+                                    <div class="drag-drope">
+                                        <input type="file" name="uploadedFile" id="photo" />
+                                        <!--input type="file" name="uploadedFile" multiple="multiple" id="photo" accept="application/pdf" /-->
+                                        <span class="fa-stack fa-2x">
+                                            <i class="fa fa-cloud fa-stack-2x bottom pulsating"></i>
+                                            <i class="fa fa-circle fa-stack-1x top medium"></i>
+                                            <i class="fa fa-arrow-circle-up fa-stack-1x top"></i>
+                                        </span>
+                                        <span class="desc">Pulse aquí para añadir archivos</span>
+                                    </div>
+                                    <br>
+                                    <!--progres bar-->
+                                    <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+                                    <h6 id="status"></h6>
+                                    <h6 id="loaded_n_total"></h6>
+                                    <!--/progres bar-->
+                                    <br>
+
+                                    <input type="submit" form="formTrans" id="smtArchi" name="uploadBtn" value="Enviar" class="font-2rem btn btn btn-sample btn " onclick="uploadFile()">
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!--/subir archivo-->
         </div>
     </div>
 </div>

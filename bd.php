@@ -111,6 +111,13 @@ class ConexionBD
         $respuesta = mysqli_fetch_array($res);
         return $respuesta;
     }
+    //pendiente
+    function finArchivo($fin){
+        $archivos =  "UPDATE ArchivoMultimedia SET estado = '1' WHERE idArchivoMultimedia = '$fin'";
+        $res = mysqli_query($this->conexion, $archivos);    
+        return $res;
+
+    }
 
 }
 
