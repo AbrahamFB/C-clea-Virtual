@@ -157,59 +157,110 @@ include("nav-bar_index.php");
 
         <div class="tablaEstudianteArchivos">
             <div class="col-md-12">
+                <?php
 
+
+                $conexion = new ConexionBD();
+                $resultado2 = $conexion->mirarM();
+                $resultado3 = $conexion->mirarT();
+
+
+
+                //$resultado3 = $conexion->mirar($estadoT, $idTra);
+                ?>
                 <table id="tabla" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <!--<th scope="col">Nombre del Archivo</th-->
+                            <th scope="col">Nombre del Archivo</th>
                             <th scope="col">Tú Archivo</th>
-                            <th scope="col">Archivo Transcrito</th>
                         </tr>
                     </thead>
                     <tbody>
-
                         <?php
-                        $dir = "usuarios/" . $_SESSION['correo'] . "/ArchivoMultimedia" . "/";
-                        $dir2 = "usuarios/" . $_SESSION['correo'] . "/ArchivoTranscrito" . "/";
+                        $idV[] = "";
+                        $i = 0;
+                        while ($fila2 = mysqli_fetch_array($resultado2)) {
 
-                        $imgs = dir($dir);
-                        $imgs2 = dir($dir2);
-                        while (($img = $imgs->read()) !== false || ($imgs = $imgs2->read()) !== false) {
-                            if (mb_eregi('mp4', $img)) {
-                                echo "<tr>";
-                                echo "<td>";
-                                $d = $dir . $img;
-                                $d2 = $dir2 . $img;
-                                echo "<video class='videoTabla' src='$d' controls></video>";
-                                echo $d;
-                                echo "</td>";
-                                echo "<td>";
-                                //ARCHIVO TRANSCRITO
-                                echo $d2;
-                                echo "<video class='videoTabla' src='$d2' controls></video>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }
+                            $dir2 = "usuarios/" . $_SESSION['correo'] . "/ArchivoMultimedia" . "/Multimedia_" . $fila2[1];
+                            $correoEst = $fila2['correo'];
+                            $nombreAr = $fila2["ruta"];
 
-                            if (mb_eregi('mp3', $img)) {
-                                echo "<tr>";
-                                echo "<td>";
-                                $d3 = $dir . $img;
-                                $d2 = $dir2 . $img2;
-                                echo "<audio class='videoTabla' src='$d3' controls></audio>";
-                                echo "<td>";
-                                echo "<video class='videoTabla' src='$d2' controls></video>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }
+                            $_SESSION['correoVideo'] = $correoEst;
+                            echo "<tr>";
+                            echo "<td>";
+                            echo $fila2['ruta'];
+                            echo "</td>";
+                            echo "<td>";
+                            //echo $id = $fila2[0];
+                            $url1 = $fila2[1];
+                            echo "<video class='videoTabla' src='$dir2' controls controlslist='nodownload'></video>";
+                            //echo $dir2;
+                            echo "</td>";
+
+                            echo "</tr>";
                         }
-
                         ?>
+
                     </tbody>
                 </table>
             </div>
 
         </div>
+
+      <div class="padT"></div>
+        <div class="container">
+            <h3 class="centrar-texto mayusculas">Archivos Transcritos</h3>
+        </div>
+
+        <div class="tablaEstudianteArchivos">
+            <div class="col-md-12">
+                <?php
+
+
+                $conexion = new ConexionBD();
+                $resultado3 = $conexion->mirarT();
+
+                ?>
+                <table id="tabla" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <!--<th scope="col">Nombre del Archivo</th-->
+                            <th scope="col">Nombre del Archivo Transcrito</th>
+                            <th scope="col">Tú Archivo Transcrito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+
+                        while ($fila3 = mysqli_fetch_array($resultado3)) {
+
+                            $dir3 = "usuarios/" . $_SESSION['correo'] . "/ArchivoTranscrito" . "/Multimedia_" . $fila3[1];
+                            $correoEst = $fila3['correo'];
+                            $nombreAr = $fila3["ruta"];
+
+                            $_SESSION['correoVideo'] = $correoEst;
+                            echo "<tr>";
+                            echo "<td>";
+                            echo $fila3['ruta'];
+                            echo "</td>";
+                            echo "<td>";
+                            $url1 = $fila3[1];
+                            echo "<video class='videoTabla' src='$dir3' controls controlslist='nodownload'></video>";
+                            echo '<a href="' . $dir3 . '" download="' . $nombreAr . '"><button type="button" class="btn btn-primary">Descargar Archivo</button></a>';
+                            //echo $dir2;
+                            echo "</td>";
+
+                            echo "</tr>";
+                        }
+                        ?>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
         <!--PARTE DE SUBIR ARCHIVO-->
         <h3 class="text-center">Descripción</h3>
         <?php echo $descripcion; ?>

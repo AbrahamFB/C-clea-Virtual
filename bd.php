@@ -85,6 +85,31 @@ class ConexionBD
         $res = mysqli_query($this->conexion, $archivos);
         return $res;
     }
+    function mirarM()
+    {
+        $idEstu = $_SESSION['idCuenta'];
+        $archivos =  "SELECT idArchivoMultimedia, ruta, temas FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 0 AND idEst = $idEstu";
+        $res = mysqli_query($this->conexion, $archivos);
+        return $res;
+    }
+    function mirarT()
+    {
+        $idEstu = $_SESSION['idCuenta'];
+        $archivos =  "SELECT idArchivoTranscrito, ruta FROM ArchivoTranscrito as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 3 AND idEst = $idEstu";
+        $res = mysqli_query($this->conexion, $archivos);
+        return $res;
+    }
+
+
+    function mirarTR()
+    {
+        $idT = $_SESSION['idCuenta'];
+        $archivos =  "SELECT idArchivoTranscrito, ruta, correo FROM ArchivoTranscrito as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 4 AND idTrans = $idT";
+        $res = mysqli_query($this->conexion, $archivos);
+        return $res;
+    }
+
+
 
     //función ver archivos multimedia
     function mirar2($estado)
@@ -94,6 +119,23 @@ class ConexionBD
         return $res;
     }
 
+
+    function actualizarPendienteV($idArchMul)
+    {
+        $actuEst = "UPDATE ArchivoMultimedia SET estado = 2 WHERE `ArchivoMultimedia`.`idArchivoMultimedia` = $idArchMul";
+        $res = mysqli_query($this->conexion, $actuEst);
+        return $res;
+    }
+
+
+
+    function verCorreoEst($estado)
+    {
+        $correo =  "SELECT idEst, idArchivoMultimedia FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = $estado";
+        $res = mysqli_query($this->conexion, $correo);
+        $fila = mysqli_fetch_array($res);
+        return array($fila["idEst"], $fila["idArchivoMultimedia"]);
+    }
 
     function upArchivo($idu)
     {
@@ -127,7 +169,6 @@ class ConexionBD
     //pendiente
     function finArchivo($fin)
     {
-        $archivos =  "UPDATE ArchivoMultimedia SET estado = '1' WHERE idArchivoMultimedia = '$fin'";
         $res = mysqli_query($this->conexion, $archivos);
         return $res;
     }

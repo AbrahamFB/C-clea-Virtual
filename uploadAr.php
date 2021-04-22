@@ -74,7 +74,7 @@ if ($_SESSION['tipoUsuario'] == 0) {
                 if (in_array($fileExtension, $allowedfileExtensions)) {
                     // directory in which the uploaded file will be moved
 
-                    
+
                     $uploadFileDir = "usuarios/" . $_SESSION['correoVideo'] . "/ArchivoTranscrito" . "/";
 
                     $dest_path = $uploadFileDir . $newFileName;
@@ -93,18 +93,20 @@ if ($_SESSION['tipoUsuario'] == 0) {
             }
 
 
-            $temas = $_POST['tema'];
+
             $idTr = $_SESSION['idCuenta'];
-           // $estado = 0;
-            //$conexion2 = new ConexionBD();
-            //$resultado2 = $conexion2->mirar($estado);
+            $correoEst = $_SESSION['correoVideo'];
+            echo $correoEst;
+            $conexion2 = new ConexionBD();
+            $estadoVideo = $conexion2->verCorreoEst(1);
+            $idEst = $estadoVideo[0];
+            $idArchMul = $estadoVideo[1];
 
-            //$idE = $fila2["idEst"];
-
-
-            $query = "INSERT INTO ArchivoTranscrito(ruta, formato,tamanio, idTranscriptor, idEstudiante) VALUES ('$fileName','$fileType','$fileSize', '$idTr', '$idE')";
+            $query = "INSERT INTO ArchivoTranscrito(ruta, formato, tamanio, idEst, idTrans, idAM) VALUES ('$fileName','$fileType','$fileSize', '$idEst', '$idTr', '$idArchMul')";
             $conexion->query($query);
-            //echo $query; 
+            
+            $actPenV = $conexion2->actualizarPendienteV($idArchMul);
+
             $_SESSION['message'] = $message;
             header("Location: transcriptor.php");
         }

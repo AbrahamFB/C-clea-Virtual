@@ -74,26 +74,26 @@ include("nav-bar_index.php");
                         }
 
                         function aceptar(r) {
-                           
-                           
-                            
+
+
+
                             $.ajax({
                                 url: 'p.php',
                                 data: 'id=' + r.id,
                                 type: 'POST',
                                 success: function(res) {
                                     console.log(res);
-                                    if( res != 0 ) {
+                                    if (res != 0) {
                                         console.log('entro');
                                         var i = (r.parentNode.parentNode.rowIndex) - 1;
                                         eliminar(r);
                                         setTimeout(() => {
                                             location.reload();
-                                        },3000);
-                                        
+                                        }, 3000);
+
                                         //console.log(r.id);
                                     }
-                                 
+
 
                                 }
                             });
@@ -203,7 +203,7 @@ include("nav-bar_index.php");
                                 echo "<td>";
                                 ///DESCARGAR vÍDEO
                                 echo "<video class='videoTabla' src='$dir2' controls></video>";
-                                echo '<a href="'.$dir2.'" download="'.$nombreAr.'">
+                                echo '<a href="' . $dir2 . '" download="' . $nombreAr . '">
                                 Descargar Archivo
                                 </a>';
                                 echo "</td>";
@@ -222,6 +222,8 @@ include("nav-bar_index.php");
                             ?>
                         </tbody>
                     </table>
+
+
 
                 </div>
 
@@ -270,6 +272,87 @@ include("nav-bar_index.php");
 <br><br><br>
 
 
+
+
+<!---- T A B L A  D E  R E C H A Z A D O S ---------------->
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12  bg-white shadow-lg rounded">
+            <div class="tablaEstudianteArchivos">
+                <h3 class="titulo centrar-texto mayusculas">
+                    Rechazados</h3>
+                <div class="col-md-12">
+
+                    <?php
+
+
+                    $estado = 4;
+                    $idTra = $_SESSION['idCuenta'];
+                    $conexion = new ConexionBD();
+                    $resultado2 = $conexion->mirarTR();
+                    ?>
+
+                    <table id='tabla2' class='table table-striped table-bordered dt-responsive nowrap' cellspacing='0' width='70%'>
+                        <thead>
+                            <tr>
+                                <!--<th scope='col'>Nombre del Archivo</th-->
+                                <th scope='col'>ID</th>
+                                <th scope='col'>Correo</th>
+                                <th scope='col'>Archivo del Estudiante</th>
+                                <th scope='col'>Estado</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <script>
+
+
+
+                            </script>
+                            <?php
+                            while ($fila2 = mysqli_fetch_array($resultado2)) {
+                                $dir2 = "usuarios/" . $fila2["correo"] . "/ArchivoTranscrito" . "/Multimedia_" . $fila2["ruta"];
+                                $correoEst = $fila2['correo'];
+                                $nombreAr = $fila2["ruta"];
+                                $_SESSION['correoVideo'] = $correoEst;
+                                echo "<tr>";
+                                echo "<td>";
+                                echo $id = $fila2[0];;
+                                echo "</td>";
+                                echo "<td>";
+                                echo $fila2["correo"];
+                                echo "</td>";
+                                echo "<td>";
+                                ///DESCARGAR vÍDEO
+                                echo "<video class='videoTabla' src='$dir2' controls></video>";
+                                echo '<a href="' . $dir2 . '" download="' . $nombreAr . '">
+            Descargar Archivo
+            </a>';
+                                echo "</td>";
+
+                                echo "<td>";
+                                echo '<input type="submit" id=' . $correoEst . ' name="finalizar" value="Finalizar" onclick="ocultarT(),mostrar()">';
+                                echo "</td";
+                                echo "</tr>";
+                            }
+
+                            ?>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+<br><br><br>
+        </div>
+    </div>
+    
+</div>
+
+
+
+<br><br><br>
+
 <?php
         $temas = "Física";
         $conexion = new ConexionBD();
@@ -283,7 +366,7 @@ include("nav-bar_index.php");
 
     ?>
 
-    
+
     <div class="tablaEstudianteArchivos">
 
         <h3 class="titulo centrar-texto mayusculas">Solicitudes</h3>
