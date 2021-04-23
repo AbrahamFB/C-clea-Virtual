@@ -31,6 +31,9 @@
         td {
             text-align: center;
         }
+        .oculto {
+            display: none!important;
+        }
     </style>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -61,17 +64,17 @@
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider">
 
-            <!-- Nav Item - Dashboard -->
+            <!-- Nav Item - Dashboard
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Multinedia</span></a>
-            </li>
+            </li> -->
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+            <!-- Divider
+            <hr class="sidebar-divider"> -->
 
 
             <!-- Heading -->
@@ -83,14 +86,14 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="index.php" data-id-parte="1">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Transcriptores</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="index.php" data-id-parte="2">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Multimedia</span></a>
             </li>
@@ -123,13 +126,13 @@
 
                         
                          <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                    <div class="card shadow mb-4 actual" id="parte-1">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Solicitudes de Transcriptores</h6>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" >
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
@@ -164,9 +167,50 @@
                                 </table>
                             </div>
                         </div>
+                      
                     </div>
-
+                    <div class="card shadow mb-4 oculto" id="parte-2">
+                        <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Validar Transcripciones</h6>
+                        </div>
+                        <div class="card-body" >
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="tablaTranscritos" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Transcriptor</th>
+                                                <th>Correo</th>
+                                                <th>Tema</th>
+                                                <th>Vídeo</th>
+                                                <th>Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Transcriptor</th>
+                                                <th>Correo</th>
+                                                <th>Tema</th>
+                                                <th>Vídeo</th>
+                                                <th>Estado</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>Correo</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                
+                                            </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                  
                     <!-- /.container-fluid -->
 
                 
