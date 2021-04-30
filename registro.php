@@ -49,11 +49,6 @@ include("scripts.php");
                         <input name="confirm" id="confirm" type="password" class="form-control font-2rem" placeholder="Confirma tu contraseña">
                     </div>
                     <input type="submit" class="btn btn-primary font-2rem btn-block btn-modificado mt-5" value="Registrarme" id="enviar">
-
-
-
-                    <a href="login.php" id="ocultarInicio" style="display: none;" class="btn btn-light font-2rem btn-modificado">Iniciar Sesión</a>
-
                     <div class="alert"><span class="mensajes"></span></div>
 
                 </form>
@@ -67,7 +62,7 @@ include("scripts.php");
 <script type="text/javascript">
     let form = new Validation("formulario-registro");
     // Funciones de Validación
-    form.requireText("nombre", 5, 50, [" "], []);
+    form.requireText("nombre", 3, 50, [" "], []);
     form.requireEmail("correo", 4, 50, [" "], []);
     form.registerPassword("contrasena", 6, 50, [" "], [], "confirm");
 </script>

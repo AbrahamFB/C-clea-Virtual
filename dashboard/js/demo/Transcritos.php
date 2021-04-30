@@ -14,7 +14,7 @@
         $dataRow[] = $row['temas'];
 
         
-        $dataRow[] = '<td> <a class="btn btn-info" href="../usuarios/' . $correoEst . '/ArchivoTranscrito/'. $ruta .'">Descargar</a></td>';
+        $dataRow[] = '<td> <a download="Multimedia_'.$ruta.'" class="btn btn-info" href="../usuarios/' . $correoEst . '/ArchivoTranscrito/Multimedia_'. $ruta .'">Descargar</a></td>';
         $dataRow[] = '<td><button onclick="initCheck(event,\'updateArchTran.php\')" class="btn btn-success" data-tipo="check" data-id="'.$id.'"><i class="fas fa-check"></i></button> <button data-tipo="cross" data-id="'.$id.'" onclick="initCross(event,\'updateArchTran.php\')" class="btn btn-danger"><i class="fas fa-times"></i></button></td>';
         $data[] = $dataRow;
     }

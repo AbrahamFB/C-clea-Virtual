@@ -74,9 +74,6 @@ include("nav-bar_index.php");
                         }
 
                         function aceptar(r) {
-
-
-
                             $.ajax({
                                 url: 'p.php',
                                 data: 'id=' + r.id,

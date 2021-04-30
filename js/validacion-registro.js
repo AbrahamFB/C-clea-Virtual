@@ -45,10 +45,10 @@ class Validation {
       this.removeValid(input);
     });
 
-        $(input).on("input", input, () => {
-          this.submitDisabled(false, this.submitButtonText);
-          $(function(){
+        //$(input).on("input", input, () => {
+         // $(function(){
             $("#enviar").on("click", function (e) {
+              //this.submitDisabled(false, this.submitButtonText);
               e.preventDefault();
     
               let nombre = $("#nombre").val();
@@ -69,10 +69,9 @@ class Validation {
                   $(".alert").removeClass('alert-success');
                   $(".alert").removeClass('alert-danger');
                   $(".mensajes").html("Procesando datos...");
-                  //alert(contrasena);
                 },
                 success: function (respuesta) {
-                  //alert(respuesta);
+                  alert(respuesta);
                   console.log(typeof respuesta);
                   $(".loading").hide();
                     if (respuesta == 1) {
@@ -83,12 +82,13 @@ class Validation {
                     $("#confirm").val() == "";
                     $(".alert").removeClass('alert-danger');
                     $(".alert").addClass('alert-success');
-                    $("#ocultarInicio").show("slow");   
+                    //$("#ocultarInicio").show("slow");   
                     $("#enviar").hide(1500);   
                     $(".alert").html("Te has registrado correctamente");
                     setTimeout(() => {
                       window.location.href = "perfil.php";
                     }, 3000);
+                    return;
                   } else if(respuesta == 0){
                     $(".alert").html("Error, el correo ingresado ya existe");
                     $(".alert").removeClass('alert-succsess');
@@ -102,8 +102,8 @@ class Validation {
                 },
               });
             });
-          });
-        });
+          //});
+       // });
 
     return invalidString;
   }
@@ -319,7 +319,7 @@ class Validation {
         let minLength = thisLog[2];
         let maxLength = thisLog[3];
         let illegalCharArray = thisLog[4];
-        let necessaryCharArray = thisLog[5];
+        let necessaryCharArray = thisLog[3];
         if (thisLog[0] === "registerPassword") {
           var passConfirmId = thisLog[6];
           var passConfirm = $("#" + passConfirmId);
