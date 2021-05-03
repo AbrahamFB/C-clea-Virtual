@@ -71,7 +71,7 @@ class Validation {
                   $(".mensajes").html("Procesando datos...");
                 },
                 success: function (respuesta) {
-                  alert(respuesta);
+                  //alert(respuesta);
                   console.log(typeof respuesta);
                   $(".loading").hide();
                     if (respuesta == 1) {

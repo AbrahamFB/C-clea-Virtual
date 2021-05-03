@@ -340,10 +340,10 @@ include("nav-bar_index.php");
 
                 </div>
             </div>
-<br><br><br>
+            <br><br><br>
         </div>
     </div>
-    
+
 </div>
 
 
@@ -351,18 +351,48 @@ include("nav-bar_index.php");
 <br><br><br>
 
 <?php
-        $temas = "Física";
+
+
+
         $conexion = new ConexionBD();
+        $e = $_SESSION['idCuenta'];
+        $e = intval($e);
+        //echo $e;
+        $resT = $conexion->regresaTema($e);
+
+        //echo $resT[0];
+
+        $i = 0;
+        $temas = array();
+        foreach ($resT as $key => $value) {
+            $te = $resT[0][$i];
+   
+            $i++;
+
+            if ($te == 0) {
+                $temas[] = "Matemáticas";
+            }
+            if ($te == 1) {
+                $temas[] = "Español";
+            }
+            if ($te == 2) {
+                $temas[] = "Biología";
+            }
+            if ($te == 3) {
+                $temas[] = "Historia";
+            }
+            if ($te == 4) {
+                $temas[] = "Física";
+            }
+
+        }
         $resultado = $conexion->getArchivos($temas);
 
 ?>
+
+
+
 <div class="container">
-    <?php
-
-
-
-    ?>
-
 
     <div class="tablaEstudianteArchivos">
 
@@ -416,10 +446,6 @@ include("nav-bar_index.php");
 
                         $i++;
                     }
-
-
-
-
 
                     ?>
 

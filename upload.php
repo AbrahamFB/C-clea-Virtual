@@ -15,8 +15,14 @@ if ($varSesion3 === null || $varSesion3 === '') {
     header("location:login.php");
     die();
 }
+$temas1= $_POST['tem'];
+for ($i=0;$i<count($temas1);$i++)    
+{     
+    $temi[$i] = $temas1;  
+    $rtemas = $rtemas.$temi[$i][$i];
+} 
+echo $rtemas;
 
-$temas = $_POST['tem'];
 $nLSM = $_POST['nLSM'];
 $anioEx = $_POST['anioExp'];
 
@@ -49,7 +55,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Enviar') {
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
                 $id = $_SESSION["idCuenta"];
-                $sql = "INSERT INTO Transcriptor (nivelLSM,temas,aExp,Cuenta_idCuenta,validado) VALUES ('$nLSM', '$temas', '$anioEx', '$id','0')";
+                $sql = "INSERT INTO Transcriptor (nivelLSM,temas,aExp,Cuenta_idCuenta,validado) VALUES ('$nLSM', '$rtemas', '$anioEx', '$id','0')";
                 $conexion->query($sql);
                 //echo $sql;
 

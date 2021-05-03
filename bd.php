@@ -147,7 +147,13 @@ class ConexionBD
 
     function getArchivos($temas)
     {
-        $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 0 AND temas = '$temas'";
+        $Tms = 'WHERE estado = 0 AND temas = '.$temas[0];
+        if( count($temas) > 1 ) {
+            for( $i = 1; $i < count($temas);$i++) {
+                $Tms .= ' OR temas = ' . $temas[$i]; 
+            }
+        }
+        $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst $Tms";
         $res = mysqli_query($this->conexion, $archivos);
         return $res;
     }
@@ -166,11 +172,13 @@ class ConexionBD
         $respuesta = mysqli_fetch_array($res);
         return $respuesta;
     }
-    //pendiente
-    function finArchivo($fin)
-    {
-        $res = mysqli_query($this->conexion, $archivos);
-        return $res;
+
+
+    function regresaTema($idTrans){
+        $sql = "SELECT temas from Transcriptor WHERE idTranscriptor = $idTrans";
+        $res = mysqli_query($this->conexion, $sql);
+        $respuesta = mysqli_fetch_array($res);
+        return $respuesta;
     }
 }
 
