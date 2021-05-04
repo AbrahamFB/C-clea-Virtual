@@ -207,8 +207,57 @@ include("nav-bar_index.php");
             </div>
 
         </div>
+        <style>
+            form p,
+            form input[type="submit"] {
+                text-align: center;
+                font-size: 20px;
+            }
 
-      <div class="padT"></div>
+            form {
+                width: 60%;
+            }
+
+
+            input[type="radio"] {
+                display: none;
+                /*position: absolute;top: -1000em;*/
+            }
+
+            label {
+                color: grey;
+            }
+
+            .clasificacion {
+                direction: rtl;
+                unicode-bidi: bidi-override;
+            }
+
+            label:hover,
+            label:hover~label {
+                color: orange;
+            }
+
+             input[type="radio"]:checked~label .inputEstrella{
+                color: orange;
+            }
+
+            textarea {
+                margin: 0 auto;
+            }
+
+
+            .padre {
+                display: flex;
+                justify-content: center;
+            }
+
+            .hijo {
+                padding: 10px;
+                margin: 10px;
+            }
+        </style>
+        <div class="padT"></div>
         <div class="container">
             <h3 class="centrar-texto mayusculas">Archivos Transcritos</h3>
         </div>
@@ -228,6 +277,7 @@ include("nav-bar_index.php");
                             <!--<th scope="col">Nombre del Archivo</th-->
                             <th scope="col">Nombre del Archivo Transcrito</th>
                             <th scope="col">Tú Archivo Transcrito</th>
+                            <th scope="col">Comentario</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -251,6 +301,29 @@ include("nav-bar_index.php");
                             //echo $dir2;
                             echo "</td>";
 
+                            echo "<td>";
+                        ?>
+
+                            <div class="col padre">
+                                <form action="calificar.php" method="post" id="form" class="hijo">
+                                    <input type="number" value="<?php echo $fila3[0]; ?>" default name="idArchi" style="display: none;">
+                                    <p class="clasificacion">
+                                        <input  id="radio1<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="5">
+                                        <label for="radio1">★</label>
+                                        <input id="radio2<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="4"><label for="radio2">★</label>
+                                        <input  id="radio3<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="3"><label for="radio3">★</label>
+                                        <input  id="radio4<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="2"><label for="radio4">★</label>
+                                        <input  id="radio5<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="1"><label for="radio5">★</label>
+                                    </p>
+
+                                    <h5 class="centrar-texto">Tú valoración</h5>
+                                    <textarea name="comentario" id="" class="form-control inComentario centrar-texto" style="min-width: 100%"></textarea>
+                                    <br>
+                                    <input type="submit" value="Enviar" class="btn btn-success">
+                                </form>
+                            </div>
+                        <?php
+                            echo "</td>";
                             echo "</tr>";
                         }
                         ?>
@@ -282,22 +355,7 @@ include("nav-bar_index.php");
                 </ul>
             </div>
 
-            <div class="col">
-                <form action="">
 
-                    <h5>Tú puntuación</h5>
-                    <a href="" class="ion-android-star"></a>
-                    <a href="" class="ion-android-star-outline"></a>
-                    <a href="" class="ion-android-star-outline"></a>
-                    <a href="" class="ion-android-star-outline"></a>
-                    <a href="" class="ion-android-star-outline"></a>
-
-                    <h5>Tú valoración</h5>
-                    <textarea name="" id="" cols="30" rows="10" class="inComentario"></textarea>
-                    <br>
-                    <input type="button" value="Enviar">
-                </form>
-            </div>
 
 
 
