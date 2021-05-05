@@ -241,23 +241,14 @@ include("nav-bar_index.php");
                 /*position: absolute;top: -1000em;*/
             }
 
-            label {
-                color: grey;
-            }
+
 
             .clasificacion {
                 direction: rtl;
                 unicode-bidi: bidi-override;
             }
 
-            label:hover,
-            label:hover~label {
-                color: orange;
-            }
 
-            input[type="radio"]:checked~label .inputEstrella {
-                color: orange;
-            }
 
             textarea {
                 margin: 0 auto;
@@ -306,7 +297,7 @@ include("nav-bar_index.php");
                         </thead>
                         <tbody>
                             <?php
-
+                            $h = 0;
                             while ($fila3 = mysqli_fetch_array($resultado3)) {
 
                                 $dir3 = "usuarios/" . $_SESSION['correo'] . "/ArchivoTranscrito" . "/Multimedia_" . $fila3[1];
@@ -329,22 +320,59 @@ include("nav-bar_index.php");
                                 echo "</td>";
 
                                 echo "<td>";
+
                                 if ($fila3['estrellas'] == "" && $fila3['comentarios'] == "") {
 
 
                             ?>
+                                    <style>
+                                        <?php echo "label:hover.inputEstrella" . $h; ?>,
+                                        <?php echo "label:hover~label.inputEstrella" . $h . '{
+                                            color: orange;
+                                        }'; ?><?php echo 'input[type="radio"]:checked~label.inputEstrella' . $h .  '{
+                                            color: orange;
+                                        }';
+                                                ?><?php echo 'label.inputEstrella' . $h . '{
+                                            color: grey;
+                                        }';
+                                                    ?>.evaluar--disabled {
+                                            max-height: 0;
+                                            opacity: 0;
+                                        }
 
-                                    <div class="col padre">
+                                        .ocultarbOc {
+                                            max-height: 0;
+                                            opacity: 0;
+                                        }
+                                    </style>
+                                    <div class="centrar-texto">
+
+                                        <button class="ocultarBEva btn btn-success" id="btnEv<?php echo $h; ?>" onclick="activateTitle(<?php echo $h; ?>)">Evaluar</button>
+                                    </div><br>
+                                    <div class="centrar-texto">
+
+                                        <button class="evaluar--disabled btn btn-warning" id="btnOcu<?php echo $h; ?>" onclick="DesactivarTitle(<?php echo $h; ?>)">Ocultar</button>
+                                    </div>
+                                    <div class="col padre evaluar--disabled" id="evaluar<?php echo $h; ?>">
                                         <form action="calificar.php" method="post" id="form" class="hijo">
                                             <input type="number" value="<?php echo $fila3[0]; ?>" default name="idArchi" style="display: none;">
+
+
+
                                             <p class="clasificacion">
-                                                <input id="radio1<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="5">
-                                                <label for="radio1">★</label>
-                                                <input id="radio2<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="4"><label for="radio2">★</label>
-                                                <input id="radio3<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="3"><label for="radio3">★</label>
-                                                <input id="radio4<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="2"><label for="radio4">★</label>
-                                                <input id="radio5<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="1"><label for="radio5">★</label>
+                                                <input class="inputEstrella<?php echo $h ?>" id="radio1" type="radio" name="estrellas" value="5">
+                                                <label class="inputEstrella<?php echo $h ?>" for="radio1">★</label>
+                                                <input class="inputEstrella<?php echo $h ?>" id="radio2" type="radio" name="estrellas" value="4">
+                                                <label class="inputEstrella<?php echo $h ?>" for="radio2">★</label>
+                                                <input class="inputEstrella<?php echo $h ?>" id="radio3" type="radio" name="estrellas" value="3">
+                                                <label class="inputEstrella<?php echo $h ?>" for="radio3">★</label>
+                                                <input class="inputEstrella<?php echo $h ?>" id="radio4" type="radio" name="estrellas" value="2">
+                                                <label class="inputEstrella<?php echo $h ?>" for="radio4">★</label>
+                                                <input class="inputEstrella<?php echo $h ?>" id="radio5" type="radio" name="estrellas" value="1">
+                                                <label class="inputEstrella<?php echo $h ?>" for="radio5">★</label>
                                             </p>
+
+
 
                                             <h5 class="centrar-texto">Tú valoración</h5>
                                             <textarea name="comentario" id="" class="form-control inComentario centrar-texto" style="min-width: 100%"></textarea>
@@ -352,9 +380,11 @@ include("nav-bar_index.php");
                                             <div class="centrar-texto">
                                                 <input type="submit" value="Valorar" class="btn btn-success">
                                             </div>
+
                                         </form>
                                     </div>
                                 <?php
+                                    $h++;
                                 } else {
                                 ?>
                                     <p class='centrar-texto'>Ya lo comentaste anteriormente</p>
@@ -376,6 +406,20 @@ include("nav-bar_index.php");
             </div>
 
         </div>
+        <script>
+            function activateTitle(titleNumber) {
+                document.getElementById(`evaluar${titleNumber}`).classList.remove("evaluar--disabled");
+                document.getElementById(`btnOcu${titleNumber}`).classList.remove("evaluar--disabled");
+                document.getElementById(`btnEv${titleNumber}`).classList.add("evaluar--disabled");
+            }
+
+            function DesactivarTitle(titleNumber) {
+                document.getElementById(`evaluar${titleNumber}`).classList.add("evaluar--disabled");
+                document.getElementById(`btnEv${titleNumber}`).classList.remove("evaluar--disabled");
+                document.getElementById(`btnOcu${titleNumber}`).classList.add("evaluar--disabled");
+
+            }
+        </script>
 
         <!--PARTE DE SUBIR ARCHIVO-->
         <br>

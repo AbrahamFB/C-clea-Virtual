@@ -76,7 +76,6 @@ ul {
 
 thead th:nth-child(2){
     width: 100px!important;
-    background-color: #3276b1!important;
 }
 
 .mayusculas {
@@ -164,6 +163,10 @@ img.loading {
     margin : 0 auto;
 }
 
+
+.evaluar{
+    display: none;
+}
 /* A L E R T A S */
 
 p.error-credenciales {

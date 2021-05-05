@@ -181,6 +181,12 @@ class ConexionBD
         $respuesta = mysqli_fetch_array($res);
         return $respuesta;
     }
+
+    function comentarioEst($idArchivoTranscrito, $estrellas, $comentario){
+        $sql = "UPDATE ArchivoTranscrito SET estrellas = '$estrellas', comentarios = '$comentario' WHERE ArchivoTranscrito.idArchivoTranscrito = '$idArchivoTranscrito'";
+        $res = mysqli_query($this->conexion, $sql);
+        return $res;
+    }
 }
 
 
