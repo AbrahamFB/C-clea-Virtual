@@ -336,13 +336,13 @@ include("nav-bar_index.php");
                                             color: grey;
                                         }';
                                                     ?>.evaluar--disabled {
-                                            max-height: 0;
-                                            opacity: 0;
+                                            display: none !important;
+
                                         }
 
                                         .ocultarbOc {
-                                            max-height: 0;
-                                            opacity: 0;
+                                            display: none !important;
+
                                         }
                                     </style>
                                     <div class="centrar-texto">
