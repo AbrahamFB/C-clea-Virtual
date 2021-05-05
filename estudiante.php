@@ -33,7 +33,7 @@ include("nav-bar_index.php");
                 <img src="img/estudiante/audio.svg" alt="" class="img-audio">
             </div>
             <div class="col-8">
-                <h2 class="centrar-texto">Transcripción de Audio</h2>
+                <h2 class="centrar-texto">Transcripción de Archivo</h2>
 
                 <!--PARTE DE SUBIR ARCHIVO-->
                 <!-- FORM -->
@@ -169,14 +169,27 @@ include("nav-bar_index.php");
                 //$resultado3 = $conexion->mirar($estadoT, $idTra);
                 ?>
                 <table id="tabla" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                    <thead>
+                    <thead class="thead-dark">
                         <tr>
                             <!--<th scope="col">Nombre del Archivo</th-->
-                            <th scope="col">Nombre del Archivo</th>
+                            <th scope="col" class="tabla1">Nombre del Archivo</th>
                             <th scope="col">Tú Archivo</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <style>
+                            thead th.tabla1:nth-child(1) {
+                                width: 10% !important;
+                            }
+
+                            thead th:nth-child(2) {
+                                width: 40% !important;
+                            }
+
+                            .videoTabla {
+                                min-width: 100%;
+                            }
+                        </style>
                         <?php
                         $idV[] = "";
                         $i = 0;
@@ -199,6 +212,10 @@ include("nav-bar_index.php");
                             echo "</td>";
 
                             echo "</tr>";
+                            $i++;
+                        }
+                        if ($i == 0) {
+                            echo '<td colspan="3" class="table-active centrar-texto">No tienes solicitudes de Archivos</td>';
                         }
                         ?>
 
@@ -238,7 +255,7 @@ include("nav-bar_index.php");
                 color: orange;
             }
 
-             input[type="radio"]:checked~label .inputEstrella{
+            input[type="radio"]:checked~label .inputEstrella {
                 color: orange;
             }
 
@@ -256,6 +273,12 @@ include("nav-bar_index.php");
                 padding: 10px;
                 margin: 10px;
             }
+
+            .ok {
+                width: 30%;
+                display: block;
+                margin: auto;
+            }
         </style>
         <div class="padT"></div>
         <div class="container">
@@ -271,98 +294,99 @@ include("nav-bar_index.php");
                 $resultado3 = $conexion->mirarT();
 
                 ?>
-                <table id="tabla" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <!--<th scope="col">Nombre del Archivo</th-->
-                            <th scope="col">Nombre del Archivo Transcrito</th>
-                            <th scope="col">Tú Archivo Transcrito</th>
-                            <th scope="col">Comentario</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                <div class="table-responsive">
 
-                        while ($fila3 = mysqli_fetch_array($resultado3)) {
+                    <table id="tabla" class="table table-bordered" cellspacing="0">
+                        <thead class="thead-dark">
+                            <tr id="miTablaPersonalizada">
+                                <th scope="col">Nombre del Archivo Transcrito</th>
+                                <th scope="col">Tú Archivo Transcrito</th>
+                                <th scope="col">Comentario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
 
-                            $dir3 = "usuarios/" . $_SESSION['correo'] . "/ArchivoTranscrito" . "/Multimedia_" . $fila3[1];
-                            $correoEst = $fila3['correo'];
-                            $nombreAr = $fila3["ruta"];
+                            while ($fila3 = mysqli_fetch_array($resultado3)) {
 
-                            $_SESSION['correoVideo'] = $correoEst;
-                            echo "<tr>";
-                            echo "<td>";
-                            echo $fila3['ruta'];
-                            echo "</td>";
-                            echo "<td>";
-                            $url1 = $fila3[1];
-                            echo "<video class='videoTabla' src='$dir3' controls controlslist='nodownload'></video>";
-                            echo '<a href="' . $dir3 . '" download="' . $nombreAr . '"><button type="button" class="btn btn-primary">Descargar Archivo</button></a>';
-                            //echo $dir2;
-                            echo "</td>";
+                                $dir3 = "usuarios/" . $_SESSION['correo'] . "/ArchivoTranscrito" . "/Multimedia_" . $fila3[1];
+                                $correoEst = $fila3['correo'];
+                                $nombreAr = $fila3["ruta"];
 
-                            echo "<td>";
-                        ?>
+                                $_SESSION['correoVideo'] = $correoEst;
+                                echo "<tr>";
+                                echo "<td>";
+                                echo $fila3['ruta'];
+                                echo "</td>";
+                                echo "<td>";
+                                $url1 = $fila3[1];
 
-                            <div class="col padre">
-                                <form action="calificar.php" method="post" id="form" class="hijo">
-                                    <input type="number" value="<?php echo $fila3[0]; ?>" default name="idArchi" style="display: none;">
-                                    <p class="clasificacion">
-                                        <input  id="radio1<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="5">
-                                        <label for="radio1">★</label>
-                                        <input id="radio2<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="4"><label for="radio2">★</label>
-                                        <input  id="radio3<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="3"><label for="radio3">★</label>
-                                        <input  id="radio4<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="2"><label for="radio4">★</label>
-                                        <input  id="radio5<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="1"><label for="radio5">★</label>
-                                    </p>
+                                echo "<video class='videoTabla' src='$dir3' controls controlslist='nodownload'></video><br>";
+                                echo '<div class="centrar-texto">
+                                <a href="' . $dir3 . '" download="' . $nombreAr . '"><button type="button" class="btn btn-primary">Descargar Archivo</button></a>
+                                </div>';
+                                //echo $dir2;
+                                echo "</td>";
 
-                                    <h5 class="centrar-texto">Tú valoración</h5>
-                                    <textarea name="comentario" id="" class="form-control inComentario centrar-texto" style="min-width: 100%"></textarea>
-                                    <br>
-                                    <input type="submit" value="Enviar" class="btn btn-success">
-                                </form>
-                            </div>
-                        <?php
-                            echo "</td>";
-                            echo "</tr>";
-                        }
-                        ?>
+                                echo "<td>";
+                                if ($fila3['estrellas'] == "" && $fila3['comentarios'] == "") {
 
-                    </tbody>
-                </table>
+
+                            ?>
+
+                                    <div class="col padre">
+                                        <form action="calificar.php" method="post" id="form" class="hijo">
+                                            <input type="number" value="<?php echo $fila3[0]; ?>" default name="idArchi" style="display: none;">
+                                            <p class="clasificacion">
+                                                <input id="radio1<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="5">
+                                                <label for="radio1">★</label>
+                                                <input id="radio2<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="4"><label for="radio2">★</label>
+                                                <input id="radio3<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="3"><label for="radio3">★</label>
+                                                <input id="radio4<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="2"><label for="radio4">★</label>
+                                                <input id="radio5<?php echo $fila3[0]; ?>" type="radio" name="estrellas" value="1"><label for="radio5">★</label>
+                                            </p>
+
+                                            <h5 class="centrar-texto">Tú valoración</h5>
+                                            <textarea name="comentario" id="" class="form-control inComentario centrar-texto" style="min-width: 100%"></textarea>
+                                            <br>
+                                            <div class="centrar-texto">
+                                                <input type="submit" value="Valorar" class="btn btn-success">
+                                            </div>
+                                        </form>
+                                    </div>
+                                <?php
+                                } else {
+                                ?>
+                                    <p class='centrar-texto'>Ya lo comentaste anteriormente</p>
+                                    <img src="img/extras/ok.svg" class="ok" alt="">
+                            <?php
+                                }
+                                echo "</td>";
+                                echo "</tr>";
+                                $i++;
+                            }
+                            if ($i == 0) {
+                                echo '<td colspan="3" class="table-active centrar-texto">No tienes Archivos transcritos</td>';
+                            }
+                            ?>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         </div>
 
         <!--PARTE DE SUBIR ARCHIVO-->
+        <br>
         <h3 class="text-center">Descripción</h3>
         <?php echo $descripcion; ?>
 
         <br>
 
-        <h3 class="text-center">Valoraciones</h3>
-        <div class="row row-cols-2">
-            <div class="col">
-
-
-
-                <h5>Comentarios</h5>
-                <ul>
-                    <li>Lorem ipsum dolor, sit amdiet voluptates?</li>
-                    <li>Lorem ipsum dolor, sit amdiet voluptates?</li>
-                    <li>Lorem ipsum dolor, sit amdiet voluptates?</li>
-                    <li>Lorem ipsum dolor, sit amdiet voluptates?</li>
-                </ul>
-            </div>
-
-
-
-
-
-
-        </div>
 
     </div>
+    <br><br>
 </div>
 
 

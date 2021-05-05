@@ -95,7 +95,7 @@ class ConexionBD
     function mirarT()
     {
         $idEstu = $_SESSION['idCuenta'];
-        $archivos =  "SELECT idArchivoTranscrito, ruta FROM ArchivoTranscrito as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 3 AND idEst = $idEstu";
+        $archivos =  "SELECT idArchivoTranscrito, ruta, estrellas, comentarios FROM ArchivoTranscrito as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 3 AND idEst = $idEstu";
         $res = mysqli_query($this->conexion, $archivos);
         return $res;
     }

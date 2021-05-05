@@ -37,7 +37,39 @@ include("nav-bar_index.php");
 
 
 <div class="container">
+    <style>
+        thead th {
+            text-align: center;
+        }
 
+        thead th.tabla2:nth-child(1) {
+            width: 1% !important;
+        }
+
+        thead th.tabla2:nth-child(2) {
+            width: 1% !important;
+        }
+
+        thead th.tabla2:nth-child(3) {
+            width: 30% !important;
+        }
+
+        thead th.tabla2:nth-child(4) {
+            width: 6% !important;
+        }
+
+        thead th.tabla3:nth-child(3) {
+            width: 50% !important;
+        }
+
+        thead th:nth-child(3) {
+            width: 40% !important;
+        }
+
+        .videoTabla {
+            min-width: 75%;
+        }
+    </style>
     <?php
     if ($res['validado'] != 0) {
     ?>
@@ -47,7 +79,7 @@ include("nav-bar_index.php");
 
                 <div width="100%" class="margin-tbe" id="ob2" style="display:block">
 
-                    <h4 class="centrar-texto ">Archivo seleccionado </h4>
+                    <h4 class="centrar-texto mayusculas">Archivo aceptado</h4>
                     <br>
 
                     <script>
@@ -165,8 +197,8 @@ include("nav-bar_index.php");
                     $resultado2 = $conexion->mirar($estado, $idTra);
                     ?>
 
-                    <table id='tabla2' class='table table-striped table-bordered dt-responsive nowrap' cellspacing='0' width='70%'>
-                        <thead>
+                    <table id="tabla" class="table table-bordered" cellspacing="0">
+                        <thead class="thead-dark">
                             <tr>
                                 <!--<th scope='col'>Nombre del Archivo</th-->
                                 <th scope='col'>ID</th>
@@ -185,6 +217,7 @@ include("nav-bar_index.php");
 
                             </script>
                             <?php
+                            $y = 0;
                             while ($fila2 = mysqli_fetch_array($resultado2)) {
                                 $dir2 = "usuarios/" . $fila2["correo"] . "/ArchivoMultimedia" . "/Multimedia_" . $fila2["ruta"];
                                 $correoEst = $fila2['correo'];
@@ -199,11 +232,13 @@ include("nav-bar_index.php");
                                 echo "</td>";
                                 echo "<td>";
                                 ///DESCARGAR vÍDEO
-                                echo "<video class='videoTabla' src='$dir2' controls></video>";
+                                echo '<div class="centrar-texto">';
+                                echo "<video class='videoTabla' src='$dir2' controls></video></div>";
+                                echo '<div class="centrar-texto">';
                                 echo '<a href="' . $dir2 . '" download="' . $nombreAr . '">
-                                Descargar Archivo
+                                <button type="button" class="btn btn-primary">Descargar</button>
                                 </a>';
-                                echo "</td>";
+                                echo "</div></td>";
                                 echo "<td>";
                                 echo $fila2["temas"];
                                 echo "</td>";
@@ -211,11 +246,15 @@ include("nav-bar_index.php");
                                 echo $fila2["formato"];
                                 echo "</td>";
                                 echo "<td>";
-                                echo '<input type="submit" id=' . $correoEst . ' name="finalizar" value="Finalizar" onclick="ocultarT(),mostrar()">';
-                                echo "</td";
+                                echo '<div class="centrar-texto">';
+                                echo '<input class="btn btn-info" type="submit" id=' . $correoEst . ' name="finalizar" value="Finalizar" onclick="ocultarT(),mostrar()">';
+                                echo "</div></td";
                                 echo "</tr>";
+                                $y++;
                             }
-
+                            if ($y == 0) {
+                                echo '<td colspan="6" class="table-active centrar-texto">No tienes ningún pendiente</td>';
+                            }
                             ?>
                         </tbody>
                     </table>
@@ -290,14 +329,14 @@ include("nav-bar_index.php");
                     $resultado2 = $conexion->mirarTR();
                     ?>
 
-                    <table id='tabla2' class='table table-striped table-bordered dt-responsive nowrap' cellspacing='0' width='70%'>
-                        <thead>
+                    <table id="tabla" class="table table-bordered" cellspacing="0">
+                        <thead class="thead-dark">
                             <tr>
                                 <!--<th scope='col'>Nombre del Archivo</th-->
-                                <th scope='col'>ID</th>
-                                <th scope='col'>Correo</th>
-                                <th scope='col'>Archivo del Estudiante</th>
-                                <th scope='col'>Estado</th>
+                                <th scope='col' class="tabla2">ID</th>
+                                <th scope='col' class="tabla2">Correo</th>
+                                <th scope='col' class="tabla2">Archivo del Estudiante</th>
+                                <th scope='col' class="tabla2">Estado</th>
 
                             </tr>
                         </thead>
@@ -308,32 +347,39 @@ include("nav-bar_index.php");
 
                             </script>
                             <?php
+                            $r = 0;
                             while ($fila2 = mysqli_fetch_array($resultado2)) {
                                 $dir2 = "usuarios/" . $fila2["correo"] . "/ArchivoTranscrito" . "/Multimedia_" . $fila2["ruta"];
                                 $correoEst = $fila2['correo'];
                                 $nombreAr = $fila2["ruta"];
                                 $_SESSION['correoVideo'] = $correoEst;
                                 echo "<tr>";
-                                echo "<td>";
+                                echo "<td class='danger'>";
                                 echo $id = $fila2[0];;
                                 echo "</td>";
-                                echo "<td>";
+                                echo "<td class='danger'>";
                                 echo $fila2["correo"];
                                 echo "</td>";
-                                echo "<td>";
+                                echo "<td class='danger'>";
                                 ///DESCARGAR vÍDEO
-                                echo "<video class='videoTabla' src='$dir2' controls></video>";
+                                echo '<div class="centrar-texto">';
+                                echo "<video class='videoTabla' src='$dir2' controls></video></div>";
+                                echo '<div class="centrar-texto">';
+
                                 echo '<a href="' . $dir2 . '" download="' . $nombreAr . '">
-            Descargar Archivo
-            </a>';
+                                <button type="button" class="btn btn-danger">Descargar Archivo</button></a></div>';
                                 echo "</td>";
 
-                                echo "<td>";
-                                echo '<input type="submit" id=' . $correoEst . ' name="finalizar" value="Finalizar" onclick="ocultarT(),mostrar()">';
-                                echo "</td";
+                                echo "<td class='danger'>";
+                                echo '<div class="centrar-texto">';
+                                echo '<input class="btn btn-danger" type="submit" id=' . $correoEst . ' name="finalizar" value="Finalizar" onclick="ocultarT(),mostrar()">';
+                                echo "</div></td";
                                 echo "</tr>";
+                                $r++;
                             }
-
+                            if ($r == 0) {
+                                echo '<td colspan="4" class="table-active centrar-texto">No cuentas con archivos rechazados</td>';
+                            }
                             ?>
                         </tbody>
                     </table>
@@ -366,7 +412,7 @@ include("nav-bar_index.php");
         $temas = array();
         foreach ($resT as $key => $value) {
             $te = $resT[0][$i];
-   
+
             $i++;
 
             if ($te == 0) {
@@ -384,7 +430,6 @@ include("nav-bar_index.php");
             if ($te == 4) {
                 $temas[] = "Física";
             }
-
         }
         $resultado = $conexion->getArchivos($temas);
 
@@ -399,13 +444,13 @@ include("nav-bar_index.php");
         <h3 class="titulo centrar-texto mayusculas">Solicitudes</h3>
         <div class="col-md-12">
 
-            <table id="tabla1" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                <thead>
+            <table id="tabla" class="table table-bordered" cellspacing="0">
+                <thead class="thead-dark">
                     <tr>
                         <!--<th scope="col">Nombre del Archivo</th-->
-                        <th scope="col">ID</th>
-                        <th scope="col">Correo</th>
-                        <th scope="col">Archivo del Estudiante</th>
+                        <th scope="col" class="tabla2">ID</th>
+                        <th scope="col" class="tabla2">Correo</th>
+                        <th scope="col" class="tabla3">Archivo del Estudiante</th>
                         <th scope="col">Tema</th>
                         <th scope="col">Formato</th>
                         <th scope="col">Estado</th>
@@ -429,7 +474,8 @@ include("nav-bar_index.php");
                         echo $fila["correo"];
                         echo "</td>";
                         echo "<td>";
-                        echo "<video class='videoTabla' src='$dir' controls></video>";
+                        echo '<div class="centrar-texto">';
+                        echo "<video class='videoTabla' src='$dir' controls></video></div>";
                         echo "</td>";
                         echo "<td>";
                         echo $fila["temas"];
@@ -439,14 +485,17 @@ include("nav-bar_index.php");
                         echo "</td>";
 
                         echo "<td>";
-                        echo '<input type="submit" id=' . $id . ' name="aceptar" value="Aceptar" onclick="aceptar(this)">';
-                        echo '<input type="submit" name="rechazar" value="Rechazar" onclick="rechazar(this)">';
-                        echo "</td>";
+                        echo '<div class="centrar-texto"><br>';
+                        echo '<input class="btn btn-success" type="submit" id=' . $id . ' name="aceptar" value="Aceptar" onclick="aceptar(this)"><br><br>';
+                        echo '<input class="btn btn-danger" type="submit" name="rechazar" value="Rechazar" onclick="rechazar(this)">';
+                        echo "</div></td>";
                         echo "</tr>";
 
                         $i++;
                     }
-
+                    if ($i == 0) {
+                        echo '<td colspan="6" class="table-active centrar-texto">No tienes solicitudes de Archivos</td>';
+                    }
                     ?>
 
                 </tbody>

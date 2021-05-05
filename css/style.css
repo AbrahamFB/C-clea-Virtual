@@ -70,6 +70,15 @@ ul {
 
 /* Utilidades */
 
+.ok{
+    width: 30%;
+}
+
+thead th:nth-child(2){
+    width: 100px!important;
+    background-color: #3276b1!important;
+}
+
 .mayusculas {
     text-transform: uppercase;
 }
@@ -110,7 +119,7 @@ ul {
 }
 
 .videoTabla {
-    max-width: 30%;
+    max-width: 100%;
 }
 
 
