@@ -10,6 +10,7 @@ $datosUsuario = $conexion->i($correo);
 $_SESSION['correo'] = $correo;
 
 $_SESSION['idCuenta'] = $datosUsuario[3];
+$_SESSION['fechaRegistro'] = $datosUsuario[4];
 
 include('bd/bd.php');
 

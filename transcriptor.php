@@ -95,9 +95,8 @@ include("nav-bar_index.php");
                         function eliminar(r) {
                             var i = r.parentNode.parentNode.rowIndex;
                             document.getElementById("tabla1").deleteRow(i);
-
-
                         }
+
 
                         function eliminar2(r) {
                             var i = r.parentNode.parentNode.rowIndex;
@@ -118,19 +117,45 @@ include("nav-bar_index.php");
                                         eliminar(r);
                                         setTimeout(() => {
                                             location.reload();
-                                        }, 3000);
-
+                                        }, 0);
                                         //console.log(r.id);
                                     }
+                                    //alert(res);
+
+
+                                }
+                            });
+                        }
+                        function aceptar2(r) {
+                            $.ajax({
+                                url: 'p2.php',
+                                data: 'id=' + r.id,
+                                type: 'POST',
+                                success: function(res) {
+                                    console.log(res);
+                                    if (res != 0) {
+                                        console.log('entro');
+                                        var i = (r.parentNode.parentNode.rowIndex) - 1;
+                                        eliminar2(r);
+                                        setTimeout(() => {
+                                            location.reload();
+                                        }, 8000000000000000);
+                                        alert(r.id);
+                                    }
+                                   // alert(res);
 
 
                                 }
                             });
                         }
 
+
                         //funciones para subir archivo
                         function ocultarT() {
                             document.getElementById('ob2').style.display = 'none';
+                        }
+                        function ocultarT2() {
+                            document.getElementById('ob3').style.display = 'none';
                         }
 
                         function ocultar() {
@@ -329,7 +354,7 @@ include("nav-bar_index.php");
                     $resultado2 = $conexion->mirarTR();
                     ?>
 
-                    <table id="tabla" class="table table-bordered" cellspacing="0">
+                    <table id="tabla2" class="table table-bordered" cellspacing="0">
                         <thead class="thead-dark">
                             <tr>
                                 <!--<th scope='col'>Nombre del Archivo</th-->
@@ -372,7 +397,7 @@ include("nav-bar_index.php");
 
                                 echo "<td class='danger'>";
                                 echo '<div class="centrar-texto">';
-                                echo '<input class="btn btn-danger" type="submit" id=' . $correoEst . ' name="finalizar" value="Finalizar" onclick="ocultarT(),mostrar()">';
+                                echo '<input class="btn btn-success" type="submit" id=' . $id . ' name="aceptar" value="Aceptar" onclick="aceptar2(this), mostrar()"><br><br>';
                                 echo "</div></td";
                                 echo "</tr>";
                                 $r++;
@@ -437,14 +462,14 @@ include("nav-bar_index.php");
 
 
 
-<div class="container">
+<div class="container bg-white shadow-lg rounded">
 
     <div class="tablaEstudianteArchivos">
 
         <h3 class="titulo centrar-texto mayusculas">Solicitudes</h3>
         <div class="col-md-12">
 
-            <table id="tabla" class="table table-bordered" cellspacing="0">
+            <table id="tabla1" class="table table-bordered" cellspacing="0">
                 <thead class="thead-dark">
                     <tr>
                         <!--<th scope="col">Nombre del Archivo</th-->
@@ -491,9 +516,9 @@ include("nav-bar_index.php");
                         echo "</div></td>";
                         echo "</tr>";
 
-                        $i++;
+                        $l++;
                     }
-                    if ($i == 0) {
+                    if ($l == 0) {
                         echo '<td colspan="6" class="table-active centrar-texto">No tienes solicitudes de Archivos</td>';
                     }
                     ?>
@@ -511,6 +536,9 @@ include("nav-bar_index.php");
 
 
 </div>
+
+<br><br>
+
 
 <?php
 

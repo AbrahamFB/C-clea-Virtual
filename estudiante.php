@@ -50,7 +50,7 @@ include("nav-bar_index.php");
 
                             <!--boton para ocultar y mostrar contenido-->
                             <button class="btn-sample" id="obj1" style="display:inline" type="button" onclick="ocultar(),mostrar()">Solicitar transcripción</button>
-                            <div width="70px" class="margin-tbe contenido-centradoe" id="obj2" style="display:none">
+                            <div id="obj2" style="display:none">
                                 <form action="uploadAr.php" method="post" enctype="multipart/form-data" id="formTrans">
                                     <h2 class="centrar-texto ">Sube tu archivo</h2>
                                     <br>
@@ -110,19 +110,19 @@ include("nav-bar_index.php");
                                     <fieldset>
                                         <legend>Elige el tema de tu archivo</legend>
                                         <label>
-                                            <input type="radio" name="tema" value="Matemáticas"> Matemáticas
+                                            <input style="display:inline" type="radio" name="tema" value="Matemáticas"> Matemáticas
                                         </label>
                                         <label>
-                                            <input type="radio" name="tema" value="Biología"> Biologia
+                                            <input style="display:inline" type="radio" name="tema" value="Biología"> Biologia
                                         </label>
                                         <label>
-                                            <input type="radio" name="tema" value="Historia"> Historia
+                                            <input style="display:inline" type="radio" name="tema" value="Historia"> Historia
                                         </label>
                                         <label>
-                                            <input type="radio" name="tema" value="Español"> Español
+                                            <input style="display:inline" type="radio" name="tema" value="Español"> Español
                                         </label>
                                         <label>
-                                            <input type="radio" name="tema" value="Física"> Física
+                                            <input style="display:inline" type="radio" name="tema" value="Física"> Física
                                         </label>
                                     </fieldset>
                                     <div class="drag-drope">
@@ -241,6 +241,12 @@ include("nav-bar_index.php");
                 /*position: absolute;top: -1000em;*/
             }
 
+            #obj2 {
+                width: 500px;
+                margin-left: 200px;
+                margin-right: auto;
+
+            }
 
 
             .clasificacion {
@@ -322,8 +328,6 @@ include("nav-bar_index.php");
                                 echo "<td>";
 
                                 if ($fila3['estrellas'] == "" && $fila3['comentarios'] == "") {
-
-
                             ?>
                                     <style>
                                         <?php echo "label:hover.inputEstrella" . $h; ?>,

@@ -2,7 +2,6 @@
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Verificador";
 $css_extra = "";
-$user = "Alfredo";
 
 include("html.php");
 

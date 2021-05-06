@@ -76,7 +76,7 @@ class ConexionBD
         $sql = "SELECT * FROM `Cuenta` WHERE `correo` LIKE '$correo'";
         $datos = mysqli_query($this->conexion, $sql);
         $fila = mysqli_fetch_array($datos);
-        return array($fila["nombre"], $fila["correo"], $fila["tipoUsuario"], $fila["idCuenta"]);
+        return array($fila["nombre"], $fila["correo"], $fila["tipoUsuario"], $fila["idCuenta"], $fila['fecha']);
     }
     //funcion prueba
     function mirar($estado, $idTra)
@@ -147,11 +147,11 @@ class ConexionBD
 
     function getArchivos($temas)
     {
-        $rr= '"'.$temas[0].'"';
-        $Tms = 'WHERE estado = "0" AND temas = '.$rr;
-        if( count($temas) > 9 ) {
-            for( $i = 1; $i < count($temas);$i++) {
-                $Tms .= ' OR temas = "' . $temas[$i].'"'; 
+        $rr = '"' . $temas[0] . '"';
+        $Tms = 'WHERE estado = "0" AND temas = ' . $rr;
+        if (count($temas) > 9) {
+            for ($i = 1; $i < count($temas); $i++) {
+                $Tms .= ' OR temas = "' . $temas[$i] . '"';
             }
         }
         $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst $Tms";
@@ -175,17 +175,28 @@ class ConexionBD
     }
 
 
-    function regresaTema($idTrans){
+    function regresaTema($idTrans)
+    {
         $sql = "SELECT temas from Transcriptor WHERE Cuenta_idCuenta = $idTrans";
         $res = mysqli_query($this->conexion, $sql);
         $respuesta = mysqli_fetch_array($res);
         return $respuesta;
     }
 
-    function comentarioEst($idArchivoTranscrito, $estrellas, $comentario){
+    function comentarioEst($idArchivoTranscrito, $estrellas, $comentario)
+    {
         $sql = "UPDATE ArchivoTranscrito SET estrellas = '$estrellas', comentarios = '$comentario' WHERE ArchivoTranscrito.idArchivoTranscrito = '$idArchivoTranscrito'";
         $res = mysqli_query($this->conexion, $sql);
         return $res;
+    }
+
+
+    function verComentariosTrans($idTrans)
+    {
+        $archivos =  "SELECT idArchivoTranscrito, estrellas, comentarios FROM ArchivoTranscrito as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 3 AND idTrans = $idTrans";
+        $res = mysqli_query($this->conexion, $archivos);
+        $fila = mysqli_fetch_array($res);
+        return array($fila["idArchivoTranscrito"], $fila["estrellas"], $fila['comentarios']);
     }
 }
 
