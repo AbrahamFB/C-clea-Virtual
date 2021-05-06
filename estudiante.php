@@ -28,6 +28,7 @@ include("nav-bar_index.php");
 
     <div class="banner-estudiante">
         <h1 class="text-center tituloPagina mayusculas">Bienvenido <?php echo $_SESSION['user'] ?></h1>
+        <br>
         <div class="row row-cols-2 ss">
             <div class="col">
                 <img src="img/estudiante/audio.svg" alt="" class="img-audio">
@@ -49,7 +50,7 @@ include("nav-bar_index.php");
                         <div class="col-12 p-5 bg-white shadow-lg rounded">
 
                             <!--boton para ocultar y mostrar contenido-->
-                            <button class="btn-sample" id="obj1" style="display:inline" type="button" onclick="ocultar(),mostrar()">Solicitar transcripción</button>
+                            <button class="btn btn-info" id="obj1" style="display:inline" type="button" onclick="ocultar(),mostrar()">Solicitar transcripción</button>
                             <div id="obj2" style="display:none">
                                 <form action="uploadAr.php" method="post" enctype="multipart/form-data" id="formTrans">
                                     <h2 class="centrar-texto ">Sube tu archivo</h2>
@@ -143,7 +144,7 @@ include("nav-bar_index.php");
                                     <!--/progres bar-->
                                     <br>
 
-                                    <input type="submit" form="formTrans" id="smtArchi" name="uploadBtn" value="Enviar" class="font-2rem btn btn btn-sample btn" onclick="uploadFile()">
+                                    <input type="submit" form="formTrans" id="smtArchi" name="uploadBtn" value="Enviar" class="font-2rem btn btn btn-info" onclick="uploadFile()">
                                 </form>
 
                             </div>
@@ -154,7 +155,9 @@ include("nav-bar_index.php");
                 <br>
             </div>
         </div>
+        <div class="separador">
 
+        </div>
         <div class="tablaEstudianteArchivos">
             <div class="col-md-12">
                 <?php
@@ -168,6 +171,7 @@ include("nav-bar_index.php");
 
                 //$resultado3 = $conexion->mirar($estadoT, $idTra);
                 ?>
+                <h3 class="centrar-texto mayusculas">Tus solicitudes</h3>
                 <table id="tabla" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead class="thead-dark">
                         <tr>
@@ -221,6 +225,7 @@ include("nav-bar_index.php");
 
                     </tbody>
                 </table>
+                <div class="separador"></div>
             </div>
 
         </div>
@@ -254,8 +259,6 @@ include("nav-bar_index.php");
                 unicode-bidi: bidi-override;
             }
 
-
-
             textarea {
                 margin: 0 auto;
             }
@@ -277,7 +280,10 @@ include("nav-bar_index.php");
                 margin: auto;
             }
         </style>
+
         <div class="padT"></div>
+
+
         <div class="container">
             <h3 class="centrar-texto mayusculas">Archivos Transcritos</h3>
         </div>
@@ -399,7 +405,7 @@ include("nav-bar_index.php");
                                 echo "</tr>";
                                 $i++;
                             }
-                            if ($i == 0) {
+                            if ($h == 0) {
                                 echo '<td colspan="3" class="table-active centrar-texto">No tienes Archivos transcritos</td>';
                             }
                             ?>
@@ -427,14 +433,16 @@ include("nav-bar_index.php");
 
         <!--PARTE DE SUBIR ARCHIVO-->
         <br>
+        <div class="container"></div>
+        <div class="separador"></div>
         <h3 class="text-center">Descripción</h3>
         <?php echo $descripcion; ?>
-
-        <br>
-
-
     </div>
-    <br><br>
+    <br>
+
+
+</div>
+<br><br>
 </div>
 
 

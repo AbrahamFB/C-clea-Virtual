@@ -5,7 +5,7 @@
              <div class="col-2"><a href="index.php">
                      <img src="img\logo\logo.jpg" alt="" class="logo-menu">
                  </a></div>
-             <div class="col-6 contenedor-nav align-self-center">
+             <div class="col contenedor-nav align-self-center">
                  <nav id="main-nav" class="">
                      <ul class="nav nav-pills">
                          <li class="nav-item">
@@ -20,7 +20,7 @@
                      </ul>
                  </nav>
              </div>
-             <div class="col-4 contenedor-nav align-self-center text-right">
+             <div class="col-6 contenedor-nav align-self-center text-right">
                  <ul class="nav navbar navbar-right">
                      <?php
                         require_once("bd.php");

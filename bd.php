@@ -198,7 +198,15 @@ class ConexionBD
         $fila = mysqli_fetch_array($res);
         return array($fila["idArchivoTranscrito"], $fila["estrellas"], $fila['comentarios']);
     }
+    function verDescripcion($id)
+    {
+        $sql = "SELECT descripcion from Cuenta WHERE idCuenta = $id";
+        $res = mysqli_query($this->conexion, $sql);
+        $respuesta = mysqli_fetch_array($res);
+        return $respuesta;
+    }
 }
+
 
 
 ?>

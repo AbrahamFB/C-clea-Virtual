@@ -76,8 +76,10 @@ include("nav-bar_index.php");
         <div class="row justify-content-center">
             <div class="col-12  bg-white shadow-lg rounded">
 
-
                 <div width="100%" class="margin-tbe" id="ob2" style="display:block">
+                    <div class="separador">
+
+                    </div>
 
                     <h4 class="centrar-texto mayusculas">Archivo aceptado</h4>
                     <br>
@@ -126,6 +128,7 @@ include("nav-bar_index.php");
                                 }
                             });
                         }
+
                         function aceptar2(r) {
                             $.ajax({
                                 url: 'p2.php',
@@ -142,7 +145,7 @@ include("nav-bar_index.php");
                                         }, 8000000000000000);
                                         alert(r.id);
                                     }
-                                   // alert(res);
+                                    // alert(res);
 
 
                                 }
@@ -154,6 +157,7 @@ include("nav-bar_index.php");
                         function ocultarT() {
                             document.getElementById('ob2').style.display = 'none';
                         }
+
                         function ocultarT2() {
                             document.getElementById('ob3').style.display = 'none';
                         }
@@ -341,6 +345,9 @@ include("nav-bar_index.php");
     <div class="row justify-content-center">
         <div class="col-12  bg-white shadow-lg rounded">
             <div class="tablaEstudianteArchivos">
+                <div class="separador">
+
+                </div>
                 <h3 class="titulo centrar-texto mayusculas">
                     Rechazados</h3>
                 <div class="col-md-12">
@@ -465,6 +472,9 @@ include("nav-bar_index.php");
 <div class="container bg-white shadow-lg rounded">
 
     <div class="tablaEstudianteArchivos">
+        <div class="separador">
+
+        </div>
 
         <h3 class="titulo centrar-texto mayusculas">Solicitudes</h3>
         <div class="col-md-12">

@@ -38,7 +38,7 @@ $filas = mysqli_num_rows($resultado);
 <div class="container target">
     <div class="row">
         <div class="col-sm-10">
-            <h1 class=""><?php echo $_SESSION['user'] ?></h1>
+            <h2 class="mayusculas"><?php echo $_SESSION['user'] ?></h2>
 
             <br>
         </div>
@@ -105,9 +105,12 @@ $filas = mysqli_num_rows($resultado);
         <div class="col-sm-9" style="" contenteditable="false">
             <div class="panel panel-default">
                 <div class="panel-heading">Descripción</div>
-                <div class="panel-body"> A long description about me.
 
-                </div>
+                <div class="panel-body"><?php
+                                        $co = $conexion5->verDescripcion($_SESSION['idCuenta']);
+                                        echo $co[0];
+                                        ?></div>
+
             </div>
             <div class="panel panel-default target">
                 <div class="panel-heading" contenteditable="false">Pets I Own</div>
