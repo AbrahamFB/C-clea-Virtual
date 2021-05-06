@@ -205,6 +205,13 @@ class ConexionBD
         $respuesta = mysqli_fetch_array($res);
         return $respuesta;
     }
+
+    function editarDatos($id, $nombre, $correo, $descripcion)
+    {
+        $sql = "UPDATE Cuenta SET nombre = '$nombre', correo = '$correo', descripcion = '$descripcion' WHERE Cuenta.idCuenta = $id";
+        $res = mysqli_query($this->conexion, $sql);
+        return $res;
+    }
 }
 
 

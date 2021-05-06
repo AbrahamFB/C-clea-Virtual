@@ -78,7 +78,7 @@ $filas = mysqli_num_rows($resultado);
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Comentarios</strong></span> 37</li>
             </ul>
             <div class="panel panel-default">
-                <div class="panel-heading">Social Media</div>
+                <div class="panel-heading">Nuestra redes sociales</div>
                 <div class="panel-body"> <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i>
                     <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
 
@@ -100,36 +100,54 @@ $filas = mysqli_num_rows($resultado);
                 <div class="panel-heading" contenteditable="false">Edita tú perfil</div>
                 <div class="panel-body">
                     <div class="row justify-content-center">
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <img alt="300x200" src="img/extras/id.png">
-                                <div class="caption">
-                                    <h3>
-                                        Nombre
-                                    </h3>
-                                    <input type="text" value="<?php echo $_SESSION['user']; ?>">
-                                    <p>
+                        <form class="form-inline" action="editarCuenta.php" method="post">
 
-                                    </p>
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <img alt="300x200" src="img/extras/id.png">
+                                    <div class="caption">
+                                        <h3>
+                                            Nombre
+                                        </h3>
+                                        <input type="text" name="nombre" id="nombre" value="<?php echo $_SESSION['user']; ?>">
+                                        <p>
+
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <img alt="300x200" src="img/extras/correo.png">
-                                <div class="caption">
-                                    <h3>
-                                        Correo electrónico
-                                    </h3>
-                                    <input type="text" value="<?php echo $_SESSION['correo']; ?>">
-                                    <p>
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <img alt="300x200" src="img/extras/correo.png">
+                                    <div class="caption">
+                                        <h3>
+                                            Correo electrónico
+                                        </h3>
+                                        <input type="text" name="correo" id="correo" value="<?php echo $_SESSION['correo']; ?>">
+                                        <p>
 
-                                    </p>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <img alt="300x200" src="img/extras/descripcion.png">
+                                    <div class="caption">
+                                        <h3>
+                                            Descripción
+                                        </h3>
+                                        <input type="text" name="descripcion" id="descripcion" value="<?php echo  $co[0]; ?>">
+                                        <p>
 
-
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto center-block">
+                                <button type="submit" class="btn btn-success mb-2">Enviar</button>
+                            </div>
+                        </form>
                     </div>
 
                 </div>
