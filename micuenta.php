@@ -155,7 +155,6 @@ $filas = mysqli_num_rows($resultado);
             </div> <?php
                     if ($filas) {
                         if ($_SESSION['tipoUsuario'] == 0) {
-                            header("location:estudiante.php");
                         } else {
                             if ($_SESSION['tipoUsuario'] == 1) {
 
@@ -167,17 +166,11 @@ $filas = mysqli_num_rows($resultado);
 
                                 <?php
 
-                                $idT = 2;
-                                echo $idT;
                                 echo "dneu";
-                                $comentar = $conexion5->verComentariosTrans($idT);
+                                $comentar = $conexion5->verComentariosTrans($_SESSION['idCuenta']);
                                 echo $comentar;
                                 ?>
                         <?php
-                            } else {
-                                if ($_SESSION['tipoUsuario'] == 2) {
-                                    header("location:dashboard/index.php");
-                                }
                             }
                         }
                     } else {
