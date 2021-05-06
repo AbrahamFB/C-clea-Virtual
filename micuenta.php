@@ -166,6 +166,8 @@ $filas = mysqli_num_rows($resultado);
 
                                 <?php
 
+                                //FALTA MOSTRAR RENDIMIENTO
+
                                 echo "dneu";
                                 $comentar = $conexion5->verComentariosTrans($_SESSION['idCuenta']);
                                 echo $comentar;
