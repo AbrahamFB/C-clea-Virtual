@@ -31,9 +31,79 @@ $filas = mysqli_num_rows($resultado);
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<style>
+    @media(min-width: 768px){
+     
+        .form {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;    
+            margin: 0;
+        }
+        .form-group label{
+            width: 100%;
+        }
+        .mensaje {
+            
+        }
+        .oculto {
+            display: none;
+        }
+        .clasificacion label {
+            font-size: 2rem;
+            color: gray;
+        }
+        
+    }
 
+    h4 {
+            font-weight: bold;
+    }
+
+    @media(min-width: 768px){
+        .div {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+        } 
+            
+    }
+        
+    .div-estrellas {
+        flex: 1;
+        height: 100%;
+    }
+    .div-estrellas div {
+        flex 1;
+    }
+    
+    .barra-estrella {
+        border: 1px solid gray;
+        border-radius: 1rem;
+        height: 2.4rem;
+        margin: .8rem 0;
+    }
+
+    .barra-estrella div{
+        height: 100%;
+        border-radius: 1rem;
+        width: 0%;
+        background-color: orange;
+    }
+    
+    .estrellas-texto p{
+        margin: 1rem 0;
+    }
+    
+</style>
 <hr class="">
 <div class="container target">
     <div class="row">
@@ -145,14 +215,41 @@ $filas = mysqli_num_rows($resultado);
                                 </div>
                             </div>
                             <div class="col-auto center-block">
-                                <button type="submit" class="btn btn-success mb-2">Enviar</button>
+                                <button type="submit" class="btn btn-success mb-2">Editar datos</button>
                             </div>
                         </form>
                     </div>
 
                 </div>
 
-            </div> <?php
+            </div> 
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Cambiar tu contraseña</div>
+
+                        <div class="panel-body" id="divPassword">
+                            <form class="form"> 
+                            
+                                <div class="form-group">
+                                    <label for="password">
+                                        Contraseña
+                                    </label>
+                                    <input type="password" name="password" id="password" value="" class="form-control">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="passwordN">Nueva Contraseña</label>
+                                    <input type="password" name="passwordN" id="passwordN" value="" class="form-control">
+                                </div>
+
+                                <div><input class="btn btn-success"type="submit" value="Cambiar contraseña" id="cambiarPass"></div>
+                            </form>
+                            <div class="alert mensaje oculto"></div>
+                            
+                        </div>
+                    </div> <!-- Div panel-cambiar contraseña-->
+
+                    <?php
                     if ($filas) {
                         if ($_SESSION['tipoUsuario'] == 0) {
                         } else {
@@ -162,7 +259,53 @@ $filas = mysqli_num_rows($resultado);
                         <div class="panel panel-default">
                             <div class="panel-heading">Tu rendimiento</div>
                             <div class="panel-body">
-
+                            <div class="div estrellas">
+                                <div>
+                                    <h4>Promedio</h4>
+                                    <p class="clasificacion">
+                                        <label class="inputEstrella" for="radio1">★</label>
+                                        <label class="inputEstrella" for="radio2">★</label>
+                                        <label class="inputEstrella" for="radio3">★</label>
+                                        <label class="inputEstrella" for="radio4">★</label>
+                                        <label class="inputEstrella" for="radio5">★</label>
+                                    </p>
+                                    <p class="div numEstrellas"></p>
+                                </div>
+                                <div class="estrellas-texto">
+                                    <p>1 Estrellas</p>
+                                    <p>2 Estrellas</p>
+                                    <p>3 Estrellas</p>
+                                    <p>4 Estrellas</p>
+                                    <p>5 Estrellas</p>
+                                </div>
+                                <div class="div-estrellas">
+                                    <div class="barra-estrella">
+                                    <div></div>
+                                    </div>
+                                    <div class="barra-estrella">
+                                    <div></div>
+                                    </div>
+                                    <div class="barra-estrella">
+                                    <div></div>
+                                    </div>
+                                    <div class="barra-estrella">
+                                    <div></div>
+                                    </div>
+                                    <div class="barra-estrella">
+                                    <div></div>
+                                    </div>
+                                </div>
+                                <div class="estrellas-texto">
+                                    <p class="porcentaje"></p>
+                                    <p class="porcentaje"></p>
+                                    <p class="porcentaje"></p>
+                                    <p class="porcentaje"></p>
+                                    <p class="porcentaje"></p>
+                                </div>
+                            </div>
+                            <div class="comentarios">
+                                <h4>Comentarios</h4>
+                            </div>
 
                                 <?php
 
@@ -195,9 +338,8 @@ $filas = mysqli_num_rows($resultado);
     </div>
 
 
-    <script src="/plugins/bootstrap-select.min.js"></script>
-    <script src="/codemirror/jquery.codemirror.js"></script>
-    <script src="/beautifier.js"></script>
+    
+
     <script>
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -237,11 +379,13 @@ $filas = mysqli_num_rows($resultado);
         };
     </script>
     <script>
+    
         $(document).ready(function() {
+            console.log('nn')
 
+            
             $('.tw-btn').fadeIn(3000);
-            $('.alert').delay(5000).fadeOut(1500);
-
+            //$('.alert').delay(5000).fadeOut(1500);
             $('#btnLogin').click(function() {
                 $(this).text("...");
                 $.ajax({
@@ -353,8 +497,42 @@ $filas = mysqli_num_rows($resultado);
             */
 
 
-
-
+            const formCambiarPassword = document.querySelector('.form');
+            
+            formCambiarPassword.addEventListener('submit',(e) => {
+                e.preventDefault();
+                
+                const passwordA = document.querySelector('#password');
+                const passwordNew = document.querySelector('#passwordN');
+                if( passwordA.value === '' || passwordNew.value ===''){
+                    mostrarMensaje('Error, los campos están vacios', 'error');
+                }
+                else {
+                    let datos = `password=${passwordA.value}&passwordN=${passwordN.value}`;
+                
+                    
+                    $.ajax({
+                        url: 'cambiarContraseña.php',
+                        data: datos,
+                        type: 'post',
+                        success: function(res) {
+                            console.log(res);
+                            if( res != 0 ) {
+                                mostrarMensaje('La contraseña se ha actualizado correctamente.', 'success');
+                                setTimeout(() => {
+                                passwordA.value = '';
+                                passwordNew.value = '';
+                                }, 1000);
+                            }
+                            else {
+                                mostrarMensaje('Error, la contraseña es incorrecta.', 'error');
+                            }
+                                
+                        }
+                    });
+                }
+                
+            });
 
         });
         $.fn.serializeObject = function() {
@@ -376,6 +554,55 @@ $filas = mysqli_num_rows($resultado);
             $(appendSelector).after('<div class="alert alert-info alert-block affix" id="msgBox" style="z-index:1300;margin:14px!important;">' + msg + '</div>');
             $('.alert').delay(3500).fadeOut(1000);
         }
+        function mostrarMensaje(mensaje, tipo) {
+            const divPassword = document.querySelector('#divPassword');
+            const divMensaje = document.createElement('DIV');
+            divMensaje.textContent = mensaje;
+            divMensaje.classList.add('alert');
+            divMensaje.classList.remove('oculto');
+            if( tipo === 'error') {
+                divMensaje.classList.add('alert-danger');
+            }
+            else {
+                divMensaje.classList.add('alert-success');
+            }
+            divPassword.appendChild( divMensaje );
+            setTimeout(() => {
+                divMensaje.remove();
+            }, 2500);
+        }
+        function rellenarEstrellas() {
+            const estrella = document.querySelectorAll('.inputEstrella');
+            const numEstrellas = document.querySelector('.numEstrellas');
+            const divsRelleno = document.querySelectorAll('.barra-estrella div');
+            const porcentajes = document.querySelectorAll('.porcentaje');
+            console.log(divsRelleno);
+            
+        $.ajax({
+            url: 'obtenerEstrellas.php',
+            method: 'post',
+            success: function(res) {
+                const { promedio, estrellas } = JSON.parse(res);
+                for( let i = 0; i < Math.round(promedio); i++ ){
+                    estrella[i].style = 'color: orange';
+                   
+                }
+                for( let i = 0; i < divsRelleno.length; i++ ) {
+                    if( estrellas[i+1] != null ) {
+                        divsRelleno[i].style = `width: ${estrellas[i+1]}%`;
+                        console.log(divsRelleno[i].style)
+                        console.log(divsRelleno[i]);
+                        porcentajes[i].textContent = `${estrellas[i+1]} % `;
+                        
+                    }
+                    else
+                        porcentajes[i].textContent = `0 % `;
+                };
+                numEstrellas.textContent = `${promedio} de 5 estrellas`;
+            }
+        })
+    }
+    rellenarEstrellas();
     </script>
     <!-- Quantcast Tag -->
     <script type="text/javascript">
@@ -440,22 +667,7 @@ $filas = mysqli_num_rows($resultado);
         </div>
 
     </div>
-    <div id="upgradeModal" class="modal hide">
-        <div class="modal-header">
-            <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
-            <h4>Would you like to upgrade?</h4>
-        </div>
-        <div class="modal-body">
-            <p class="text-center"><strong></strong></p>
-            <h1 class="text-center">$4<small>/mo</small></h1>
-            <p class="text-center"><small>Unlimited plys. Unlimited downloads. No Ads.</small></p>
-            <p class="text-center"><img src="/assets/i_visa.png" alt="visa" width="50"> <img src="/assets/i_mc.png" alt="mastercard" width="50"> <img src="/assets/i_amex.png" alt="amex" width="50"> <img src="/assets/i_discover.png" alt="discover" width="50"> <img src="/assets/i_paypal.png" alt="paypal" width="50"></p>
-        </div>
-        <div class="modal-footer pull-center">
-            <a href="/upgrade" class="btn btn-block btn-huge btn-success"><strong>Upgrade Now</strong></a>
-            <a href="#" data-dismiss="modal" class="btn btn-block btn-huge">No Thanks, Maybe Later</a>
-        </div>
-    </div>
+   
     <div id="contactModal" class="modal hide">
         <div class="modal-header">
             <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
@@ -492,9 +704,6 @@ $filas = mysqli_num_rows($resultado);
     </div>
 
 
-
-
-    <script src="/plugins/bootstrap-pager.js"></script>
 </div>
 
 
