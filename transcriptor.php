@@ -442,10 +442,12 @@ include("nav-bar_index.php");
 
         $i = 0;
         $temas = array();
-        foreach ($resT as $key => $value) {
+        $tam = strlen($resT[0]);
+        //print_r($resT);
+        for($i = 0; $i < $tam; $i++ ) {
             $te = $resT[0][$i];
-
-            $i++;
+            
+            
 
             if ($te == 0) {
                 $temas[] = "Matemáticas";
@@ -463,7 +465,10 @@ include("nav-bar_index.php");
                 $temas[] = "Física";
             }
         }
+        
         $resultado = $conexion->getArchivos($temas);
+        echo 'jjj';
+        print_r( $resultado);
 
 ?>
 

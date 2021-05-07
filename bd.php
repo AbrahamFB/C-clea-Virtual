@@ -147,9 +147,9 @@ class ConexionBD
 
     function getArchivos($temas)
     {
-        $rr = '"' . $temas[0] . '"';
-        $Tms = 'WHERE estado = "0" AND temas = ' . $rr;
-        if (count($temas) > 9) {
+        
+        $Tms = 'WHERE estado = "0" AND temas = "'. $temas[0] .'"';
+        if (count($temas) > 0) {
             for ($i = 1; $i < count($temas); $i++) {
                 $Tms .= ' OR temas = "' . $temas[$i] . '"';
             }
