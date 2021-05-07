@@ -38,6 +38,11 @@
                             echo '<li><a href="micuenta.php" class="statusSesionC"><span class="iconify" style="font-size:3rem;" data-icon="ph:user-duotone" data-inline="false"></span>Mi cuenta</a></li>';
                             if ($_SESSION['tipoUsuario'] === "0") {
                                 echo '<li><a href="altaTranscriptor.php" class="statusSesionT"><span class="iconify" style="font-size:3rem;" data-icon="simple-line-icons:logout" data-inline="false"></span> Convertirse en Transcriptor</a></li>';
+                            } 
+
+                            //Solicitar transcriptor (estudiante)
+                            if ($_SESSION['tipoUsuario'] === "0") {
+                                echo '<li><a href="estuudiante.php" class="statusSesionT"><span class="iconify" style="font-size:3rem;" data-icon="ph:user-duotone" data-inline="false"></span>Solicitar transcriptor</a></li>';
                             }
 
 
