@@ -212,32 +212,6 @@ class ConexionBD
         $res = mysqli_query($this->conexion, $sql);
         return $res;
     }
-    function cambiarPassword($id, $password) {
-        $sql = "UPDATE Cuenta SET contrasena = '$password' WHERE idCuenta = '$id'";
-        $res = mysqli_query($this->conexion, $sql);
-        return $res;
-    }
-    function consultarContrasena($id, $password) {
-        $sql = "SELECT * FROM Cuenta WHERE idCuenta = '$id' AND contrasena = '$password'";
-        $res = mysqli_query($this->conexion, $sql);
-        return $res;
-    }
-    function obtenerEstrellas($id) {
-        $sql = "SELECT idArchivoTranscrito, AVG(estrellas) AS estrellas FROM ArchivoTranscrito WHERE idTrans = '$id'";
-        $res = mysqli_query($this->conexion, $sql);
-        return $res;
-    }
-    function obtenerPorcentajeEstrella($id) {
-        $sql = "SELECT estrellas,
-         ROUND(
-                 (COUNT(idArchivoTranscrito )
-                 /
-                 (SELECT COUNT(*) FROM ArchivoTranscrito  WHERE idTrans = '$id' AND estrellas IS NOT NULL)  * 100 )
-             ) AS porcentaje
-         FROM ArchivoTranscrito WHERE idTrans = $id AND estrellas IS NOT NULL GROUP BY estrellas ";
-        $res = mysqli_query($this->conexion, $sql);
-        return $res;
-    }
 }
 
 
