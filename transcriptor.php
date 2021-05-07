@@ -85,27 +85,25 @@ include("nav-bar_index.php");
                     <br>
 
                     <script>
+                        
+                        //esta funcion sirve para rechazar solicitudes
+                        //funcionando
                         function rechazar(r) {
                             var i = r.parentNode.parentNode.rowIndex;
                             document.getElementById("tabla1").deleteRow(i);
-                            alert(i);
+                            //alert(i);
 
 
                         }
 
-
+                        //funcion eliminar se ocupa en la 
+                        //funcion aceptar
                         function eliminar(r) {
                             var i = r.parentNode.parentNode.rowIndex;
                             document.getElementById("tabla1").deleteRow(i);
                         }
 
-
-                        function eliminar2(r) {
-                            var i = r.parentNode.parentNode.rowIndex;
-                            document.getElementById("tabla2").deleteRow(i);
-
-                        }
-
+                        //funcion aceptar se ocupa
                         function aceptar(r) {
                             $.ajax({
                                 url: 'p.php',
@@ -129,20 +127,29 @@ include("nav-bar_index.php");
                             });
                         }
 
-                        function aceptar2(r) {
-                            $.ajax({
+                        
+                        //funciones para la tabla rechazados
+                        function rechazado(){
+                            document.getElementById('objrechazado').style.display = 'block';
+
+                        }
+                        function ocultarrechazado(r){
+                            //funciona para eliminar archivos de una direccion
+                           // unlink('usuarios/liza@gmail.com/ArchivoTranscrito/Multimedia_Hair-43633.mp4');
+                           
+                           $.ajax({
                                 url: 'p2.php',
                                 data: 'id=' + r.id,
                                 type: 'POST',
                                 success: function(res) {
                                     console.log(res);
                                     if (res != 0) {
-                                        console.log('entro');
+                                        //console.log(r.id);
                                         var i = (r.parentNode.parentNode.rowIndex) - 1;
-                                        eliminar2(r);
+                                        document.getElementById('tabla2').style.display = 'none';
                                         setTimeout(() => {
                                             location.reload();
-                                        }, 8000000000000000);
+                                        }, 0);
                                         alert(r.id);
                                     }
                                     // alert(res);
@@ -150,6 +157,8 @@ include("nav-bar_index.php");
 
                                 }
                             });
+                        
+                        
                         }
 
 
@@ -417,6 +426,43 @@ include("nav-bar_index.php");
                     </table>
 
                 </div>
+
+                 <!--subir archivo rechazado-->
+                 <br>
+
+                    <br>
+                    <div class="margin-tbe contenido-centradoe" id="objrechazado" style="display:none">
+                        <form action="p2.php" method="post" enctype="multipart/form-data" id="formTrans">
+                            <h2 class="centrar-texto ">Sube tu archivo para mandar a verificación</h2>
+                            <br>
+                            <div class="drag-drope">
+                                <input type="file" name="rechazado" id="rechazado" />
+                                <!--input type="file" name="uploadedFile" multiple="multiple" id="photo" accept="application/pdf" /-->
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-cloud fa-stack-2x bottom pulsating"></i>
+                                    <i class="fa fa-circle fa-stack-1x top medium"></i>
+                                    <i class="fa fa-arrow-circle-up fa-stack-1x top"></i>
+                                </span>
+                                <span class="desc">Pulse aquí para añadir archivos</span>
+                            </div>
+                            <br>
+                            <!--progres bar-->
+                            <!--<progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+                            <h6 id="status"></h6>
+                            <h6 id="loaded_n_total"></h6>-->
+                            <!--/progres bar-->
+                            <br>
+
+                            <input type="submit" form="formTrans" id="smtArchi" name="upload" value="Enviar" class="font-2rem btn btn btn-sample btn ">
+                        </form>
+
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!--/subir archivo rechazado-->
+                    
             </div>
             <br><br><br>
         </div>
