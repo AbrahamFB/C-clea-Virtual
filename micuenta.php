@@ -187,7 +187,7 @@ $propiedades = $conexion5->propiedadesCuenta($_SESSION['idCuenta']);
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Comentarios</strong></span>
                     <?php
                     $numComentarios = $conexion5->contarEventosComentariosE($_SESSION['idCuenta']);
-                    echo $numComentarios['Cuenta']
+                    echo $numComentarios['Cuenta'];
                     ?>
                 </li>
             </ul>
@@ -357,7 +357,7 @@ $propiedades = $conexion5->propiedadesCuenta($_SESSION['idCuenta']);
 
                             //FALTA MOSTRAR RENDIMIENTO
 
-                            $comentar = $conexion5->verComentariosTrans(3);
+                            $comentar = $conexion5->verComentariosTrans($_SESSION['idCuenta']);
                             echo "<ul>";
                             while ($fila = mysqli_fetch_array($comentar)) {
                                 echo "<li class='list-group-item'>" . $fila[2] . "<li><br>";
