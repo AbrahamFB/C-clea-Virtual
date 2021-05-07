@@ -114,7 +114,7 @@ include("nav-bar_index.php");
                                             <input style="display:inline" type="radio" name="tema" value="Matemáticas"> Matemáticas
                                         </label>
                                         <label>
-                                            <input style="display:inline" type="radio" name="tema" value="Biología"> Biologia
+                                            <input style="display:inline" type="radio" name="tema" value="Biología"> Biología
                                         </label>
                                         <label>
                                             <input style="display:inline" type="radio" name="tema" value="Historia"> Historia

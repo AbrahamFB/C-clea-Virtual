@@ -10,7 +10,7 @@ if ($varSesion2 == null || $varSesion2 = '') {
 }
 include("bd/bd.php");
 $id = $_SESSION['idCuenta'];
-echo $_SESSION['correo'];
+
 $sql = "UPDATE Cuenta SET tipoUsuario = 1 WHERE idCuenta = $id";
 $conexion->query($sql);
 ?>

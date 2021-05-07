@@ -8,7 +8,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                         <h3 class="f-title f_600 t_color f_size_18">Sobre Nosotros</h3>
-                            <p><a href="#">GALA-Dev</a></p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, nemo beatae. Necessitatibus, cum cupiditate aliquam consequuntur a, blanditiis est nam neque alias error officiis nemo deserunt illo repellendus voluptatum quidem?</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">

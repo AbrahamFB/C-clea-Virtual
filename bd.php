@@ -78,6 +78,14 @@ class ConexionBD
         $fila = mysqli_fetch_array($datos);
         return array($fila["nombre"], $fila["correo"], $fila["tipoUsuario"], $fila["idCuenta"], $fila['fecha']);
     }
+    function propiedadesCuenta($id)
+    {
+        error_reporting(0);
+        $sql = "SELECT * FROM `Cuenta` WHERE `idCuenta` LIKE '$id'";
+        $datos = mysqli_query($this->conexion, $sql);
+        $fila = mysqli_fetch_array($datos);
+        return array($fila["nombre"], $fila["correo"], $fila["descripcion"]);
+    }
     //funcion prueba
     function mirar($estado, $idTra)
     {
@@ -114,7 +122,7 @@ class ConexionBD
     //función ver archivos multimedia
     function mirar2($estado)
     {
-        $archivos =  "SELECT idArchivoTranscrito, duracion, formato, tamanio FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = $estado";
+        $archivos =  "SELECT idArchivoTranscritoi, duracion, formato, tamanio FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = $estado";
         $res = mysqli_query($this->conexion, $archivos);
         return $res;
     }
@@ -147,16 +155,25 @@ class ConexionBD
 
     function getArchivos($temas)
     {
-        
-        $Tms = 'WHERE estado = "0" AND temas = "'. $temas[0] .'"';
+
+        $Tms = 'WHERE estado = "0" AND temas = "' . $temas[0] . '"';
         if (count($temas) > 0) {
-            for ($i = 1; $i < count($temas); $i++) {
-                $Tms .= ' OR temas = "' . $temas[$i] . '"';
+            $Tms = 'WHERE estado = "0" AND temas = "' . $temas[0] . '"';
+
+            if (count($temas) > 0) {
+
+                for ($i = 1; $i < count($temas); $i++) {
+
+                    $Tms .= ' OR temas = "' . $temas[$i] . '"';
+                }
             }
+
+            $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst $Tms";
+
+            $res = mysqli_query($this->conexion, $archivos);
+
+            return $res;
         }
-        $archivos =  "SELECT * FROM ArchivoMultimedia as a inner join Cuenta as c on c.idCuenta=a.idEst $Tms";
-        $res = mysqli_query($this->conexion, $archivos);
-        return $res;
     }
     function last_insert_id()
     {
@@ -195,8 +212,7 @@ class ConexionBD
     {
         $archivos =  "SELECT idArchivoTranscrito, estrellas, comentarios FROM ArchivoTranscrito as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 3 AND idTrans = $idTrans";
         $res = mysqli_query($this->conexion, $archivos);
-        $fila = mysqli_fetch_array($res);
-        return array($fila["idArchivoTranscrito"], $fila["estrellas"], $fila['comentarios']);
+        return $res;
     }
     function verDescripcion($id)
     {
@@ -212,22 +228,26 @@ class ConexionBD
         $res = mysqli_query($this->conexion, $sql);
         return $res;
     }
-    function cambiarPassword($id, $password) {
+    function cambiarPassword($id, $password)
+    {
         $sql = "UPDATE Cuenta SET contrasena = '$password' WHERE idCuenta = '$id'";
         $res = mysqli_query($this->conexion, $sql);
         return $res;
     }
-    function consultarContrasena($id, $password) {
+    function consultarContrasena($id, $password)
+    {
         $sql = "SELECT * FROM Cuenta WHERE idCuenta = '$id' AND contrasena = '$password'";
         $res = mysqli_query($this->conexion, $sql);
         return $res;
     }
-    function obtenerEstrellas($id) {
+    function obtenerEstrellas($id)
+    {
         $sql = "SELECT idArchivoTranscrito, AVG(estrellas) AS estrellas FROM ArchivoTranscrito WHERE idTrans = '$id'";
         $res = mysqli_query($this->conexion, $sql);
         return $res;
     }
-    function obtenerPorcentajeEstrella($id) {
+    function obtenerPorcentajeEstrella($id)
+    {
         $sql = "SELECT estrellas,
          ROUND(
                  (COUNT(idArchivoTranscrito )
@@ -237,6 +257,36 @@ class ConexionBD
          FROM ArchivoTranscrito WHERE idTrans = $id AND estrellas IS NOT NULL GROUP BY estrellas ";
         $res = mysqli_query($this->conexion, $sql);
         return $res;
+    }
+
+    function contarEventosSolicitadosE($id)
+    {
+        $sql = "SELECT count(*) as Cuenta from ArchivoMultimedia where idEst = $id";
+        $res = mysqli_query($this->conexion, $sql);
+        $respuesta = mysqli_fetch_array($res);
+        return $respuesta;
+    }
+
+    function contarEventosTranscritosE($id)
+    {
+        $sql = "SELECT count(*) as Cuenta from ArchivoTranscrito where idEst = $id AND estado = 3";
+        $res = mysqli_query($this->conexion, $sql);
+        $respuesta = mysqli_fetch_array($res);
+        return $respuesta;
+    }
+    function contarEventosTranscritosT($id)
+    {
+        $sql = "SELECT count(*) as Cuenta from ArchivoTranscrito where idTrans = $id AND estado = 3";
+        $res = mysqli_query($this->conexion, $sql);
+        $respuesta = mysqli_fetch_array($res);
+        return $respuesta;
+    }
+    function contarEventosComentariosE($id)
+    {
+        $sql = "SELECT count('comentarios') as Cuenta from ArchivoTranscrito where idTrans = $id AND estado = 3";
+        $res = mysqli_query($this->conexion, $sql);
+        $respuesta = mysqli_fetch_array($res);
+        return $respuesta;
     }
 }
 

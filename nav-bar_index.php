@@ -38,20 +38,7 @@
                             echo '<li><a href="micuenta.php" class="statusSesionC"><span class="iconify" style="font-size:3rem;" data-icon="ph:user-duotone" data-inline="false"></span>Mi cuenta</a></li>';
                             if ($_SESSION['tipoUsuario'] === "0") {
                                 echo '<li><a href="altaTranscriptor.php" class="statusSesionT"><span class="iconify" style="font-size:3rem;" data-icon="simple-line-icons:logout" data-inline="false"></span> Convertirse en Transcriptor</a></li>';
-                            } 
-
-                            //Solicitar transcriptor (estudiante)
-                            if ($_SESSION['tipoUsuario'] === "0") {
-                                echo '<li><a href="estudiante.php" class="statusSesionT"><span class="iconify" style="font-size:3rem;" data-icon="ph:user-duotone" data-inline="false"></span>Solicitar transcriptor</a></li>';
                             }
-
-
-                           //Panel de control Transcriptor
-                            if ($_SESSION['tipoUsuario'] === "1") {
-                                echo '<li><a href="transcriptor.php" class="statusSesionT"><span class="iconify" style="font-size:3rem;" data-icon="ph:user-duotone" data-inline="false"></span>Panel de actividades</a></li>';
-                            
-                            }
-
                         } else {
 
                             if ($_SESSION['tipoUsuario'] == "" || $_SESSION['tipoUsuario'] == NULL) {

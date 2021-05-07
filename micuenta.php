@@ -34,57 +34,61 @@ $filas = mysqli_num_rows($resultado);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <style>
-    @media(min-width: 768px){
-     
+    @media(min-width: 768px) {
+
         .form {
             display: flex;
             gap: 2rem;
             justify-content: center;
             align-items: center;
         }
+
         .form-group {
             display: flex;
-            align-items: center;    
+            align-items: center;
             margin: 0;
         }
-        .form-group label{
+
+        .form-group label {
             width: 100%;
         }
-        .mensaje {
-            
-        }
+
+        .mensaje {}
+
         .oculto {
             display: none;
         }
+
         .clasificacion label {
             font-size: 2rem;
             color: gray;
         }
-        
+
     }
 
     h4 {
-            font-weight: bold;
+        font-weight: bold;
     }
 
-    @media(min-width: 768px){
+    @media(min-width: 768px) {
         .div {
             display: flex;
             align-items: center;
             gap: 1rem;
             justify-content: center;
-        } 
-            
+        }
+
     }
-        
+
     .div-estrellas {
         flex: 1;
         height: 100%;
     }
+
     .div-estrellas div {
-        flex 1;
+        flex: 1;
     }
-    
+
     .barra-estrella {
         border: 1px solid gray;
         border-radius: 1rem;
@@ -92,24 +96,38 @@ $filas = mysqli_num_rows($resultado);
         margin: .8rem 0;
     }
 
-    .barra-estrella div{
+    .barra-estrella div {
         height: 100%;
         border-radius: 1rem;
         width: 0%;
         background-color: orange;
     }
-    
-    .estrellas-texto p{
+
+    .estrellas-texto p {
         margin: 1rem 0;
     }
-    
 </style>
+<?php
+$propiedades = $conexion5->propiedadesCuenta($_SESSION['idCuenta']);
+
+?>
 <hr class="">
 <div class="container target">
     <div class="row">
         <div class="col-sm-10">
-            <h2 class="mayusculas"><?php echo $_SESSION['user'] ?></h2>
-
+            <h2 class="mayusculas"><?php echo $propiedades[0]; ?></h2>
+            <br>
+            <a href="<?php
+                        if ($_SESSION['tipoUsuario'] == 0) {
+                            echo "estudiante";
+                        }
+                        if ($_SESSION['tipoUsuario'] == 1) {
+                            echo "transcriptor";
+                        }
+                        if ($_SESSION['tipoUsuario'] == 2) {
+                            echo "verificador";
+                        }
+                        echo ".php"; ?>"><button class="btn btn-info">Ir a tu panel</button></a>
             <br>
         </div>
         <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="https://image.flaticon.com/icons/png/512/320/320333.png"></a>
@@ -123,7 +141,7 @@ $filas = mysqli_num_rows($resultado);
             <ul class="list-group">
                 <li class="list-group-item text-muted" contenteditable="false">Perfil</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Miembro desde</strong></span> <?php echo $_SESSION['fechaRegistro']; ?></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Correo</strong></span><?php echo $_SESSION['correo']; ?></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Correo</strong></span><?php echo $propiedades[1]; ?></li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Tipo Usuario</strong></span>
                     <?php
                     if ($_SESSION['tipoUsuario'] == 0) {
@@ -143,9 +161,35 @@ $filas = mysqli_num_rows($resultado);
                 <li class="list-group-item text-muted">Actividad <i class="fa fa-dashboard fa-1x"></i>
 
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Archivos solicitados</strong></span> 125</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Archivos Transcritos</strong></span> 13</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Comentarios</strong></span> 37</li>
+                <?php
+                $eventos = $conexion5->contarEventosSolicitadosE($_SESSION['idCuenta']);
+
+
+                if ($_SESSION['tipoUsuario'] == 0) { ?>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Archivos solicitados</strong></span> <?php echo $eventos['Cuenta']; ?></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Archivos Transcritos</strong></span> <?php
+                                                                                                                                            $contarET = $conexion5->contarEventosTranscritosE($_SESSION['idCuenta']);
+                                                                                                                                            echo $contarET['Cuenta'];
+                                                                                                                                            ?></li>
+                <?php
+
+                }
+                if ($_SESSION['tipoUsuario'] == 1) { ?>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Archivos Transcritos</strong></span> <?php
+                                                                                                                                            $contarTT = $conexion5->contarEventosTranscritosT($_SESSION['idCuenta']);
+                                                                                                                                            echo $contarTT['Cuenta'];
+                                                                                                                                            ?></li>
+                <?php
+                }
+                ?>
+
+
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Comentarios</strong></span>
+                    <?php
+                    $numComentarios = $conexion5->contarEventosComentariosE($_SESSION['idCuenta']);
+                    echo $numComentarios['Cuenta']
+                    ?>
+                </li>
             </ul>
             <div class="panel panel-default">
                 <div class="panel-heading">Nuestra redes sociales</div>
@@ -175,11 +219,13 @@ $filas = mysqli_num_rows($resultado);
                             <div class="col-md-4">
                                 <div class="thumbnail">
                                     <img alt="300x200" src="img/extras/id.png">
+
+
                                     <div class="caption">
                                         <h3>
                                             Nombre
                                         </h3>
-                                        <input type="text" name="nombre" id="nombre" value="<?php echo $_SESSION['user']; ?>">
+                                        <input type="text" name="nombre" id="nombre" value="<?php echo $propiedades[0]; ?>">
                                         <p>
 
                                         </p>
@@ -193,7 +239,7 @@ $filas = mysqli_num_rows($resultado);
                                         <h3>
                                             Correo electrónico
                                         </h3>
-                                        <input type="text" name="correo" id="correo" value="<?php echo $_SESSION['correo']; ?>">
+                                        <input type="text" name="correo" id="correo" value="<?php echo $propiedades[1]; ?>">
                                         <p>
 
                                         </p>
@@ -207,7 +253,7 @@ $filas = mysqli_num_rows($resultado);
                                         <h3>
                                             Descripción
                                         </h3>
-                                        <input type="text" name="descripcion" id="descripcion" value="<?php echo  $co[0]; ?>">
+                                        <input type="text" name="descripcion" id="descripcion" value="<?php echo $propiedades[2]; ?>">
                                         <p>
 
                                         </p>
@@ -222,43 +268,43 @@ $filas = mysqli_num_rows($resultado);
 
                 </div>
 
-            </div> 
-                
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Cambiar tu contraseña</div>
+            </div>
 
-                        <div class="panel-body" id="divPassword">
-                            <form class="form"> 
-                            
-                                <div class="form-group">
-                                    <label for="password">
-                                        Contraseña
-                                    </label>
-                                    <input type="password" name="password" id="password" value="" class="form-control">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="passwordN">Nueva Contraseña</label>
-                                    <input type="password" name="passwordN" id="passwordN" value="" class="form-control">
-                                </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Cambiar tu contraseña</div>
 
-                                <div><input class="btn btn-success"type="submit" value="Cambiar contraseña" id="cambiarPass"></div>
-                            </form>
-                            <div class="alert mensaje oculto"></div>
-                            
+                <div class="panel-body" id="divPassword">
+                    <form class="form">
+
+                        <div class="form-group">
+                            <label for="password">
+                                Contraseña
+                            </label>
+                            <input type="password" name="password" id="password" value="" class="form-control">
                         </div>
-                    </div> <!-- Div panel-cambiar contraseña-->
 
-                    <?php
-                    if ($filas) {
-                        if ($_SESSION['tipoUsuario'] == 0) {
-                        } else {
-                            if ($_SESSION['tipoUsuario'] == 1) {
+                        <div class="form-group">
+                            <label for="passwordN">Nueva Contraseña</label>
+                            <input type="password" name="passwordN" id="passwordN" value="" class="form-control">
+                        </div>
 
-                    ?>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Tu rendimiento</div>
-                            <div class="panel-body">
+                        <div><input class="btn btn-success" type="submit" value="Cambiar contraseña" id="cambiarPass"></div>
+                    </form>
+                    <div class="alert mensaje oculto"></div>
+
+                </div>
+            </div> <!-- Div panel-cambiar contraseña-->
+
+            <?php
+
+            if ($_SESSION['tipoUsuario'] == 0) {
+            } else {
+                if ($_SESSION['tipoUsuario'] == 1) {
+
+            ?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Tu rendimiento</div>
+                        <div class="panel-body">
                             <div class="div estrellas">
                                 <div>
                                     <h4>Promedio</h4>
@@ -280,19 +326,19 @@ $filas = mysqli_num_rows($resultado);
                                 </div>
                                 <div class="div-estrellas">
                                     <div class="barra-estrella">
-                                    <div></div>
+                                        <div></div>
                                     </div>
                                     <div class="barra-estrella">
-                                    <div></div>
+                                        <div></div>
                                     </div>
                                     <div class="barra-estrella">
-                                    <div></div>
+                                        <div></div>
                                     </div>
                                     <div class="barra-estrella">
-                                    <div></div>
+                                        <div></div>
                                     </div>
                                     <div class="barra-estrella">
-                                    <div></div>
+                                        <div></div>
                                     </div>
                                 </div>
                                 <div class="estrellas-texto">
@@ -307,38 +353,33 @@ $filas = mysqli_num_rows($resultado);
                                 <h4>Comentarios</h4>
                             </div>
 
-                                <?php
+                            <?php
 
-                                //FALTA MOSTRAR RENDIMIENTO
+                            //FALTA MOSTRAR RENDIMIENTO
 
-                                echo "dneu";
-                                $comentar = $conexion5->verComentariosTrans($_SESSION['idCuenta']);
-                                echo $comentar;
-                                ?>
-                        <?php
+                            $comentar = $conexion5->verComentariosTrans(3);
+                            echo "<ul>";
+                            while ($fila = mysqli_fetch_array($comentar)) {
+                                echo "<li class='list-group-item'>" . $fila[2] . "<li><br>";
                             }
-                        }
-                    } else {
-                        ?> <p class="error-credenciales">Error de credenciales</p>
-
-                        <?php
-                        include("login_index.php");
-                        ?>
+                            ?>
+                            </ul>
                     <?php
-                    }
+                }
+            }
+
 
                     ?>
 
-                            </div>
                         </div>
+                    </div>
         </div>
 
 
-        <div id="push"></div>
     </div>
 
 
-    
+
 
     <script>
         (function(i, s, o, g, r, a, m) {
@@ -379,11 +420,10 @@ $filas = mysqli_num_rows($resultado);
         };
     </script>
     <script>
-    
         $(document).ready(function() {
             console.log('nn')
 
-            
+
             $('.tw-btn').fadeIn(3000);
             //$('.alert').delay(5000).fadeOut(1500);
             $('#btnLogin').click(function() {
@@ -498,40 +538,38 @@ $filas = mysqli_num_rows($resultado);
 
 
             const formCambiarPassword = document.querySelector('.form');
-            
-            formCambiarPassword.addEventListener('submit',(e) => {
+
+            formCambiarPassword.addEventListener('submit', (e) => {
                 e.preventDefault();
-                
+
                 const passwordA = document.querySelector('#password');
                 const passwordNew = document.querySelector('#passwordN');
-                if( passwordA.value === '' || passwordNew.value ===''){
+                if (passwordA.value === '' || passwordNew.value === '') {
                     mostrarMensaje('Error, los campos están vacios', 'error');
-                }
-                else {
+                } else {
                     let datos = `password=${passwordA.value}&passwordN=${passwordN.value}`;
-                
-                    
+
+
                     $.ajax({
                         url: 'cambiarContraseña.php',
                         data: datos,
                         type: 'post',
                         success: function(res) {
                             console.log(res);
-                            if( res != 0 ) {
+                            if (res != 0) {
                                 mostrarMensaje('La contraseña se ha actualizado correctamente.', 'success');
                                 setTimeout(() => {
-                                passwordA.value = '';
-                                passwordNew.value = '';
+                                    passwordA.value = '';
+                                    passwordNew.value = '';
                                 }, 1000);
-                            }
-                            else {
+                            } else {
                                 mostrarMensaje('Error, la contraseña es incorrecta.', 'error');
                             }
-                                
+
                         }
                     });
                 }
-                
+
             });
 
         });
@@ -554,55 +592,58 @@ $filas = mysqli_num_rows($resultado);
             $(appendSelector).after('<div class="alert alert-info alert-block affix" id="msgBox" style="z-index:1300;margin:14px!important;">' + msg + '</div>');
             $('.alert').delay(3500).fadeOut(1000);
         }
+
         function mostrarMensaje(mensaje, tipo) {
             const divPassword = document.querySelector('#divPassword');
             const divMensaje = document.createElement('DIV');
             divMensaje.textContent = mensaje;
             divMensaje.classList.add('alert');
             divMensaje.classList.remove('oculto');
-            if( tipo === 'error') {
+            if (tipo === 'error') {
                 divMensaje.classList.add('alert-danger');
-            }
-            else {
+            } else {
                 divMensaje.classList.add('alert-success');
             }
-            divPassword.appendChild( divMensaje );
+            divPassword.appendChild(divMensaje);
             setTimeout(() => {
                 divMensaje.remove();
             }, 2500);
         }
+
         function rellenarEstrellas() {
             const estrella = document.querySelectorAll('.inputEstrella');
             const numEstrellas = document.querySelector('.numEstrellas');
             const divsRelleno = document.querySelectorAll('.barra-estrella div');
             const porcentajes = document.querySelectorAll('.porcentaje');
             console.log(divsRelleno);
-            
-        $.ajax({
-            url: 'obtenerEstrellas.php',
-            method: 'post',
-            success: function(res) {
-                const { promedio, estrellas } = JSON.parse(res);
-                for( let i = 0; i < Math.round(promedio); i++ ){
-                    estrella[i].style = 'color: orange';
-                   
-                }
-                for( let i = 0; i < divsRelleno.length; i++ ) {
-                    if( estrellas[i+1] != null ) {
-                        divsRelleno[i].style = `width: ${estrellas[i+1]}%`;
-                        console.log(divsRelleno[i].style)
-                        console.log(divsRelleno[i]);
-                        porcentajes[i].textContent = `${estrellas[i+1]} % `;
-                        
+
+            $.ajax({
+                url: 'obtenerEstrellas.php',
+                method: 'post',
+                success: function(res) {
+                    const {
+                        promedio,
+                        estrellas
+                    } = JSON.parse(res);
+                    for (let i = 0; i < Math.round(promedio); i++) {
+                        estrella[i].style = 'color: orange';
+
                     }
-                    else
-                        porcentajes[i].textContent = `0 % `;
-                };
-                numEstrellas.textContent = `${promedio} de 5 estrellas`;
-            }
-        })
-    }
-    rellenarEstrellas();
+                    for (let i = 0; i < divsRelleno.length; i++) {
+                        if (estrellas[i + 1] != null) {
+                            divsRelleno[i].style = `width: ${estrellas[i+1]}%`;
+                            console.log(divsRelleno[i].style)
+                            console.log(divsRelleno[i]);
+                            porcentajes[i].textContent = `${estrellas[i+1]} % `;
+
+                        } else
+                            porcentajes[i].textContent = `0 % `;
+                    };
+                    numEstrellas.textContent = `${promedio} de 5 estrellas`;
+                }
+            })
+        }
+        rellenarEstrellas();
     </script>
     <!-- Quantcast Tag -->
     <script type="text/javascript">
@@ -667,7 +708,7 @@ $filas = mysqli_num_rows($resultado);
         </div>
 
     </div>
-   
+
     <div id="contactModal" class="modal hide">
         <div class="modal-header">
             <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>

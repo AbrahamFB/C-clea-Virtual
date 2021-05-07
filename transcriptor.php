@@ -467,8 +467,6 @@ include("nav-bar_index.php");
         }
         
         $resultado = $conexion->getArchivos($temas);
-        echo 'jjj';
-        print_r( $resultado);
 
 ?>
 
