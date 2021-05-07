@@ -8,16 +8,16 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                         <h3 class="f-title f_600 t_color f_size_18">Sobre Nosotros</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil autem cupiditate aspernatur fuga corporis odit pariatur enim recusandae eius. Autem vero nisi alias pariatur repellendus rerum et quo placeat iure.</p>
+                            <p><a href="#">GALA-Dev</a></p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
                         <h3 class="f-title f_600 t_color f_size_18">Conoce más</h3>
                         <ul class="list-unstyled f_list">
-                            <li><a href="#">Qué es el LSM</a></li>
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Qué es el LSM.</a></li>
+                            <li><a href="#">Consigue tu certtificado de transcriptor.</a></li>
+                            <li><a href="#">Otros servicios.</a></li>
                         </ul>
                     </div>
                 </div>
