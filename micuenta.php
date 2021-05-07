@@ -358,6 +358,20 @@ $propiedades = $conexion5->propiedadesCuenta($_SESSION['idCuenta']);
                             //FALTA MOSTRAR RENDIMIENTO
 
                             $comentar = $conexion5->verComentariosTrans($_SESSION['idCuenta']);
+                            ?>
+
+                            <div class="container mt-3">
+                                <h2>Right-Aligned Media Image</h2>
+                                <p>To right-align the media image, add the image after the .media-body container:</p>
+                                <div class="media border p-3">
+                                    <div class="media-body">
+                                        <h4>John Doe <small><i>Posted on February 19, 2016</i></small></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                    <img src="img_avatar3.png" alt="John Doe" class="ml-3 mt-3 rounded-circle" style="width:60px;">
+                                </div>
+                            </div>
+                            <?php
                             echo "<ul>";
                             while ($fila = mysqli_fetch_array($comentar)) {
                                 echo "<li class='list-group-item'>" . $fila[2] . "<li><br>";
