@@ -42,7 +42,7 @@
 
                             //Solicitar transcriptor (estudiante)
                             if ($_SESSION['tipoUsuario'] === "0") {
-                                echo '<li><a href="estuudiante.php" class="statusSesionT"><span class="iconify" style="font-size:3rem;" data-icon="ph:user-duotone" data-inline="false"></span>Solicitar transcriptor</a></li>';
+                                echo '<li><a href="estudiante.php" class="statusSesionT"><span class="iconify" style="font-size:3rem;" data-icon="ph:user-duotone" data-inline="false"></span>Solicitar transcriptor</a></li>';
                             }
 
 
