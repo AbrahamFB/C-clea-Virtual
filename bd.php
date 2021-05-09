@@ -200,7 +200,7 @@ class ConexionBD
 
     function verComentariosTrans($idTrans)
     {
-        $archivos =  "SELECT idArchivoTranscrito, estrellas, comentarios FROM ArchivoTranscrito as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 3 AND idTrans = $idTrans";
+        $archivos =  "SELECT idArchivoTranscrito, estrellas, comentarios, idEst FROM ArchivoTranscrito as a inner join Cuenta as c on c.idCuenta=a.idEst WHERE estado = 3 AND idTrans = $idTrans";
         $res = mysqli_query($this->conexion, $archivos);
         return $res;
     }

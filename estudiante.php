@@ -7,7 +7,7 @@ error_reporting(0);
 $varSesion = $_SESSION['correo'];
 $datosUsuario = $conexion->i($varSesion);
 if ($varSesion == null || $varSesion = '') {
-    header("location:login_index.php");
+    header("location:login.php");
     die();
 }
 
