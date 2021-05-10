@@ -1,5 +1,17 @@
 <?php
 
+if ($_SESSION['tipoUsuario'] == 0) {
+    header("location:estudiante.php");
+    die();
+}
+if ($_SESSION['tipoUsuario'] == 1) {
+    header("location:transcriptor.php");
+    die();
+}
+if ($_SESSION['tipoUsuario'] == 2) {
+    header("location:verificador.php");
+    die();
+}
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Registro";
 $css_extra = "";
@@ -22,7 +34,7 @@ include("scripts.php");
 <br>
 <style>
     .statusSesionI {
-        visibility: hidden
+        visibility: hidden;
     }
 </style>
 <div class="container">
@@ -75,3 +87,4 @@ include("footer.php");
 
 echo '  </body>
 </html>';
+?>

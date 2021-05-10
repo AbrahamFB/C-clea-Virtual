@@ -7,8 +7,6 @@ $conexion2 = new ConexionBD();
 
 $id = $_POST['id'];
 
-
-
     $archivos =  "UPDATE ArchivoTranscrito SET estado = '2' WHERE idArchivoTranscrito = '$id'";
     $res = mysqli_query($conexion, $archivos);
     echo $res;

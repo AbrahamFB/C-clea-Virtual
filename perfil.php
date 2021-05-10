@@ -1,5 +1,22 @@
 <?php
 
+if ($_SESSION['tipoUsuario'] == 0) {
+    header("location:estudiante.php");
+    die();
+}
+if ($_SESSION['tipoUsuario'] == 1) {
+    header("location:transcriptor.php");
+    die();
+}
+if ($_SESSION['tipoUsuario'] == 2) {
+    header("location:verificador.php");
+    die();
+}
+if ($_SESSION['tipoUsuario'] == "") {
+    header("location:login.php");
+    die();
+}
+
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Perfil";
 $css_extra = "";
@@ -36,3 +53,4 @@ public function getRol(){
 ?>
 <?php
 include("footer.php");
+?>

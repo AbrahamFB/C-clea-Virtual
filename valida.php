@@ -3,6 +3,7 @@ include("bd.php");
 $conexion = new ConexionBD();
 
 session_start();
+error_reporting(0);
 $correo = $_POST['correo'];
 $contrasena = $_POST['contrasena'];
 $datosUsuario = $conexion->i($correo);

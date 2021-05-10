@@ -11,6 +11,14 @@ if ($varSesion == null || $varSesion = '') {
     die();
 }
 
+if ($_SESSION['tipoUsuario'] == 1) {
+    header("location:transcriptor.php");
+    die();
+}
+if ($_SESSION['tipoUsuario'] == 2) {
+    header("location:verificador.php");
+    die();
+}
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Estudiante";
 $css_extra = "";
@@ -405,7 +413,7 @@ include("nav-bar_index.php");
                                 echo "</tr>";
                                 $i++;
                             }
-                            if ($h == 0) {
+                            if ($i == 0) {
                                 echo '<td colspan="3" class="table-active centrar-texto">No tienes Archivos transcritos</td>';
                             }
                             ?>

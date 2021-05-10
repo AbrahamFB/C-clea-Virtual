@@ -11,6 +11,14 @@ if ($varSesion == null || $varSesion = '') {
     header("location:login.php");
     die();
 }
+if ($_SESSION['tipoUsuario'] == 0) {
+    header("location:estudiante.php");
+    die();
+}
+if ($_SESSION['tipoUsuario'] == 2) {
+    header("location:verificador.php");
+    die();
+}
 //Consultamos el transcriptor para verificar que este validado su perfil
 $id = $_SESSION['idCuenta'];
 $res = $conexion->getTranscriptor($id);
@@ -444,10 +452,10 @@ include("nav-bar_index.php");
         $temas = array();
         $tam = strlen($resT[0]);
         //print_r($resT);
-        for($i = 0; $i < $tam; $i++ ) {
+        for ($i = 0; $i < $tam; $i++) {
             $te = $resT[0][$i];
-            
-            
+
+
 
             if ($te == 0) {
                 $temas[] = "Matemáticas";
@@ -465,7 +473,7 @@ include("nav-bar_index.php");
                 $temas[] = "Física";
             }
         }
-        
+
         $resultado = $conexion->getArchivos($temas);
 
 ?>

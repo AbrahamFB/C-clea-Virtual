@@ -16,5 +16,4 @@ if( $res1 == 0 ){
 else {
     echo 0;
 }
-
 ?>

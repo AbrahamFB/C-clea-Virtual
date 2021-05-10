@@ -10,6 +10,14 @@ if ($varSesion == null || $varSesion = '') {
     header("location:login.php");
     die();
 }
+if ($_SESSION['tipoUsuario'] == 0) {
+    header("location:estudiante.php");
+    die();
+}
+if ($_SESSION['tipoUsuario'] == 1) {
+    header("location:transcriptor.php");
+    die();
+}
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Verificador";
 $css_extra = "";
@@ -34,3 +42,4 @@ include("scripts.php");
 
 echo '  </body>
 </html>';
+?>

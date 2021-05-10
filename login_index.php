@@ -33,4 +33,4 @@ if ($varSesion != null || $varSesion = '') {
 } else {
     header("location:login.php");
 }
- */
+ */ ?>

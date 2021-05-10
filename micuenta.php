@@ -2,6 +2,12 @@
 
 
 session_start();
+
+if ($_SESSION['tipoUsuario'] == "") {
+    header("location:login.php");
+    die();
+}
+
 $anadirURL = "";
 $nombrePagina = "Cóclea Virtual - Mi cuenta";
 $css_extra = "";

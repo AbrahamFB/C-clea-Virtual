@@ -1,11 +1,7 @@
 <?php
 $message = '';
 include("bd/bd.php");
-//$cuenta; // ID DEL TRANSCRIPTOR
-//$tema = $_POST('tem');
-//$nLSM; /// POR CHECAR
-//$anioEXP = $_POST('anioExp');
-//$varSesion = $_SESSION['correo'];
+
 $id = $_SESSION['idCuenta'];
 $sql = "UPDATE Cuenta SET tipoUsuario = 1 WHERE idCuenta = $id";
 $conexion->query($sql);

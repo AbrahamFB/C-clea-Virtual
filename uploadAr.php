@@ -112,3 +112,4 @@ if ($_SESSION['tipoUsuario'] == 0) {
         }
     }
 }
+?>
