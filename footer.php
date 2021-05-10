@@ -15,9 +15,9 @@
                     <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
                         <h3 class="f-title f_600 t_color f_size_18">Conoce más</h3>
                         <ul class="list-unstyled f_list">
-                            <li><a href="#">Qué es el LSM.</a></li>
-                            <li><a href="#">Consigue tu certtificado de transcriptor.</a></li>
-                            <li><a href="#">Otros servicios.</a></li>
+                            <li><a href="https://www.gob.mx/conadis/articulos/lengua-de-senas-mexicana-lsm?idiom=es">Qué es el LSM.</a></li>
+                            <li><a href="https://celeidiomas.com.mx/diplomado-en-lengua-de-senas-mexicanas/">Consigue tu certificado de LSM.</a></li>
+                            <li><a href="https://gala-dev.com">Nuestros servicios.</a></li>
                         </ul>
                     </div>
                 </div>
@@ -25,10 +25,9 @@
                     <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
                         <h3 class="f-title f_600 t_color f_size_18">Ayuda</h3>
                         <ul class="list-unstyled f_list">
-                            <li><a href="#">Preguntas Frecuentes</a></li>
-                            <li><a href="#">Términos &amp; condiciones</a></li>
-                            <li><a href="#">Documentación</a></li>
-                            <li><a href="#">Privacidad</a></li>
+                            <li><a href="https://www.gob.mx/conadis/archivo/prensa">Preguntas Frecuentes</a></li>
+                            <li><a href="https://correobuap-my.sharepoint.com/:f:/g/personal/abraham_floresb_alumno_buap_mx/ElJ-jAFBqQhGkpzQ-N7rT8QBLLtRcl_OfjT6_HVrntTgMQ?e=ytuTv9">Documentación</a></li>
+                            <li><a href="privacidad.php">Privacidad</a></li>
                         </ul>
                     </div>
                 </div>
@@ -36,9 +35,9 @@
                     <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
                         <h3 class="f-title f_600 t_color f_size_18">Equipo de Soporte</h3>
                         <div class="f_social_icon">
-                            <a href="#"><span class="iconify" data-icon="noto:girl-light-skin-tone" data-inline="false"></span></a>
-                            <a href="#"><span class="iconify" data-icon="noto:boy-light-skin-tone" data-inline="false"></span></a>
-                            <a href="#"><span class="iconify" data-icon="noto:boy-light-skin-tone" data-inline="false"></span></a>
+                            <a href="https://geramh.com/"><span class="iconify" data-icon="noto:boy-light-skin-tone" data-inline="false"></span></a>
+                            <a href="https://abrahamfb.com"><span class="iconify" data-icon="noto:boy-light-skin-tone" data-inline="false"></span></a>
+                            <a href="https://beth27.com/"><span class="iconify" data-icon="noto:girl-light-skin-tone" data-inline="false"></span></a>
                             <a href="#"><span class="iconify" data-icon="noto:boy-light-skin-tone" data-inline="false"></span></a>
 
                         </div>

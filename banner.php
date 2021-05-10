@@ -46,60 +46,62 @@
             desarrollo y funcionamiento de la plataforma.
 
         </p>
-        <li>
-            <ul>
-            </ul>
-        </li>
 
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card border-light mb-4 animate-up-5"><a href=".https://geramh.com" class="position-relative"><img src="img/developers/GMH.jpg" class="card-img-top p-2 rounded-xl" alt="themesberg office"></a>
+                <div class="card-body"><a href="https://geramh.com">
+                        <h4 class="" style="color: black;">Gerardo MH</h4>
+                    </a>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item small p-0"><span class="fas fa-map-marker-alt mr-2"></span>lorem</li>
+                    </ul>
+                </div>
 
-        <div class="col-md-4">
-            <div class="personal">
-                <figure><img src="img/developers/GMH.jpg" alt="Image"></figure>
-                <h3>Gerardo Martínez</h3>
-                <span class="fh5co-position">Lorem</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card border-light mb-4 animate-up-5"><a href="#" class="position-relative"><img src="img/developers/AFB.jpg" class="card-img-top p-2 rounded-xl" alt="themesberg office"></a>
+                <div class="card-body"><a href="#">
+                        <h4 class="" style="color: black;">Abraham FB</h4>
+                    </a>
+
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item small p-0">   <span class="iconify" data-icon="bi:patch-check" data-inline="false"></span>    Estudiante</li>
+                        <li class="list-group-item small p-0">   <span class="iconify" data-icon="bi:patch-check" data-inline="false"></span>    Desarrollador</li>
+                        <li class="list-group-item small p-0">   <span class="iconify" data-icon="bi:patch-check" data-inline="false"></span>    Técnico en Redes CISCO</li>
+                        <li class="list-group-item small p-0">   <span class="iconify" data-icon="bi:patch-check" data-inline="false"></span>    Freelancer</li>
+                        <li class="list-group-item small p-0">   <span class="iconify" data-icon="bi:patch-check" data-inline="false"></span>    Técnico en Redes CISCO</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card border-light mb-4 animate-up-5"><a href="#" class="position-relative"><img src="img/developers/LOM.jpg" class="card-img-top p-2 rounded-xl" alt="themesberg office"></a>
+                <div class="card-body"><a href="#">
+                        <h4 class="" style="color: black;">Lizbeth OM</h4>
+                    </a>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item small p-0">   <span class="iconify" data-icon="bi:patch-check" data-inline="false"></span>    lorem</li>
+                    </ul>
+                </div>
 
             </div>
         </div>
 
-
-        <div class="col-md-4">
-            <div class="personal">
-                <figure><img src="img/developers/AFB.jpg" alt="Image"></figure>
-                <h3>Abraham Flores</h3>
-                <span class="fh5co-position">Estudiante, Desarrollador, Técnico en redes-CISCO, Freelancer,
-                Fotógrafo</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-
-            </div>
-        </div>
-
-
-        <div class="col-md-4">
-            <div class="personal">
-                <figure><img src="img/developers/LOM.jpg" alt="Image"></figure>
-                <h3>Lizbeth Ortega</h3>
-                <span class="fh5co-position">Lorem</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card border-light mb-4 animate-up-5"><a href="#" class="position-relative"><img src="img/developers/AGV.jpg" class="card-img-top p-2 rounded-xl" alt="themesberg office"></a>
+                <div class="card-body"><a href="#">
+                        <h4 class="" style="color: black;">Ángel GV</h4>
+                    </a>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item small p-0">   <span class="iconify" data-icon="bi:patch-check" data-inline="false"></span>    lorem</li>
+                    </ul>
+                </div>
 
             </div>
         </div>
-
-
-        <div class="col-md-4">
-            <div class="personal">
-                <figure><img src="img/developers/AGV.jpg" alt="Image"></figure>
-                <h3>Ángel Gómez</h3>
-                <span class="fh5co-position">Estudiante, programador, diseñador, mecánico, ilustrador freelancer, fotógrafo.</span>
-                <p>Tengo una discapacidad auditiva, así que yo, como usuario discapacitado, de algún modo puedo
-                    entender mejor lo que otras personas que padecen de alguna discapacidad similar necesitan.</p>
-
-            </div>
-        </div>
-
-
     </section>
-
 
 
     <section id="contacto" class="margin-tb mayusculas">

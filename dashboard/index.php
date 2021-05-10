@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?php 
+    <?php
     session_start();
     $anadirURL = "";
     $nombrePagina = "Cóclea Virtual - Verificador";
@@ -11,7 +11,7 @@
 
     //echo '<body ondragstart="return false">';
 
-    
+
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,19 +25,19 @@
     <!-- <link rel="stylesheet" href="../css/style.css"> -->
     <style>
         html {
-            font-size: 100%!important;
+            font-size: 100% !important;
         }
+
         td {
             text-align: center;
         }
+
         .oculto {
-            display: none!important;
+            display: none !important;
         }
     </style>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -45,8 +45,8 @@
 </head>
 
 <body id="page-top">
-    <?php 
-        include("../nav-bar_index.php");
+    <?php
+    include("../nav-bar_index.php");
     ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -105,6 +105,23 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
+            <div class="sidebar-heading">
+                Sesión Activa
+            </div>
+            <br>
+
+            <li class="nav-item">
+                <a style="margin-left: 1rem;" class="" href="../micuenta.php">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Mi cuenta</span></a>
+            </li>
+            <br>
+            <li class="nav-item">
+                <a class="" style="margin-left: 1rem;" href="../logout.php">
+                    <i class="fas fa-fw fa-sign-out-alt"></i>
+                    <span>Cerrar Sesión</span></a>
+            </li>
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -116,20 +133,20 @@
             <div id="content">
 
 
-           
 
 
 
-                    <!-- Begin Page Content -->
-                    <div class="container-fluid">
 
-                        
-                         <!-- DataTales Example -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+
+                    <!-- DataTales Example -->
                     <div class="card shadow mb-4 actual" id="parte-1">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Solicitudes de Transcriptores</h6>
                         </div>
-                        <div class="card-body" >
+                        <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -161,58 +178,58 @@
                                             <td>2011/04/25</td>
                                             <td>$320,800</td>
                                         </tr>
-                                     
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                      
+
                     </div>
                     <div class="card shadow mb-4 oculto" id="parte-2">
                         <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Validar Transcripciones</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Validar Transcripciones</h6>
                         </div>
-                        <div class="card-body" >
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="tablaTranscritos" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Transcriptor</th>
-                                                <th>Correo</th>
-                                                <th>Tema</th>
-                                                <th>Vídeo</th>
-                                                <th>Estado</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Transcriptor</th>
-                                                <th>Correo</th>
-                                                <th>Tema</th>
-                                                <th>Vídeo</th>
-                                                <th>Estado</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>Correo</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                
-                                            </tr>
-                                        
-                                        </tbody>
-                                    </table>
-                                </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="tablaTranscritos" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Transcriptor</th>
+                                            <th>Correo</th>
+                                            <th>Tema</th>
+                                            <th>Vídeo</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Transcriptor</th>
+                                            <th>Correo</th>
+                                            <th>Tema</th>
+                                            <th>Vídeo</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>Correo</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                  
-                    <!-- /.container-fluid -->
+                </div>
 
-                
+                <!-- /.container-fluid -->
+
+
                 <!-- /.container-fluid -->
 
             </div>
@@ -240,8 +257,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -275,15 +291,16 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
-    <?php 
-        include("footer.php");
+    <?php
+    include("footer.php");
     ?>
 </body>
-<?php 
-    
+<?php
 
-    include("scripts.php");
-    
-    echo '  </body>';
+
+include("scripts.php");
+
+echo '  </body>';
 ?>
+
 </html>

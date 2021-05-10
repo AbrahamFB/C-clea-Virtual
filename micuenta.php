@@ -131,9 +131,9 @@ $propiedades = $conexion5->propiedadesCuenta($_SESSION['idCuenta']);
                             echo "transcriptor";
                         }
                         if ($_SESSION['tipoUsuario'] == 2) {
-                            echo "verificador";
+                            echo "dashboard/index";
                         }
-                        echo ".php"; ?>"><button class="btn btn-info">Ir a tu panel</button></a>
+                        echo ".php"; ?>"><button class="btn btn-info">Ir a mi panel</button></a>
             <br>
         </div>
         <div class="col-sm-2"><img title="profile image" class="img-circle img-responsive pull-right" src="https://image.flaticon.com/icons/png/512/320/320333.png">

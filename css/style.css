@@ -91,6 +91,10 @@ thead th:nth-child(2) {
     text-align: center;
 }
 
+.negritas {
+    font-weight: bold;
+}
+
 .margin-tb {
     margin: 5rem auto;
 }
@@ -131,7 +135,7 @@ thead th:nth-child(2) {
     background-image   : url("http://sav.us.es/images/ICONOS/linea.png");
     background-repeat  : no-repeat;
     background-position: center center;
-    margin-top: 1rem;
+    margin-top         : 1rem;
     width              : 100%;
     height             : 5rem;
 }
@@ -513,7 +517,7 @@ input[type="file"] {
 
 .drag-drope:hover,
 input[type="file"]:hover {
-    background-color: #6932b1;
+    background-color: #328db1;
     cursor          : pointer;
 }
 
