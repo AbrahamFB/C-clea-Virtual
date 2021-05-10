@@ -66,8 +66,12 @@ class ConexionBD
         $sql = "SELECT * FROM Cuenta where correo = ''";
     }
 
-    function altaTranscriptor()
-    {
+    //funcion para los rechazados
+    function borrarRechazado($idRech){
+        $correo =  "SELECT correo, ruta FROM ArchivoTranscrito AS ART INNER JOIN Cuenta AS C ON ART.idEst = C.idCuenta WHERE idArchivoTranscrito = $idRech";
+        $res = mysqli_query($this->conexion, $correo);
+        $fila = mysqli_fetch_array($res);
+        return array($fila['correo'],$fila["ruta"]);
     }
 
     function i($correo)

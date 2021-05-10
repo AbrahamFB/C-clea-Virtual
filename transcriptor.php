@@ -425,6 +425,42 @@ include("nav-bar_index.php");
                     </table>
 
                 </div>
+
+                 <!--subir archivo rechazado-->
+                 <br>
+
+                    <br>
+                    <div class="margin-tbe contenido-centradoe" id="objrechazado" style="display:none">
+                        <form action="upRech.php" method="post" enctype="multipart/form-data" id="formTran">
+                            <h2 class="centrar-texto ">Sube tu archivo para mandar a verificación</h2>
+                            <br>
+                            <div class="drag-drope">
+                                <input type="file" name="rechazado" id="rechazado" />
+                                <!--input type="file" name="uploadedFile" multiple="multiple" id="photo" accept="application/pdf" /-->
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-cloud fa-stack-2x bottom pulsating"></i>
+                                    <i class="fa fa-circle fa-stack-1x top medium"></i>
+                                    <i class="fa fa-arrow-circle-up fa-stack-1x top"></i>
+                                </span>
+                                <span class="desc">Pulse aquí para añadir archivos</span>
+                            </div>
+                            <br>
+                            <!--progres bar-->
+                            <!--<progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+                            <h6 id="status"></h6>
+                            <h6 id="loaded_n_total"></h6>-->
+                            <!--/progres bar-->
+                            <br>
+
+                            <input type="submit" form="formTran" id="Archi" name="upload" value="Enviar" class="font-2rem btn btn btn-sample btn ">
+                        </form>
+
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!--/subir archivo rechazado-->
             </div>
             <br><br><br>
         </div>
