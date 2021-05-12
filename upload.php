@@ -17,7 +17,7 @@ for ($i=0;$i<count($temas1);$i++)
     $temi[$i] = $temas1;  
     $rtemas = $rtemas.$temi[$i][$i];
 } 
-echo $rtemas;
+//echo $rtemas;
 
 $nLSM = $_POST['nLSM'];
 $anioEx = $_POST['anioExp'];

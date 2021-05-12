@@ -8,12 +8,12 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-6 contenido-header">
+                <div class="col-lg-6 contenido-header">
                     <h2 class="presentacion">Te transcribimos cualquier audio o vídeo</h2>
                     <div class="w-100 d-none d-md-block"></div>
 
                 </div>
-                <div class="col-md-6 contenido-header">
+                <div class="col-lg-6 contenido-header">
                     <div class="row row-cols-4">
                         <div class="col-md-6">
                             <span class="iconify" data-icon="ion:laptop-outline" data-inline="false"></span>
