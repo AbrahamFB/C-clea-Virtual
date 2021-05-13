@@ -137,27 +137,41 @@ include("nav-bar_index.php");
                             });
                         }
 
-                        function aceptar2(r) {
-                            $.ajax({
+                        function rechazado(){
+                            document.getElementById('objrechazado').style.display = 'block';
+
+                        }
+                        function ocultarrechazado(r){
+                            //funciona para eliminar archivos de una direccion
+                           // unlink('usuarios/liza@gmail.com/ArchivoTranscrito/Multimedia_Hair-43633.mp4');
+                           document.getElementById('tabla2').style.display = 'none';
+                           $.ajax({
                                 url: 'p2.php',
                                 data: 'id=' + r.id,
                                 type: 'POST',
                                 success: function(res) {
                                     console.log(res);
                                     if (res != 0) {
-                                        console.log('entro');
+                                        console.log(r.id);
                                         var i = (r.parentNode.parentNode.rowIndex) - 1;
-                                        eliminar2(r);
                                         setTimeout(() => {
                                             location.reload();
                                         }, 8000000000000000);
-                                        alert(r.id);
+                                        //alert(r.id);
                                     }
                                     // alert(res);
 
 
                                 }
                             });
+                        
+                        
+                        }
+
+
+                        //funciones para subir archivo
+                        function ocultarT() {
+                            document.getElementById('ob2').style.display = 'none';
                         }
 
 
@@ -412,7 +426,7 @@ include("nav-bar_index.php");
 
                                 echo "<td class='danger'>";
                                 echo '<div class="centrar-texto">';
-                                echo '<input class="btn btn-success" type="submit" id=' . $id . ' name="aceptar" value="Aceptar" onclick="aceptar2(this), mostrar()"><br><br>';
+                                echo '<input class="btn btn-success" type="submit" id=' . $id . ' name="aceptar" value="Aceptar" onclick="ocultarrechazado(this), rechazado()"><br><br>';
                                 echo "</div></td";
                                 echo "</tr>";
                                 $r++;
